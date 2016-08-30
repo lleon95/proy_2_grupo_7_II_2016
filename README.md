@@ -13,6 +13,6 @@
   <li>Luis Leon Vega</li>
   <li>Keylor Mena Venegas</li>
   <li>Luis Merayo Gatica</li>
-<ul>
+</ul>
 
 <h3>II Semestre - 2016</h3>
