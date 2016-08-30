@@ -15,4 +15,9 @@
   <li>Luis Merayo Gatica</li>
 </ul>
 
+<h3>Profesor:</h3>
+<ul>
+  <li>Dr-Ing. Alfonso Chacón</li>
+</ul>
+
 <h3>II Semestre - 2016</h3>
