@@ -29,31 +29,27 @@ II Semestre, 2016\\
 \end{center}
 \end{titlepage}
 
-\begin{flushright}
-\begin{large}
-\textbf{Fecha: 4 Mayo 2016}\\
-\end{large}
-\end{flushright}
 
 \section*{\textit{Descripción del problema}}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper imperdiet magna id sollicitudin. Curabitur sollicitudin posuere diam at lobortis. Nam a elit ut neque suscipit consectetur vel ac diam. Etiam purus tortor, consectetur vel lacus in, luctus condimentum libero. Cras efficitur luctus augue quis lobortis. Aliquam erat volutpat. Donec lobortis velit sit amet ante rutrum, sed vestibulum sem ultricies. Nullam accumsan accumsan massa, non vehicula urna auctor et. \\[2ex]
-
-Maecenas accumsan vestibulum bibendum. Phasellus a tortor magna. Phasellus vulputate dignissim blandit. Curabitur non nisi velit. Vivamus accumsan quam eget dui imperdiet, et finibus nisi placerat. Nulla laoreet rhoncus pellentesque. Duis lacinia eget nisl vel fringilla. \\[2ex]
+Se debe realizar un controlador para realizar la lectura y escritura del módulo RTC V3023. Los datos del sistema deben poder ser desplegados en un monitor LCD mediante el protocolo VGA. Ante ello, se debe realizar un controlador para el RTC y para la VGA. Asimismo, se deben poder ajustar la hora, activar la alarma y el cronómetro de forma descendente mediante botones e interruptores dispuestos en la FPGA Nexys3.
 
 \section*{\textit{Introducción al proyecto}}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper imperdiet magna id sollicitudin. Curabitur sollicitudin posuere diam at lobortis. Nam a elit ut neque suscipit consectetur vel ac diam. Etiam purus tortor, consectetur vel lacus in, luctus condimentum libero. Cras efficitur luctus augue quis lobortis. Aliquam erat volutpat. Donec lobortis velit sit amet ante rutrum, sed vestibulum sem ultricies. Nullam accumsan accumsan massa, non vehicula urna auctor et.\\[2ex]
-
-Maecenas accumsan vestibulum bibendum. Phasellus a tortor magna. Phasellus vulputate dignissim blandit. Curabitur non nisi velit. Vivamus accumsan quam eget dui imperdiet, et finibus nisi placerat. Nulla laoreet rhoncus pellentesque. Duis lacinia eget nisl vel fringilla. \\[2ex]
+Este proyecto consiste en realizar un controlador de módulos RTC (Real Time Controller), específicamente para el módulo V3023. Este controlador será capaz de escribir y leer dicho módulo para obtener parámetros de reloj, cronómetro y alarma. \\
+Asimismo, para poder desplegar la información relevante de los parámetros anteriores, se conectará un monitor LCD mediante el protocolo VGA. Por otro lado, para poder programar y dar instrucciones al circuito, se deberán usar los botones señalados en el instructivo y algunos interruptores. \\
+Finalmente, el conjunto es un circuito que permita controlar el módulo y comunicar al usuario mediante los botones y el monitor LCD, donde él podrá recibir la información relevante y poder modificar dicha información.\\
 
 \section*{\textit{Objetivo General}}
-Maecenas accumsan vestibulum bibendum. Phasellus a tortor magna. Phasellus vulputate dignissim blandit. Curabitur non nisi velit. \\[2ex]
+Diseñar un controlador de RTC que permita leerlo y programarlo mediante una interfaz de usuario consistente en botones incorporados dentro de la FPGA (Nexys3) y un monitor comunicado a través del protocolo VGA.
 
 \section*{\textit{Objetivos Específicos}}
 \begin{itemize}
-\item Maecenas accumsan vestibulum bibendum. Phasellus a tortor magna
-\item Maecenas accumsan vestibulum bibendum. Phasellus a tortor magna
+\item Investigar el funcionamiento del módulo RTC y el protocolo de comunicación del mismo.
+\item Diseñar un controlador para el módulo RTC, cuyo bus de datos y direcciones estén multiplexados.
+\item Cumplir con las reglas de temporizado del sistema, en especial, con el protocolo de comunicación del módulo RTC.
+\item Combinar el controlador de RTC con un controlador VGA para poder desplegar la información del módulo al usuario. Este módulo VGA será adaptado del proyecto anterior.
+\item Desarrollar un banco de pruebas (testbench) para poder emular el comportamiento del módulo RTC con la finalidad de comprobar el funcionamiento del circuito controlador.
 \end{itemize}
 
 \newpage
@@ -95,5 +91,19 @@ Sin embargo, se ha decido usar el control VGA que se ha diseñado en el proyecto 
 	\item Datasheet del RTC: http://bit.ly/2cpNGJa
 \end{itemize}
 
+\newpage
+
+% Nueva entrada
+\begin{flushright}
+	\begin{large}
+		\textbf{Fecha: 31 de Agosto}\\[5ex]
+	\end{large}
+\end{flushright}
+
+\noindent \textbf{Integrantes:} Luis Leon \\[1ex]
+\textbf{Hora:} 7:30 - 8:00 \\[1ex]
+\textbf{Actividad:} \\[2ex]
+
+Se incorporaron los apartados de descripción del problema, introducción al proyecto y los objetivos dentro del documento de control de eventos (bitácora). Esto para seguir el formato de la plantilla proporcionada por el profesor. 
 
 \end{document}
