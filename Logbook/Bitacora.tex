@@ -1,0 +1,99 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[latin1]{inputenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{graphicx}
+\usepackage[left=3cm,right=3cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[R]{\textbf{\thepage/\pageref{LastPage}}}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+\begin{titlepage}
+\begin{center}
+\vspace*{1.5cm}
+\textbf{Escuela de Ingeniería en Electrónica}\\[0.8cm]
+\textbf{Laboratorio de Diseño de Sistemas Digitales}\\[1cm]
+\textbf{Bitácora}\\[2cm]
+\textbf{Proyecto:}\\[0.4cm]
+Control y programación RTC con Nexys3 \\[1.7cm]
+\textbf{Profesor:}\\[0.4cm]
+Alfonso Chacón Rodríguez \\[1.7cm]
+\textbf{Estudiantes:}\\[0.4cm]
+Keylor Mena Venegas \\[0.8cm]
+Luis Leon Vega \\[0.8cm]
+Luis Merayo Gatica \\[1.7cm]
+\textbf{Periodo}\\[0.8cm]
+II Semestre, 2016\\
+\end{center}
+\end{titlepage}
+
+\begin{flushright}
+\begin{large}
+\textbf{Fecha: 4 Mayo 2016}\\
+\end{large}
+\end{flushright}
+
+\section*{\textit{Descripción del problema}}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper imperdiet magna id sollicitudin. Curabitur sollicitudin posuere diam at lobortis. Nam a elit ut neque suscipit consectetur vel ac diam. Etiam purus tortor, consectetur vel lacus in, luctus condimentum libero. Cras efficitur luctus augue quis lobortis. Aliquam erat volutpat. Donec lobortis velit sit amet ante rutrum, sed vestibulum sem ultricies. Nullam accumsan accumsan massa, non vehicula urna auctor et. \\[2ex]
+
+Maecenas accumsan vestibulum bibendum. Phasellus a tortor magna. Phasellus vulputate dignissim blandit. Curabitur non nisi velit. Vivamus accumsan quam eget dui imperdiet, et finibus nisi placerat. Nulla laoreet rhoncus pellentesque. Duis lacinia eget nisl vel fringilla. \\[2ex]
+
+\section*{\textit{Introducción al proyecto}}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper imperdiet magna id sollicitudin. Curabitur sollicitudin posuere diam at lobortis. Nam a elit ut neque suscipit consectetur vel ac diam. Etiam purus tortor, consectetur vel lacus in, luctus condimentum libero. Cras efficitur luctus augue quis lobortis. Aliquam erat volutpat. Donec lobortis velit sit amet ante rutrum, sed vestibulum sem ultricies. Nullam accumsan accumsan massa, non vehicula urna auctor et.\\[2ex]
+
+Maecenas accumsan vestibulum bibendum. Phasellus a tortor magna. Phasellus vulputate dignissim blandit. Curabitur non nisi velit. Vivamus accumsan quam eget dui imperdiet, et finibus nisi placerat. Nulla laoreet rhoncus pellentesque. Duis lacinia eget nisl vel fringilla. \\[2ex]
+
+\section*{\textit{Objetivo General}}
+Maecenas accumsan vestibulum bibendum. Phasellus a tortor magna. Phasellus vulputate dignissim blandit. Curabitur non nisi velit. \\[2ex]
+
+\section*{\textit{Objetivos Específicos}}
+\begin{itemize}
+\item Maecenas accumsan vestibulum bibendum. Phasellus a tortor magna
+\item Maecenas accumsan vestibulum bibendum. Phasellus a tortor magna
+\end{itemize}
+
+\newpage
+
+% Comienzo de la bitacora
+\section*{\textit{Control de eventos}}
+
+% Nueva entrada
+\begin{flushright}
+	\begin{large}
+		\textbf{Fecha: 30 de Agosto}\\[5ex]
+	\end{large}
+\end{flushright}
+
+\noindent \textbf{Integrantes:} Luis Leon, Luis Merayo, Keylor Mena \\[1ex]
+\textbf{Hora:} 13:00 - 15:00 \\[1ex]
+\textbf{Actividad:} \\[2ex]
+
+El profesor explicó el instructivo y expresó las necesidades que deben ser cubiertas durante todo el proyecto. Quedó claro en que se debe desarrollar unidades de control para el proyecto (que se pueden hacer con FSM o Máquinas de Estados Finita) y desarrollar un controlador para obtener datos del RTC y para programarlo. \\
+
+t El reto de este último surge, principalmente, de comunicar el circuito al RTC mediante un bus multiplexado de direcciones y datos (A/D Bus). Se debe crear un control que permita escribir y leer de forma controlada y, con ello, que se pueda seleccionar el hardware para cada caso. \\
+
+\indent En este día, se hizo una reunión grupal para decidir las tareas de cada miembro, lo cual estableció: 
+
+\begin{itemize}
+	\item Luis Leon: Control general del circuito - Controlador VGA
+	\item Luis Merayo: Control del RTC
+	\item Keylor Mena: Encargado de testbench.
+\end{itemize}
+
+No se estableció ninguna aproximación al diseño del proyecto para dar tiempo de que cada miembro pueda estudiar el instructivo y el RTC con calma y de forma individual. Asimismo, se quedó que el día de mañana, esta tarea será efectuada al igual que la distribución de todas las tareas que puede implicar el proyecto. \\
+
+Sin embargo, se ha decido usar el control VGA que se ha diseñado en el proyecto anterior para agilizar la tarea del nuevo diseño de proyecto, asumiendo de que se conocen todas las partes de este controlador. Por otro lado, para efectos de la comprensión del nuevo proyecto, se asistió a la tutoría el día anterior, brindando la facilidad de que uno de los miembros conozca el sistema de antemano. Para ello será recomendado ver el enlace de interés al final de esta entrada. \\
+
+\noindent \textbf{Enlaces de interés:}
+\begin{itemize}
+	
+	\item Documento de la tutoría: http://bit.ly/2bEI3RZ
+	\item Datasheet del RTC: http://bit.ly/2cpNGJa
+\end{itemize}
+
+
+\end{document}
