@@ -106,4 +106,45 @@ Sin embargo, se ha decido usar el control VGA que se ha diseñado en el proyecto 
 
 Se incorporaron los apartados de descripción del problema, introducción al proyecto y los objetivos dentro del documento de control de eventos (bitácora). Esto para seguir el formato de la plantilla proporcionada por el profesor. 
 
+\newpage
+% Nueva entrada
+\begin{flushright}
+	\begin{large}
+		\textbf{Fecha: 3 de Septiembre}\\[5ex]
+	\end{large}
+\end{flushright}
+
+\noindent \textbf{Integrantes:} Luis Leon \\[1ex]
+\textbf{Hora:} 13:00 - 16:00 \\[1ex]
+\textbf{Actividad:} \\[2ex]
+
+Se hizo el diseño del sistema, que incorpora la etapa de control de acceso a la memoria por parte del control de usuario y el RTC. Además, se incorporó el módulo VGA como parte del control de memoria. Esto se puede ver en la figura \ref{fig:sysdesign1} \\
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm]{Img/sysdesign1.jpeg}
+	\caption{Diagrama general del sistema}
+	\label{fig:sysdesign1}
+\end{figure}
+
+En cuando al acceso a la memoria, esta se regirá por una FSM (máquina de estados), cuyos diseños se presentan el las figuras \ref{fig:mainctrl1} y \ref{fig:mainctrl2}.\\
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm]{Img/mainctrl1.jpg}
+	\caption{Diagrama de flujo de la máquina de estados principal}
+	\label{fig:mainctrl1}
+\end{figure}
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm]{Img/mainctrl2.jpg}
+	\caption{Diagrama de estados de la máquina de estados principal}
+	\label{fig:mainctrl2}
+\end{figure}	
+
+\noindent Enlaces de interés: https://www.altera.com/support/support-resources/design-examples/design-software/verilog/ver_bidirec.html
+
+
+
 \end{document}
