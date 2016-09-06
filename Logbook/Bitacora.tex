@@ -114,10 +114,37 @@ Se incorporaron los apartados de descripción del problema, introducción al proye
 \end{flushright}
 
 \noindent \textbf{Integrantes:} Keylor Mena, Luis Leon, Luis Merayo \\[1ex]
-\textbf{Hora:} ---\\[1ex]
+\textbf{Hora:} 8:00-9:00\\[1ex]
 \textbf{Actividad:} \\[2ex]
 
-ACTUALIZACION REQUERIDA - Protocolo y lluvia de ideas \\[2ex]
+Se realizó una reunión de todos los miembros del grupo, donde se plasmaron las ideas del control del RTC y se establecieron las comunicaciones entre los módulos principales, donde se destacan \\
+
+\begin{enumerate}
+	\item Control VGA
+	\item Control de Usuario
+	\item Control de Memoria
+	\item Control de RTC
+\end{enumerate}
+
+Como parte del protocolo, se estableció una comunicación entre el control principal (de Memoria) con el control RTC, ilustrado en la siguiente imagen de la Figura \ref{fig:protocolRTC} \\
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=14cm]{Img/protocolRTC.jpeg}
+	\caption{Diagrama de protocolo}
+	\label{fig:protocolRTC}
+\end{figure}
+
+Por otro lado, se hizo un acercamiento al diagrama de flujo del módulo de RTC, mostrado en la Figura \ref{fig:RTCdiagramaflujo} \\
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=14cm]{Img/rtcdiagramaflujo.jpeg}
+	\caption{Diagrama de flujo para el control del RTC}
+	\label{fig:RTCdiagramaflujo}
+\end{figure}
+
+\newpage
 
 % Nueva entrada
 \begin{flushright}
@@ -125,6 +152,7 @@ ACTUALIZACION REQUERIDA - Protocolo y lluvia de ideas \\[2ex]
 		\textbf{Fecha: 2 de Septiembre}\\[5ex]
 	\end{large}
 \end{flushright}
+
 
 \noindent \textbf{Integrantes:} Keylor Mena \\[1ex]
 \textbf{Hora:} ---\\[1ex]
@@ -171,5 +199,77 @@ En cuando al acceso a la memoria, esta se regirá por una FSM (máquina de estados
 
 \noindent \textbf{Enlaces de interés:} 
 http://bit.ly/2c3durR
+
+
+
+
+\newpage
+% Nueva entrada
+\begin{flushright}
+	\begin{large}
+		\textbf{Fecha: 5 de Septiembre}\\[5ex]
+	\end{large}
+\end{flushright}
+
+\noindent \textbf{Integrantes:} Luis Leon \\[1ex]
+\textbf{Hora:} 14:30 - 17:00 \\[1ex]
+\textbf{Actividad:} \\[2ex]
+
+Se hicieron los diagramas de bloques del control VGA y del control de usuario. Estos diagramas contienen unidades de control y otras subunidades que deben ser descritas, por ello, se hace un pequeño índice de los elaborado el día de hoy. \\
+
+\begin{itemize}
+	\item Control VGA: 
+		\subitem Diagrama de bloques (Figura \ref{fig:BloquesVGA1}) 
+		\subitem Diagrama de flujo (Figura \ref{fig:FlujoVGA1})
+		\subitem Diagrama de bloques direccionamiento (Figura \ref{fig:DireccionamientoBloquesVGA1})
+		\subitem Diagrama de flujo direccionamiento (Figura \ref{fig:DireccionamientoFlujoVGA1})
+	\item Control de Usuario:
+		\subitem Diagrama de bloques (Figura \ref{fig:BloquesUsuario1})
+		\subitem Diagrama de flujo (Figura \ref{fig:FlujoUsuario1})
+\end{itemize}
+
+Finalmente, por algunos problemas de salud, se ha decidido colaborar en la parte de implementación del código en Verilog y al diseño del control VGA. Se expondrá a los compañeros la situación y, por otro lado, se aclararán algunos aspectos de memoria que deben ser discutidos para que haya armonía en la implementación.
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm,height=20cm]{Img/ControlVGABloques.jpg}
+	\caption{Diagrama de bloques del Control VGA}
+	\label{fig:BloquesVGA1}
+\end{figure}
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=15cm,height=10cm]{Img/ControlVGAFlujo.jpg}
+	\caption{Diagrama de Flujo del Control VGA}
+	\label{fig:FlujoVGA1}
+\end{figure}
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=15cm]{Img/ControlDireccionamientoVGABloques.jpg}
+	\caption{Diagrama de Bloques del Control VGA - Sección de Direccionamiento}
+	\label{fig:DireccionamientoBloquesVGA1}
+\end{figure}
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=15cm]{Img/ControlDireccionamientoVGAFlujo.jpg}
+	\caption{Diagrama de Bloques del Control VGA - Sección de Direccionamiento}
+	\label{fig:DireccionamientoFlujoVGA1}
+\end{figure}
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=15cm]{Img/ControlUsuarioBloques.jpg}
+	\caption{Diagrama de Bloques del Control de Usuario}
+	\label{fig:BloquesUsuario1}
+\end{figure}
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=15cm]{Img/ControlUsuarioFlujo.jpg}
+	\caption{Diagrama de Flujo del Control de Usuario}
+	\label{fig:FlujoUsuario1}
+\end{figure}
 
 \end{document}
