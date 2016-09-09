@@ -24,6 +24,10 @@
 //								9.segundos
 //								10.minutos
 //								11.horas
+//								status
+//								12.1
+//								13.2
+//								14.3
 //
 // Dependencies: 
 //
