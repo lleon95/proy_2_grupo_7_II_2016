@@ -13,13 +13,13 @@
 \begin{titlepage}
 \begin{center}
 \vspace*{1.5cm}
-\textbf{Escuela de Ingeniería en Electrónica}\\[0.8cm]
+\textbf{Escuela de Ingenierí­a en Electronica}\\[0.8cm]
 \textbf{Laboratorio de Diseño de Sistemas Digitales}\\[1cm]
 \textbf{Bitácora}\\[2cm]
 \textbf{Proyecto:}\\[0.4cm]
 Control y programación RTC con Nexys3 \\[1.7cm]
 \textbf{Profesor:}\\[0.4cm]
-Alfonso Chacón Rodríguez \\[1.7cm]
+Alfonso Chacón Rodrí­guez \\[1.7cm]
 \textbf{Estudiantes:}\\[0.4cm]
 Keylor Mena Venegas \\[0.8cm]
 Luis Leon Vega \\[0.8cm]
@@ -45,11 +45,11 @@ Diseñar un controlador de RTC que permita leerlo y programarlo mediante una int
 
 \section*{\textit{Objetivos Específicos}}
 \begin{itemize}
-\item Investigar el funcionamiento del módulo RTC y el protocolo de comunicación del mismo.
-\item Diseñar un controlador para el módulo RTC, cuyo bus de datos y direcciones estén multiplexados.
-\item Cumplir con las reglas de temporizado del sistema, en especial, con el protocolo de comunicación del módulo RTC.
-\item Combinar el controlador de RTC con un controlador VGA para poder desplegar la información del módulo al usuario. Este módulo VGA será adaptado del proyecto anterior.
-\item Desarrollar un banco de pruebas (testbench) para poder emular el comportamiento del módulo RTC con la finalidad de comprobar el funcionamiento del circuito controlador.
+	\item Investigar el funcionamiento del módulo RTC y el protocolo de comunicación del mismo.
+	\item Diseñar un controlador para el módulo RTC, cuyo bus de datos y direcciones estén multiplexados.
+	\item Cumplir con las reglas de temporizado del sistema, en especial, con el protocolo de comunicación del módulo RTC.
+	\item Combinar el controlador de RTC con un controlador VGA para poder desplegar la información del módulo al usuario. Este módulo VGA será adaptado del proyecto anterior.
+	\item Desarrollar un banco de pruebas (testbench) para poder emular el comportamiento del módulo RTC con la finalidad de comprobar el funcionamiento del circuito controlador.
 \end{itemize}
 
 \newpage
@@ -212,7 +212,14 @@ http://bit.ly/2c3durR
 \textbf{Hora:} 13:00 - 16:00 \\[1ex]
 \textbf{Actividad:} \\[2ex]
 
-Se programo el nuevo registro dual con actualizacion controlada, este permite aislar etapas principales teniendo registros individuales entre ellas y actualizando estos con señales o banderas
+Se programo el nuevo registro dual con actualizacion controlada, este permite aislar etapas principales teniendo registros individuales entre ellas y actualizando estos con señales o banderas, se llamo memoria DRULC(Dual Register Update Log Controller), una manera de apreciar se representa en la figura\ref{fig:memoriaDRULC} \\
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm]{Img/memoriaDRULC.jpg}
+	\caption{Diagrama del control RTC}
+	\label{fig:memoriaDRULC}
+\end{figure}
 
 
 \newpage
@@ -231,13 +238,13 @@ Se hicieron los diagramas de bloques del control VGA y del control de usuario. E
 
 \begin{itemize}
 	\item Control VGA: 
-		\subitem Diagrama de bloques (Figura \ref{fig:BloquesVGA1}) 
-		\subitem Diagrama de flujo (Figura \ref{fig:FlujoVGA1})
-		\subitem Diagrama de bloques direccionamiento (Figura \ref{fig:DireccionamientoBloquesVGA1})
-		\subitem Diagrama de flujo direccionamiento (Figura \ref{fig:DireccionamientoFlujoVGA1})
+	\subitem Diagrama de bloques (Figura \ref{fig:BloquesVGA1}) 
+	\subitem Diagrama de flujo (Figura \ref{fig:FlujoVGA1})
+	\subitem Diagrama de bloques direccionamiento (Figura \ref{fig:DireccionamientoBloquesVGA1})
+	\subitem Diagrama de flujo direccionamiento (Figura \ref{fig:DireccionamientoFlujoVGA1})
 	\item Control de Usuario:
-		\subitem Diagrama de bloques (Figura \ref{fig:BloquesUsuario1})
-		\subitem Diagrama de flujo (Figura \ref{fig:FlujoUsuario1})
+	\subitem Diagrama de bloques (Figura \ref{fig:BloquesUsuario1})
+	\subitem Diagrama de flujo (Figura \ref{fig:FlujoUsuario1})
 \end{itemize}
 
 Finalmente, por algunos problemas de salud, se ha decidido colaborar en la parte de implementación del código en Verilog y al diseño del control VGA. Se expondrá a los compañeros la situación y, por otro lado, se aclararán algunos aspectos de memoria que deben ser discutidos para que haya armonía en la implementación.
@@ -301,5 +308,45 @@ Actividad: Se realizó un primer diseño del control del RTC, por lo que se resa
 	\includegraphics[width=16cm]{Img/ControlRTC1.jpg}
 	\caption{Diagrama del control RTC}
 	\label{fig:ControlRTC1}
+\end{figure}
+
+
+
+\newpage
+% Nueva entrada
+\begin{flushright}
+	\begin{large}
+		\textbf{Fecha: 6 de Septiembre}\\[5ex]
+	\end{large}
+\end{flushright}
+
+\noindent \textbf{Integrantes:} Keylor Mena y Luis Merayo \\[1ex]
+\textbf{Hora:} 7:00 - 9:00 \\[1ex]
+\textbf{Actividad:} \\[2ex]
+
+se realizo un diseño la maquina de estados del control RTC usando el método de factorizacion. por lo cual tenemos la jerarquía de la figura \ref{fig:JerarquiaRTC} el flujo de cada maquina de estados estan en las figuras \ref{fig:FlujoInt},\ref{fig:FlujoEsc},\ref{fig:Flujolec}.\\
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm]{Img/JerarquiaRTC.jpg}
+	\caption{jerquia de la RTC}
+	\label{fig:JerarquiaRTC}
+\end{figure}
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm]{Img/FlujoInit.jpg}
+	\caption{flujo del proceso de inicialización}
+	\label{fig:FlujoInt}
+\end{figure}
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm]{Img/FlujoEsc.jpg}
+	\caption{flujo del proceso de escritura}
+	\label{fig:FlujoEsc}
+\end{figure}
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm]{Img/Flujolec.jpg}
+	\caption{flujo del proceso de lectura}
+	\label{fig:Flujolec}
 \end{figure}
 \end{document}
