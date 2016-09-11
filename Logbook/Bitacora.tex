@@ -13,13 +13,13 @@
 \begin{titlepage}
 \begin{center}
 \vspace*{1.5cm}
-\textbf{Escuela de IngenierÌa en ElectrÛnica}\\[0.8cm]
-\textbf{Laboratorio de DiseÒo de Sistemas Digitales}\\[1cm]
-\textbf{Bit·cora}\\[2cm]
+\textbf{Escuela de Ingenier√≠¬≠a en Electronica}\\[0.8cm]
+\textbf{Laboratorio de Dise√±o de Sistemas Digitales}\\[1cm]
+\textbf{Bit√°cora}\\[2cm]
 \textbf{Proyecto:}\\[0.4cm]
-Control y programaciÛn RTC con Nexys3 \\[1.7cm]
+Control y programaci√≥n RTC con Nexys3 \\[1.7cm]
 \textbf{Profesor:}\\[0.4cm]
-Alfonso ChacÛn RodrÌguez \\[1.7cm]
+Alfonso Chac√≥n Rodr√≠¬≠guez \\[1.7cm]
 \textbf{Estudiantes:}\\[0.4cm]
 Keylor Mena Venegas \\[0.8cm]
 Luis Leon Vega \\[0.8cm]
@@ -30,26 +30,26 @@ II Semestre, 2016\\
 \end{titlepage}
 
 
-\section*{\textit{DescripciÛn del problema}}
+\section*{\textit{Descripci√≥n del problema}}
 
-Se debe realizar un controlador para realizar la lectura y escritura del mÛdulo RTC V3023. Los datos del sistema deben poder ser desplegados en un monitor LCD mediante el protocolo VGA. Ante ello, se debe realizar un controlador para el RTC y para la VGA. Asimismo, se deben poder ajustar la hora, activar la alarma y el cronÛmetro de forma descendente mediante botones e interruptores dispuestos en la FPGA Nexys3.
+Se debe realizar un controlador para realizar la lectura y escritura del m√≥dulo RTC V3023. Los datos del sistema deben poder ser desplegados en un monitor LCD mediante el protocolo VGA. Ante ello, se debe realizar un controlador para el RTC y para la VGA. Asimismo, se deben poder ajustar la hora, activar la alarma y el cron√≥metro de forma descendente mediante botones e interruptores dispuestos en la FPGA Nexys3.
 
-\section*{\textit{IntroducciÛn al proyecto}}
+\section*{\textit{Introducci√≥n al proyecto}}
 
-Este proyecto consiste en realizar un controlador de mÛdulos RTC (Real Time Controller), especÌficamente para el mÛdulo V3023. Este controlador ser· capaz de escribir y leer dicho mÛdulo para obtener par·metros de reloj, cronÛmetro y alarma. \\
-Asimismo, para poder desplegar la informaciÛn relevante de los par·metros anteriores, se conectar· un monitor LCD mediante el protocolo VGA. Por otro lado, para poder programar y dar instrucciones al circuito, se deber·n usar los botones seÒalados en el instructivo y algunos interruptores. \\
-Finalmente, el conjunto es un circuito que permita controlar el mÛdulo y comunicar al usuario mediante los botones y el monitor LCD, donde Èl podr· recibir la informaciÛn relevante y poder modificar dicha informaciÛn.\\
+Este proyecto consiste en realizar un controlador de m√≥dulos RTC (Real Time Controller), espec√≠ficamente para el m√≥dulo V3023. Este controlador ser√° capaz de escribir y leer dicho m√≥dulo para obtener par√°metros de reloj, cron√≥metro y alarma. \\
+Asimismo, para poder desplegar la informaci√≥n relevante de los par√°metros anteriores, se conectar√° un monitor LCD mediante el protocolo VGA. Por otro lado, para poder programar y dar instrucciones al circuito, se deber√°n usar los botones se√±alados en el instructivo y algunos interruptores. \\
+Finalmente, el conjunto es un circuito que permita controlar el m√≥dulo y comunicar al usuario mediante los botones y el monitor LCD, donde √©l podr√° recibir la informaci√≥n relevante y poder modificar dicha informaci√≥n.\\
 
 \section*{\textit{Objetivo General}}
-DiseÒar un controlador de RTC que permita leerlo y programarlo mediante una interfaz de usuario consistente en botones incorporados dentro de la FPGA (Nexys3) y un monitor comunicado a travÈs del protocolo VGA.
+Dise√±ar un controlador de RTC que permita leerlo y programarlo mediante una interfaz de usuario consistente en botones incorporados dentro de la FPGA (Nexys3) y un monitor comunicado a trav√©s del protocolo VGA.
 
-\section*{\textit{Objetivos EspecÌficos}}
+\section*{\textit{Objetivos Espec√≠ficos}}
 \begin{itemize}
-\item Investigar el funcionamiento del mÛdulo RTC y el protocolo de comunicaciÛn del mismo.
-\item DiseÒar un controlador para el mÛdulo RTC, cuyo bus de datos y direcciones estÈn multiplexados.
-\item Cumplir con las reglas de temporizado del sistema, en especial, con el protocolo de comunicaciÛn del mÛdulo RTC.
-\item Combinar el controlador de RTC con un controlador VGA para poder desplegar la informaciÛn del mÛdulo al usuario. Este mÛdulo VGA ser· adaptado del proyecto anterior.
-\item Desarrollar un banco de pruebas (testbench) para poder emular el comportamiento del mÛdulo RTC con la finalidad de comprobar el funcionamiento del circuito controlador.
+	\item Investigar el funcionamiento del m√≥dulo RTC y el protocolo de comunicaci√≥n del mismo.
+	\item Dise√±ar un controlador para el m√≥dulo RTC, cuyo bus de datos y direcciones est√©n multiplexados.
+	\item Cumplir con las reglas de temporizado del sistema, en especial, con el protocolo de comunicaci√≥n del m√≥dulo RTC.
+	\item Combinar el controlador de RTC con un controlador VGA para poder desplegar la informaci√≥n del m√≥dulo al usuario. Este m√≥dulo VGA ser√° adaptado del proyecto anterior.
+	\item Desarrollar un banco de pruebas (testbench) para poder emular el comportamiento del m√≥dulo RTC con la finalidad de comprobar el funcionamiento del circuito controlador.
 \end{itemize}
 
 \newpage
@@ -68,11 +68,11 @@ DiseÒar un controlador de RTC que permita leerlo y programarlo mediante una inte
 \textbf{Hora:} 13:00 - 15:00 \\[1ex]
 \textbf{Actividad:} \\[2ex]
 
-El profesor explicÛ el instructivo y expresÛ las necesidades que deben ser cubiertas durante todo el proyecto. QuedÛ claro en que se debe desarrollar unidades de control para el proyecto (que se pueden hacer con FSM o M·quinas de Estados Finita) y desarrollar un controlador para obtener datos del RTC y para programarlo. \\
+El profesor explic√≥ el instructivo y expres√≥ las necesidades que deben ser cubiertas durante todo el proyecto. Qued√≥ claro en que se debe desarrollar unidades de control para el proyecto (que se pueden hacer con FSM o M√°quinas de Estados Finita) y desarrollar un controlador para obtener datos del RTC y para programarlo. \\
 
-t El reto de este ˙ltimo surge, principalmente, de comunicar el circuito al RTC mediante un bus multiplexado de direcciones y datos (A/D Bus). Se debe crear un control que permita escribir y leer de forma controlada y, con ello, que se pueda seleccionar el hardware para cada caso. \\
+t El reto de este √∫ltimo surge, principalmente, de comunicar el circuito al RTC mediante un bus multiplexado de direcciones y datos (A/D Bus). Se debe crear un control que permita escribir y leer de forma controlada y, con ello, que se pueda seleccionar el hardware para cada caso. \\
 
-\indent En este dÌa, se hizo una reuniÛn grupal para decidir las tareas de cada miembro, lo cual estableciÛ: 
+\indent En este d√≠a, se hizo una reuni√≥n grupal para decidir las tareas de cada miembro, lo cual estableci√≥: 
 
 \begin{itemize}
 	\item Luis Leon: Control general del circuito - Controlador VGA
@@ -80,14 +80,14 @@ t El reto de este ˙ltimo surge, principalmente, de comunicar el circuito al RTC 
 	\item Keylor Mena: Encargado de testbench.
 \end{itemize}
 
-No se estableciÛ ninguna aproximaciÛn al diseÒo del proyecto para dar tiempo de que cada miembro pueda estudiar el instructivo y el RTC con calma y de forma individual. Asimismo, se quedÛ que el dÌa de maÒana, esta tarea ser· efectuada al igual que la distribuciÛn de todas las tareas que puede implicar el proyecto. \\
+No se estableci√≥ ninguna aproximaci√≥n al dise√±o del proyecto para dar tiempo de que cada miembro pueda estudiar el instructivo y el RTC con calma y de forma individual. Asimismo, se qued√≥ que el d√≠a de ma√±ana, esta tarea ser√° efectuada al igual que la distribuci√≥n de todas las tareas que puede implicar el proyecto. \\
 
-Sin embargo, se ha decido usar el control VGA que se ha diseÒado en el proyecto anterior para agilizar la tarea del nuevo diseÒo de proyecto, asumiendo de que se conocen todas las partes de este controlador. Por otro lado, para efectos de la comprensiÛn del nuevo proyecto, se asistiÛ a la tutorÌa el dÌa anterior, brindando la facilidad de que uno de los miembros conozca el sistema de antemano. Para ello ser· recomendado ver el enlace de interÈs al final de esta entrada. \\
+Sin embargo, se ha decido usar el control VGA que se ha dise√±ado en el proyecto anterior para agilizar la tarea del nuevo dise√±o de proyecto, asumiendo de que se conocen todas las partes de este controlador. Por otro lado, para efectos de la comprensi√≥n del nuevo proyecto, se asisti√≥ a la tutor√≠a el d√≠a anterior, brindando la facilidad de que uno de los miembros conozca el sistema de antemano. Para ello ser√° recomendado ver el enlace de inter√©s al final de esta entrada. \\
 
-\noindent \textbf{Enlaces de interÈs:}
+\noindent \textbf{Enlaces de inter√©s:}
 \begin{itemize}
 	
-	\item Documento de la tutorÌa: http://bit.ly/2bEI3RZ
+	\item Documento de la tutor√≠a: http://bit.ly/2bEI3RZ
 	\item Datasheet del RTC: http://bit.ly/2cpNGJa
 \end{itemize}
 
@@ -104,6 +104,249 @@ Sin embargo, se ha decido usar el control VGA que se ha diseÒado en el proyecto 
 \textbf{Hora:} 7:30 - 8:00 \\[1ex]
 \textbf{Actividad:} \\[2ex]
 
-Se incorporaron los apartados de descripciÛn del problema, introducciÛn al proyecto y los objetivos dentro del documento de control de eventos (bit·cora). Esto para seguir el formato de la plantilla proporcionada por el profesor. 
+Se incorporaron los apartados de descripci√≥n del problema, introducci√≥n al proyecto y los objetivos dentro del documento de control de eventos (bit√°cora). Esto para seguir el formato de la plantilla proporcionada por el profesor. \\[2ex]
 
+% Nueva entrada
+\begin{flushright}
+	\begin{large}
+		\textbf{Fecha: 1 de Septiembre}\\[5ex]
+	\end{large}
+\end{flushright}
+
+\noindent \textbf{Integrantes:} Keylor Mena, Luis Leon, Luis Merayo \\[1ex]
+\textbf{Hora:} 8:00-9:00\\[1ex]
+\textbf{Actividad:} \\[2ex]
+
+Se realiz√≥ una reuni√≥n de todos los miembros del grupo, donde se plasmaron las ideas del control del RTC y se establecieron las comunicaciones entre los m√≥dulos principales, donde se destacan \\
+
+\begin{enumerate}
+	\item Control VGA
+	\item Control de Usuario
+	\item Control de Memoria
+	\item Control de RTC
+\end{enumerate}
+
+Como parte del protocolo, se estableci√≥ una comunicaci√≥n entre el control principal (de Memoria) con el control RTC, ilustrado en la siguiente imagen de la Figura \ref{fig:protocolRTC} \\
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=14cm]{Img/protocolRTC.jpeg}
+	\caption{Diagrama de protocolo}
+	\label{fig:protocolRTC}
+\end{figure}
+
+Por otro lado, se hizo un acercamiento al diagrama de flujo del m√≥dulo de RTC, mostrado en la Figura \ref{fig:RTCdiagramaflujo} \\
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=14cm]{Img/rtcdiagramaflujo.jpeg}
+	\caption{Diagrama de flujo para el control del RTC}
+	\label{fig:RTCdiagramaflujo}
+\end{figure}
+
+\newpage
+
+% Nueva entrada
+\begin{flushright}
+	\begin{large}
+		\textbf{Fecha: 2 de Septiembre}\\[5ex]
+	\end{large}
+\end{flushright}
+
+
+\noindent \textbf{Integrantes:} Keylor Mena \\[1ex]
+\textbf{Hora:} ---\\[1ex]
+\textbf{Actividad:} \\[2ex]
+
+ACTUALIZACION REQUERIDA \\[2ex]
+
+\newpage
+% Nueva entrada
+\begin{flushright}
+	\begin{large}
+		\textbf{Fecha: 3 de Septiembre}\\[5ex]
+	\end{large}
+\end{flushright}
+
+\noindent \textbf{Integrantes:} Luis Leon \\[1ex]
+\textbf{Hora:} 13:00 - 16:00 \\[1ex]
+\textbf{Actividad:} \\[2ex]
+
+Se hizo el dise√±o del sistema, que incorpora la etapa de control de acceso a la memoria por parte del control de usuario y el RTC. Adem√°s, se incorpor√≥ el m√≥dulo VGA como parte del control de memoria. Esto se puede ver en la figura \ref{fig:sysdesign1} \\
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm]{Img/sysdesign1.jpeg}
+	\caption{Diagrama general del sistema}
+	\label{fig:sysdesign1}
+\end{figure}
+
+En cuando al acceso a la memoria, esta se regir√° por una FSM (m√°quina de estados), cuyos dise√±os se presentan el las figuras \ref{fig:mainctrl1} y \ref{fig:mainctrl2}.\\
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm]{Img/mainctrl1.jpg}
+	\caption{Diagrama de flujo de la m√°quina de estados principal}
+	\label{fig:mainctrl1}
+\end{figure}
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm]{Img/mainctrl2.jpg}
+	\caption{Diagrama de estados de la m√°quina de estados principal}
+	\label{fig:mainctrl2}
+\end{figure}	
+
+\noindent \textbf{Enlaces de inter√©s:} 
+http://bit.ly/2c3durR
+
+\newpage
+% Nueva entrada
+\begin{flushright}
+	\begin{large}
+		\textbf{Fecha: 4 de Septiembre}\\[5ex]
+	\end{large}
+\end{flushright}
+
+\noindent \textbf{Integrantes:} keylor Mena \\[1ex]
+\textbf{Hora:} 13:00 - 16:00 \\[1ex]
+\textbf{Actividad:} \\[2ex]
+
+Se programo el nuevo registro dual con actualizacion controlada, este permite aislar etapas principales teniendo registros individuales entre ellas y actualizando estos con se√±ales o banderas, se llamo memoria DRULC(Dual Register Update Log Controller), una manera de apreciar se representa en la figura\ref{fig:memoriaDRULC} \\
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm]{Img/memoriaDRULC.jpg}
+	\caption{Diagrama del control RTC}
+	\label{fig:memoriaDRULC}
+\end{figure}
+
+
+\newpage
+% Nueva entrada
+\begin{flushright}
+	\begin{large}
+		\textbf{Fecha: 5 de Septiembre}\\[5ex]
+	\end{large}
+\end{flushright}
+
+\noindent \textbf{Integrantes:} Luis Leon \\[1ex]
+\textbf{Hora:} 14:30 - 17:00 \\[1ex]
+\textbf{Actividad:} \\[2ex]
+
+Se hicieron los diagramas de bloques del control VGA y del control de usuario. Estos diagramas contienen unidades de control y otras subunidades que deben ser descritas, por ello, se hace un peque√±o √≠ndice de los elaborado el d√≠a de hoy. \\
+
+\begin{itemize}
+	\item Control VGA: 
+	\subitem Diagrama de bloques (Figura \ref{fig:BloquesVGA1}) 
+	\subitem Diagrama de flujo (Figura \ref{fig:FlujoVGA1})
+	\subitem Diagrama de bloques direccionamiento (Figura \ref{fig:DireccionamientoBloquesVGA1})
+	\subitem Diagrama de flujo direccionamiento (Figura \ref{fig:DireccionamientoFlujoVGA1})
+	\item Control de Usuario:
+	\subitem Diagrama de bloques (Figura \ref{fig:BloquesUsuario1})
+	\subitem Diagrama de flujo (Figura \ref{fig:FlujoUsuario1})
+\end{itemize}
+
+Finalmente, por algunos problemas de salud, se ha decidido colaborar en la parte de implementaci√≥n del c√≥digo en Verilog y al dise√±o del control VGA. Se expondr√° a los compa√±eros la situaci√≥n y, por otro lado, se aclarar√°n algunos aspectos de memoria que deben ser discutidos para que haya armon√≠a en la implementaci√≥n.
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm,height=20cm]{Img/ControlVGABloques.jpg}
+	\caption{Diagrama de bloques del Control VGA}
+	\label{fig:BloquesVGA1}
+\end{figure}
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=15cm,height=10cm]{Img/ControlVGAFlujo.jpg}
+	\caption{Diagrama de Flujo del Control VGA}
+	\label{fig:FlujoVGA1}
+\end{figure}
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=15cm]{Img/ControlDireccionamientoVGABloques.jpg}
+	\caption{Diagrama de Bloques del Control VGA - Secci√≥n de Direccionamiento}
+	\label{fig:DireccionamientoBloquesVGA1}
+\end{figure}
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=15cm]{Img/ControlDireccionamientoVGAFlujo.jpg}
+	\caption{Diagrama de Bloques del Control VGA - Secci√≥n de Direccionamiento}
+	\label{fig:DireccionamientoFlujoVGA1}
+\end{figure}
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=15cm]{Img/ControlUsuarioBloques.jpg}
+	\caption{Diagrama de Bloques del Control de Usuario}
+	\label{fig:BloquesUsuario1}
+\end{figure}
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=15cm]{Img/ControlUsuarioFlujo.jpg}
+	\caption{Diagrama de Flujo del Control de Usuario}
+	\label{fig:FlujoUsuario1}
+\end{figure}
+
+\begin{flushright}
+	\begin{large}
+		\textbf{Fecha: 3 de Septiembre}\\[5ex]
+	\end{large}
+\end{flushright}
+
+\noindent \textbf{Integrantes:} Luis Merayo \\[1ex]
+\textbf{Hora:} 21:00 - 22:00 \\[1ex]
+\textbf{Actividad:} \\[2ex]
+
+Actividad: Se realiz√≥ un primer dise√±o del control del RTC, por lo que se resalt√≥ la ruta de datos e inicialmente se crearon tres m√°quinas de estado, una de escritura, otra de lectura, y la principal, la cual controla los procedimientos iniciales luego de un reset. Tambi√©n para controlar los tiempos se coloc√≥ un contador. Esto se puede ver en la figura \ref{fig:ControlRTC1} \\
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm]{Img/ControlRTC1.jpg}
+	\caption{Diagrama del control RTC}
+	\label{fig:ControlRTC1}
+\end{figure}
+
+
+
+\newpage
+% Nueva entrada
+\begin{flushright}
+	\begin{large}
+		\textbf{Fecha: 6 de Septiembre}\\[5ex]
+	\end{large}
+\end{flushright}
+
+\noindent \textbf{Integrantes:} Keylor Mena y Luis Merayo \\[1ex]
+\textbf{Hora:} 7:00 - 9:00 \\[1ex]
+\textbf{Actividad:} \\[2ex]
+
+se realizo un dise√±o la maquina de estados del control RTC usando el m√©todo de factorizacion. por lo cual tenemos la jerarqu√≠a de la figura \ref{fig:JerarquiaRTC} el flujo de cada maquina de estados estan en las figuras \ref{fig:FlujoInt},\ref{fig:FlujoEsc},\ref{fig:Flujolec}.\\
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm]{Img/JerarquiaRTC.jpg}
+	\caption{jerquia de la RTC}
+	\label{fig:JerarquiaRTC}
+\end{figure}
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm]{Img/FlujoInit.jpg}
+	\caption{flujo del proceso de inicializaci√≥n}
+	\label{fig:FlujoInt}
+\end{figure}
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm]{Img/FlujoEsc.jpg}
+	\caption{flujo del proceso de escritura}
+	\label{fig:FlujoEsc}
+\end{figure}
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm]{Img/Flujolec.jpg}
+	\caption{flujo del proceso de lectura}
+	\label{fig:Flujolec}
+\end{figure}
 \end{document}
