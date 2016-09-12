@@ -36,7 +36,7 @@ module ControlVGA_tb;
 	
 	initial
 	begin
-		id = $fopen("C:/Users/User/Documents/proy_2_grupo_7_II_2016/Simulations/testbech/resultados/VGA.txt","w+");
+		id = $fopen("C:/Xilinx/VGA.txt","w+");
 		$fwrite(id, "VSync \t HSync \t R \t G \t B \n");
 		CLK=0;
 		RESET=1;
@@ -58,8 +58,8 @@ module ControlVGA_tb;
 		memoria[14]=0;
 		memoria[15]=0;
 		#10 RESET=0;
-		#1000000 $fclose(id);
-		$finish;
+		#16700000 $fclose(id);
+		//$finish;
 	end
 	
 	always @(posedge CLK or negedge CLK)

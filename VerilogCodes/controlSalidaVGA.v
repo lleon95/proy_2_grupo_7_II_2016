@@ -26,8 +26,8 @@ module controlSalidaVGA(
 		output [3:0] B
     );
 
-	 assign R = OE ? DataIN[11:8] : 3'b000;
-	 assign G = OE ? DataIN[7:4] : 3'b000;
-	 assign B = OE ? DataIN[3:0] : 3'b000;
+	 assign R = OE ? 3'b000 : DataIN[11:8];
+	 assign G = OE ? 3'b000 : DataIN[7:4];
+	 assign B = OE ? 3'b000 : DataIN[3:0];
 	
 endmodule
