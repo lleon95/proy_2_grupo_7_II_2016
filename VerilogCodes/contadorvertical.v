@@ -24,7 +24,7 @@ module contadorvertical(Clk, Reset, cntVertical, vflag);
 				//final de la cuenta
 				if (cntVertical == 520) cntVertical <= 0;
 				//aumento de la cuenta
-				else cntVertical <= cntVertical +1;	
+				else cntVertical <= cntVertical + 10'd1;	
 			end
 		end
 	end

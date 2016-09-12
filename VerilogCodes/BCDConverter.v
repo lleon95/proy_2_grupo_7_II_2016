@@ -7,7 +7,7 @@
 
 module BCDConverter(number, tens, ones);
    // I/O Signal Definitions
-   input  [6:0] number;
+   input  [7:0] number;
    output reg [3:0] tens;
    output reg [3:0] ones;
    
@@ -24,10 +24,10 @@ module BCDConverter(number, tens, ones);
       // Loop eight times
       for (i=0; i<8; i=i+1) begin
          if (shift[11:8] >= 5)
-            shift[11:8] = shift[11:8] + 3;
+            shift[11:8] = shift[11:8] + 4'd3;
             
          if (shift[15:12] >= 5)
-            shift[15:12] = shift[15:12] + 3;
+            shift[15:12] = shift[15:12] + 4'd3;
          
          // Shift entire register left once
          shift = shift << 1;

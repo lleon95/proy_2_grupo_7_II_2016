@@ -29,7 +29,7 @@ module VROM(
 
    
    initial
-      $readmemh("ROM.txt", VROM, 20'h00000, 20'hfffff);
+      $readmemh("ROM.txt", VROM);
 
    always @(posedge CLK)
       DataOut <= VROM[Address];
