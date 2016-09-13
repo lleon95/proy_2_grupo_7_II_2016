@@ -20,15 +20,18 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module memoria_DMULC_tb;
-	reg clk,reset,w1,w2,r1,r2;
+	reg clk,reset,w1,w2,w3,r1,r2,r3;
 	reg[3:0] ADD1;
 	reg[3:0] ADD2;
+	reg[3:0] ADD3;
 	reg[7:0] DAT1;
 	reg[7:0] DAT2;
-	reg[7:0] flags;
+	reg[7:0] DAT3;
+	reg[2:0] flags;
 	wire [7:0] Dato1;
 	wire [7:0] Dato2;
-	memoria_DMULC utt(ADD1,ADD2,DAT1,DAT2,Dato1,Dato2,flags,clk,reset,w1,w2,r1,r2);
+	wire [7:0] Dato3;
+	memoria_DMULC utt(ADD1,ADD2,ADD3,DAT1,DAT2,DAT3,Dato1,Dato2,Dato3,flags,clk,reset,w1,w2,w3,r1,r2,r3);
 	integer id;
 	reg [3:0] i;
 	initial 
