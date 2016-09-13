@@ -32,18 +32,20 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module memoria_DMULC(ADD1,ADD2,DAT1,DAT2,Dato1,Dato2,flags,clk,reset,w1,w2,r1,r2);
-	input clk,reset,w1,w2,r1,r2;
+module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,DAT2,DAT3,Dato1,Dato2,Dato3,flags,clk,reset,w1,w2,r1,r2,r3);
+	input clk,reset,w1,w2,r1,r2,r3;
 	input[3:0] ADD1;
 	input[3:0] ADD2;
+	input[3:0] ADD3;
 	input[7:0] DAT1;
 	input[7:0] DAT2;
-	input[7:0] flags;
-	output Dato1,Dato2;
+	input[2:0] flags;
+	output Dato1,Dato2,Dato3;
 	reg [7:0] Dato1;
 	reg [7:0] Dato2;
+	reg [7:0] Dato3;
 	reg [7:0] memoria1[0:15];
-	reg [7:0] memoria2[0:15];
+	reg [7:0] memoria2[0:31];
 
 	always @(posedge clk)
 	begin
@@ -85,71 +87,116 @@ module memoria_DMULC(ADD1,ADD2,DAT1,DAT2,Dato1,Dato2,flags,clk,reset,w1,w2,r1,r2
 			memoria2[13]<=0;
 			memoria2[14]<=0;
 			memoria2[15]<=0;
+			memoria2[16]<=0;
+			memoria2[17]<=0;
+			memoria2[18]<=0;
+			memoria2[19]<=0;
+			memoria2[20]<=0;
+			memoria2[21]<=0;
+			memoria2[22]<=0;
+			memoria2[23]<=0;
+			memoria2[24]<=0;
+			memoria2[25]<=0;
+			memoria2[26]<=0;
+			memoria2[27]<=0;
+			memoria2[28]<=0;
+			memoria2[29]<=0;
+			memoria2[30]<=0;
+			memoria2[31]<=0;
 		end
 		else
 		begin
 			if(flags != 0)
 			begin
-				if(flags[7] || flags[6] || flags[5] || flags[4])
+				if(flags[1])
 				begin
-					memoria2[0]<=memoria1[0];
-					memoria2[1]<=memoria1[1];
-					memoria2[2]<=memoria1[2];
-					memoria2[3]<=memoria1[3];
-					memoria2[4]<=memoria1[4];
-					memoria2[5]<=memoria1[5];
-					memoria2[6]<=memoria1[6];
-					memoria2[7]<=memoria1[7];
-					memoria2[8]<=memoria1[8];
-					memoria2[9]<=memoria1[9];
-					memoria2[10]<=memoria1[10];
-					memoria2[11]<=memoria1[11];
-					memoria2[12]<=memoria1[12];
-					memoria2[13]<=memoria1[13];
-					memoria2[14]<=memoria1[14];
-					memoria2[15]<=memoria1[15];
+					memoria2[16]<=memoria1[0];
+					memoria2[17]<=memoria1[1];
+					memoria2[18]<=memoria1[2];
+					memoria2[19]<=memoria1[3];
+					memoria2[20]<=memoria1[4];
+					memoria2[21]<=memoria1[5];
+					memoria2[22]<=memoria1[6];
+					memoria2[23]<=memoria1[7];
+					memoria2[24]<=memoria1[8];
+					memoria2[25]<=memoria1[9];
+					memoria2[26]<=memoria1[10];
+					memoria2[27]<=memoria1[11];
+					memoria2[28]<=memoria1[12];
+					memoria2[29]<=memoria1[13];
+					memoria2[30]<=memoria1[14];
+					memoria2[31]<=memoria1[15];
 				end
 				else
-					if(flags[3] || flags[2] || flags[1] || flags[0])
+					if(flags[2])
 					begin
-						memoria1[0]<=memoria2[0];
-						memoria1[1]<=memoria2[1];
-						memoria1[2]<=memoria2[2];
-						memoria1[3]<=memoria2[3];
-						memoria1[4]<=memoria2[4];
-						memoria1[5]<=memoria2[5];
-						memoria1[6]<=memoria2[6];
-						memoria1[7]<=memoria2[7];
-						memoria1[8]<=memoria2[8];
-						memoria1[9]<=memoria2[9];
-						memoria1[10]<=memoria2[10];
-						memoria1[11]<=memoria2[11];
-						memoria1[12]<=memoria2[12];
-						memoria1[13]<=memoria2[13];
-						memoria1[14]<=memoria2[14];
-						memoria1[15]<=memoria2[15];
+						memoria1[0]<=memoria2[16];
+						memoria1[1]<=memoria2[17];
+						memoria1[2]<=memoria2[18];
+						memoria1[3]<=memoria2[19];
+						memoria1[4]<=memoria2[20];
+						memoria1[5]<=memoria2[21];
+						memoria1[6]<=memoria2[22];
+						memoria1[7]<=memoria2[23];
+						memoria1[8]<=memoria2[24];
+						memoria1[9]<=memoria2[25];
+						memoria1[10]<=memoria2[26];
+						memoria1[11]<=memoria2[27];
+						memoria1[12]<=memoria2[28];
+						memoria1[13]<=memoria2[29];
+						memoria1[14]<=memoria2[30];
+						memoria1[15]<=memoria2[31];
 					end
 					else
 					begin
+						if(flags[0])
+					begin
+						memoria2[0]<=memoria2[0];
+						memoria2[1]<=memoria2[1];
+						memoria2[2]<=memoria2[2];
+						memoria2[3]<=memoria2[3];
+						memoria2[4]<=memoria2[4];
+						memoria2[5]<=memoria2[5];
+						memoria2[6]<=memoria2[6];
+						memoria2[7]<=memoria2[7];
+						memoria2[8]<=memoria2[8];
+						memoria2[9]<=memoria2[9];
+						memoria2[10]<=memoria2[10];
+						memoria2[11]<=memoria2[11];
+						memoria2[12]<=memoria2[12];
+						memoria2[13]<=memoria2[13];
+						memoria2[14]<=memoria2[14];
+						memoria1[15]<=memoria2[15];
+					end
+					else begin end
 					end
 			end
 			else
 			begin
-				if(w1 || w2)
+				if(w1 || w2 || w3)
 					if(w1) memoria1[ADD1]=DAT1;
-					else	memoria2[ADD2]=DAT2;
+					else memoria2[ADD2]=DAT2;
 				else
-					if(r1 || r2)
+					if(r1 || r2 || r3)
 						if(r1) 
 						begin
 							Dato1=memoria1[ADD1];
 							Dato2=0;
+							Dato3=0;
 						end
 						else	
-						begin
-							Dato1=0;
-							Dato2=memoria2[ADD2];
-						end
+							if(r2)
+							begin
+								Dato1=0;
+								Dato2=memoria2[ADD2];
+								Dato3=0;
+							end
+							else
+							begin
+								Dato1=0;
+								Dato2=0;
+								Dato3=memoria2[ADD3+15];
+							end
 					else
 					begin
 						Dato1=0;
