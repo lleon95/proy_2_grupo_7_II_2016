@@ -18,7 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module escritura(reset,clk,dir,dato,iniciar,fin,ciclo,salida,write,final,activa);
+module escritura(reset,clk,dir,dato,iniciar,fin,data_out,dir_out,escribe,final,activa);
 //inicio input output
 input reset;
 input [7:0] dato;
@@ -46,7 +46,7 @@ reg [1:0] next_state;
 parameter [1:0] inicio = 2'b00;
 parameter [1:0] write = 2'b01;
 parameter [1:0] clk_transfer = 2'b10;
-parameter [1:0] final = 2'b11;
+parameter [1:0] finalizar = 2'b11;
 
 //logica de estado siguiente
 
@@ -68,11 +68,11 @@ begin
    end
   clk_transfer:begin
           if (fin == 1'b1)
-			  next_state = final;
+			  next_state = finalizar;
 			 else
 			  next_state = clk_transfer;
    end
-  final:begin
+  finalizar:begin
 			  next_state = inicio;
    end
   default:begin
@@ -119,7 +119,7 @@ begin
            activa <= 1'b1;
            final <= 1'b0;
 	 end
-   final:begin
+   finalizar:begin
 	        data_out <= 8'b0;
            dir_out <= 8'b0;
            escribe <= 1'b0;

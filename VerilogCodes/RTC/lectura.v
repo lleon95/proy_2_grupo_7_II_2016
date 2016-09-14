@@ -18,7 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module lectura(reset,clk,dir,dato,iniciar,fin,ciclo,salida,read,final,activa);
+module lectura(reset,clk,dir,dir_reg,esc_reg,iniciar,fin,final,activa,w,reg_out,dir_out);
 //inicio input output
 input reset;
 input [7:0] dir_reg;
@@ -46,7 +46,7 @@ reg [1:0] next_state;
 
 parameter [1:0] inicio = 2'b00;
 parameter [1:0] lee = 2'b01;
-parameter [1:0] final = 2'b10;
+parameter [1:0] finalizar = 2'b10;
 
 //logica de estado siguiente
 
@@ -62,11 +62,11 @@ begin
    end
   lee:begin
           if (fin == 1'b1)
-			  next_state = final;
+			  next_state = finalizar;
 			 else
 			  next_state = lee;
    end
-  final:begin
+  finalizar:begin
 			  next_state = inicio;
 	end
   default:begin
@@ -104,9 +104,9 @@ begin
            reg_out <= dir_reg;
            w <= esc_reg;
            activa <= 1;
-           final <= 0;
+           final <= 1;
 	 end
-   final:begin
+   finalizar:begin
 	        dir_out <= 0;
            reg_out <= 0;
            w <= 0;
