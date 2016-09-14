@@ -23,7 +23,7 @@ module ControlVGA_tb;
 		reg RESET;
 		wire [3:0] addrOUT;
 		reg [7:0] dataIN;
-		// Señales VGA
+		// Seales VGA
 		wire HSync;
 		wire VSync;
 		wire [3:0] R;
@@ -31,12 +31,13 @@ module ControlVGA_tb;
 		wire [3:0] B;
 		integer id;
 	reg[7:0] memoria[0:15];
-	ControlVGA uut(.CLK(CLK),.RESET(RESET),.addrOUT(addrOUT),.dataIN(dataIN),.HSync(HSync),.VSync(VSync),.R(R),.G(G),.B(B));
+	
+	ControlVGACentral uut(.CLK(CLK),.RESET(RESET),.MemAddrOut(addrOUT),.MemDataIN(dataIN),.HSync(HSync),.VSync(VSync),.R(R),.G(G),.B(B));
 	initial forever #5 CLK=~CLK;
 	
 	initial
 	begin
-		id = $fopen("C:/Xilinx/VGA.txt","w+");
+		id = $fopen("VGA.txt","w+");
 		$fwrite(id, "VSync \t HSync \t R \t G \t B \n");
 		CLK=0;
 		RESET=1;
@@ -59,7 +60,7 @@ module ControlVGA_tb;
 		memoria[15]=0;
 		#10 RESET=0;
 		#16700000 $fclose(id);
-		//$finish;
+		$finish;
 	end
 	
 	always @(posedge CLK or negedge CLK)
