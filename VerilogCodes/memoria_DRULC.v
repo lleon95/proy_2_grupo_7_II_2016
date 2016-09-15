@@ -32,7 +32,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,DAT2,DAT3,Dato1,Dato2,Dato3,flags,clk,reset,w1,w2,r1,r2,r3);
+module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,DAT2,Dato1,Dato2,Dato3,flags,clk,reset,w1,w2,r1,r2,r3);
 	input clk,reset,w1,w2,r1,r2,r3;
 	input[3:0] ADD1;
 	input[3:0] ADD2;
@@ -173,7 +173,7 @@ module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,DAT2,DAT3,Dato1,Dato2,Dato3,flags,clk,r
 			end
 			else
 			begin
-				if(w1 || w2 || w3)
+				if(w1 || w2)
 					if(w1) memoria1[ADD1]=DAT1;
 					else memoria2[ADD2]=DAT2;
 				else

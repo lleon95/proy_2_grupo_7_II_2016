@@ -73,7 +73,7 @@ begin
 	case(contador)
 	 5'b00001:begin
 	          CS <= 1'b1;
-			    AD <= 1'b1;
+			    AD <= 1'b0;
 			    RD <= 1'b1;
 			    WR <= 1'b1;
 			    final <= 1'b0;
