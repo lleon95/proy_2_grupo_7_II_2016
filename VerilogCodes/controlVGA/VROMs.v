@@ -21,19 +21,19 @@
 module VROMs(
 		input CLK,
 		input [1:0] ChipSelector,
-		input [16:0] Address,
+		input [18:0] Address,
 		output reg[5:0] DataOutput
 	 );
 	 
 	 // Parametros de la memorias en tamaño escalado
-	 parameter DigitosWidth = 20; 
-	 parameter DigitosHeight = 300;
-	 parameter AMPMWidth = 25;
-	 parameter AMPMHeight = 20;
-	 parameter CronoWidth = 50;
-	 parameter CronoHeight = 20;
-	 parameter InterfazWidth = 320;
-	 parameter InterfazHeight = 241;
+	 parameter DigitosWidth = 40; 
+	 parameter DigitosHeight = 600;
+	 //parameter AMPMWidth = 25;
+	 //parameter AMPMHeight = 20;
+	 parameter CronoWidth = 100;
+	 parameter CronoHeight = 40;
+	 parameter InterfazWidth = 640;
+	 parameter InterfazHeight = 480;
 	 parameter MemoriesDepth = 6;
 
 	 /*
@@ -46,9 +46,9 @@ module VROMs(
       $readmemb("Numeros.png.hex", Digitos);
 		
 	 // ROM de AMPM
-	 reg [MemoriesDepth-1:0] AMPM [(AMPMWidth*AMPMHeight)-1:0];
-	 initial
-      $readmemb("AMPM.png.hex", AMPM);
+	 //reg [MemoriesDepth-1:0] AMPM [(AMPMWidth*AMPMHeight)-1:0];
+	 //initial
+      //$readmemb("AMPM.png.hex", AMPM);
 		
 	 // ROM de INDICADORES
 	 reg [MemoriesDepth-1:0] Crono [(CronoWidth*CronoHeight)-1:0];
@@ -67,11 +67,11 @@ module VROMs(
 			// Caso de interfaz
 			2'b00 : DataOutput <= Interfaz[Address];
 			// Caso de Numeros
-			2'b01 : DataOutput <= Digitos[Address[12:0]];
+			2'b01 : DataOutput <= Digitos[Address[14:0]];
 			// Caso de AMPM
-			2'b10 : DataOutput <= AMPM[Address[8:0]];
+			//2'b10 : DataOutput <= AMPM[Address[8:0]];
 			// Caso de Crono
-			2'b11 : DataOutput <= Crono[Address[9:0]];
+			2'b11 : DataOutput <= Crono[Address[11:0]];
 		endcase
 	 end
 

@@ -27,13 +27,15 @@ module ControlVGACentral(
 		output [3:0] G,
 		output [3:0] B,
 		output HSync,
-		output VSync
+		output VSync,
+		output [9:0] PosX, 
+		output [9:0] PosY
     );
 
 	
 	wire BLANK;
-	wire [9:0] PosX, PosY;
-	wire [16:0] ROMAddr;
+	//wire [9:0] PosX, PosY;
+	wire [18:0] ROMAddr;
 	wire [1:0] ROMCS;
 	
 	// Vincular Maquina de Sincronia
