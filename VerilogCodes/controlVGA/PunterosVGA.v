@@ -146,7 +146,7 @@ module PunterosVGA(
 	parameter AMPMWidth = 50;
 	parameter AMPMHeight = 20;
 	parameter CronoWidth = 100;
-	parameter CronoHeight = 20;
+	parameter CronoHeight = 18;
 
 	// Buffer de posicion
 	reg [1:0] ChipSelector;
