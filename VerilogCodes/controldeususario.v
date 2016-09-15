@@ -46,7 +46,7 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 	input [7:0]Dato_in;
 	output Dato_out;
 	output escritura;
-	reg Dato_out;
+	reg [7:0] Dato_out;
 	reg Maquina_out,escritura;
 	reg [3:0]ADD;
 	reg [7:0]ADD2;
@@ -62,10 +62,12 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 		begin
 			read<=0;
 			ADD<=0;
+			ADD2<=0;
 			Maquina_out<=0;
 			escritura<=0;
-			puntero<=0;
+			puntero<=1;
 			puntero2<=0;
+			Dato_out <=0;
 			dir2[0]<=80;
 			dir2[1]<=32;
 			dir2[2]<=33;
@@ -160,8 +162,14 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 				if(selectores[0])cambiosneg[puntero]<=cambiosneg[puntero]+1;
 				else if(selectores[2]) cambiospos[puntero] <= cambiospos[puntero] +1;
 					else begin end
+				if(puntero2 == 0) Maquina_out<=0;
+				else begin end
 				if(Maquina_in)
-					if(puntero2 ==12) Maquina_out<=1;
+					if(puntero2 ==12) 
+					begin
+						puntero2<=0;
+						Maquina_out<=1;
+					end
 					else
 					begin
 						if(fin)
