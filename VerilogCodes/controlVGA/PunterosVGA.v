@@ -324,14 +324,14 @@ module PunterosVGA(
 						// Poner el puntero
 						ChipSelector <= 2'b11;
 						// Calcular el pixel de puntero
-						Pixel <= (PosX[9:0] - ActivadoX[9:0]) + CronoWidth[18:0] * (PosY[9:0] - IndicadoresY[9:0] + actCrono * 10'd370);
+						Pixel <= (PosX[9:0] - ActivadoX[9:0]) + CronoWidth[18:0] * (PosY[9:0] - IndicadoresY[9:0] + actCrono * 10'd20);
 					end
 				else if(PosX >= FinalizadoX && PosX <= (FinalizadoX + CronoWidth))
 					begin
 						// Poner el puntero
 						ChipSelector <= 2'b11;
 						// Calcular el pixel de puntero
-						Pixel <= (PosX[9:0] - FinalizadoX[9:0]) + CronoWidth[18:0] * (PosY[9:0] - IndicadoresY[9:0] + ringCrono * 10'd370);
+						Pixel <= (PosX[9:0] - FinalizadoX[9:0]) + CronoWidth[18:0] * (PosY[9:0] - IndicadoresY[9:0] + ringCrono * 10'd20);
 					end
 				// Caso no cursor ni puntero
 				else

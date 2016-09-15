@@ -59,7 +59,7 @@ module ControlVGA_tb;
 		memoria[8]=50; // Min Cron
 		memoria[9]=3;  // Hora Crono
 		memoria[10]=0;
-		memoria[11]=0;
+		memoria[11]=1;
 		memoria[12]=1;
 		memoria[13]=0;
 		memoria[14]=0;
