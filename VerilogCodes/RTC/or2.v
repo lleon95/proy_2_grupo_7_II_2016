@@ -23,6 +23,7 @@ module or2(dato1,dato2,salida);
 	output salida;
 	wire salida;
 	
-	assign salida=dato1||dato2;
+	always @*
+		salida=dato1||dato2;
 
 endmodule
