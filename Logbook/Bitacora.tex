@@ -13,13 +13,13 @@
 \begin{titlepage}
 \begin{center}
 \vspace*{1.5cm}
-\textbf{Escuela de IngenierÃ­Â­a en Electronica}\\[0.8cm]
-\textbf{Laboratorio de DiseÃ±o de Sistemas Digitales}\\[1cm]
-\textbf{BitÃ¡cora}\\[2cm]
+\textbf{Escuela de Ingenierí­Â­a en Electronica}\\[0.8cm]
+\textbf{Laboratorio de Diseño de Sistemas Digitales}\\[1cm]
+\textbf{Bitácora}\\[2cm]
 \textbf{Proyecto:}\\[0.4cm]
-Control y programaciÃ³n RTC con Nexys3 \\[1.7cm]
+Control y programación RTC con Nexys3 \\[1.7cm]
 \textbf{Profesor:}\\[0.4cm]
-Alfonso ChacÃ³n RodrÃ­Â­guez \\[1.7cm]
+Alfonso Chacón Rodrí­Â­guez \\[1.7cm]
 \textbf{Estudiantes:}\\[0.4cm]
 Keylor Mena Venegas \\[0.8cm]
 Luis Leon Vega \\[0.8cm]
@@ -30,26 +30,26 @@ II Semestre, 2016\\
 \end{titlepage}
 
 
-\section*{\textit{DescripciÃ³n del problema}}
+\section*{\textit{Descripción del problema}}
 
-Se debe realizar un controlador para realizar la lectura y escritura del mÃ³dulo RTC V3023. Los datos del sistema deben poder ser desplegados en un monitor LCD mediante el protocolo VGA. Ante ello, se debe realizar un controlador para el RTC y para la VGA. Asimismo, se deben poder ajustar la hora, activar la alarma y el cronÃ³metro de forma descendente mediante botones e interruptores dispuestos en la FPGA Nexys3.
+Se debe realizar un controlador para realizar la lectura y escritura del módulo RTC V3023. Los datos del sistema deben poder ser desplegados en un monitor LCD mediante el protocolo VGA. Ante ello, se debe realizar un controlador para el RTC y para la VGA. Asimismo, se deben poder ajustar la hora, activar la alarma y el cronómetro de forma descendente mediante botones e interruptores dispuestos en la FPGA Nexys3.
 
-\section*{\textit{IntroducciÃ³n al proyecto}}
+\section*{\textit{Introducción al proyecto}}
 
-Este proyecto consiste en realizar un controlador de mÃ³dulos RTC (Real Time Controller), especÃ­ficamente para el mÃ³dulo V3023. Este controlador serÃ¡ capaz de escribir y leer dicho mÃ³dulo para obtener parÃ¡metros de reloj, cronÃ³metro y alarma. \\
-Asimismo, para poder desplegar la informaciÃ³n relevante de los parÃ¡metros anteriores, se conectarÃ¡ un monitor LCD mediante el protocolo VGA. Por otro lado, para poder programar y dar instrucciones al circuito, se deberÃ¡n usar los botones seÃ±alados en el instructivo y algunos interruptores. \\
-Finalmente, el conjunto es un circuito que permita controlar el mÃ³dulo y comunicar al usuario mediante los botones y el monitor LCD, donde Ã©l podrÃ¡ recibir la informaciÃ³n relevante y poder modificar dicha informaciÃ³n.\\
+Este proyecto consiste en realizar un controlador de módulos RTC (Real Time Controller), especí­ficamente para el módulo V3023. Este controlador será capaz de escribir y leer dicho módulo para obtener parámetros de reloj, cronómetro y alarma. \\
+Asimismo, para poder desplegar la información relevante de los parámetros anteriores, se conectará un monitor LCD mediante el protocolo VGA. Por otro lado, para poder programar y dar instrucciones al circuito, se deberán usar los botones señalados en el instructivo y algunos interruptores. \\
+Finalmente, el conjunto es un circuito que permita controlar el módulo y comunicar al usuario mediante los botones y el monitor LCD, donde él podrá recibir la información relevante y poder modificar dicha información.\\
 
 \section*{\textit{Objetivo General}}
-DiseÃ±ar un controlador de RTC que permita leerlo y programarlo mediante una interfaz de usuario consistente en botones incorporados dentro de la FPGA (Nexys3) y un monitor comunicado a travÃ©s del protocolo VGA.
+Diseñar un controlador de RTC que permita leerlo y programarlo mediante una interfaz de usuario consistente en botones incorporados dentro de la FPGA (Nexys3) y un monitor comunicado a través del protocolo VGA.
 
-\section*{\textit{Objetivos EspecÃ­ficos}}
+\section*{\textit{Objetivos Especí­ficos}}
 \begin{itemize}
-	\item Investigar el funcionamiento del mÃ³dulo RTC y el protocolo de comunicaciÃ³n del mismo.
-	\item DiseÃ±ar un controlador para el mÃ³dulo RTC, cuyo bus de datos y direcciones estÃ©n multiplexados.
-	\item Cumplir con las reglas de temporizado del sistema, en especial, con el protocolo de comunicaciÃ³n del mÃ³dulo RTC.
-	\item Combinar el controlador de RTC con un controlador VGA para poder desplegar la informaciÃ³n del mÃ³dulo al usuario. Este mÃ³dulo VGA serÃ¡ adaptado del proyecto anterior.
-	\item Desarrollar un banco de pruebas (testbench) para poder emular el comportamiento del mÃ³dulo RTC con la finalidad de comprobar el funcionamiento del circuito controlador.
+	\item Investigar el funcionamiento del módulo RTC y el protocolo de comunicación del mismo.
+	\item Diseñar un controlador para el módulo RTC, cuyo bus de datos y direcciones estén multiplexados.
+	\item Cumplir con las reglas de temporizado del sistema, en especial, con el protocolo de comunicación del módulo RTC.
+	\item Combinar el controlador de RTC con un controlador VGA para poder desplegar la información del módulo al usuario. Este módulo VGA será adaptado del proyecto anterior.
+	\item Desarrollar un banco de pruebas (testbench) para poder emular el comportamiento del módulo RTC con la finalidad de comprobar el funcionamiento del circuito controlador.
 \end{itemize}
 
 \newpage
@@ -68,11 +68,11 @@ DiseÃ±ar un controlador de RTC que permita leerlo y programarlo mediante una int
 \textbf{Hora:} 13:00 - 15:00 \\[1ex]
 \textbf{Actividad:} \\[2ex]
 
-El profesor explicÃ³ el instructivo y expresÃ³ las necesidades que deben ser cubiertas durante todo el proyecto. QuedÃ³ claro en que se debe desarrollar unidades de control para el proyecto (que se pueden hacer con FSM o MÃ¡quinas de Estados Finita) y desarrollar un controlador para obtener datos del RTC y para programarlo. \\
+El profesor explicó el instructivo y expresó las necesidades que deben ser cubiertas durante todo el proyecto. Quedó claro en que se debe desarrollar unidades de control para el proyecto (que se pueden hacer con FSM o Máquinas de Estados Finita) y desarrollar un controlador para obtener datos del RTC y para programarlo. \\
 
-t El reto de este Ãºltimo surge, principalmente, de comunicar el circuito al RTC mediante un bus multiplexado de direcciones y datos (A/D Bus). Se debe crear un control que permita escribir y leer de forma controlada y, con ello, que se pueda seleccionar el hardware para cada caso. \\
+t El reto de este último surge, principalmente, de comunicar el circuito al RTC mediante un bus multiplexado de direcciones y datos (A/D Bus). Se debe crear un control que permita escribir y leer de forma controlada y, con ello, que se pueda seleccionar el hardware para cada caso. \\
 
-\indent En este dÃ­a, se hizo una reuniÃ³n grupal para decidir las tareas de cada miembro, lo cual estableciÃ³: 
+\indent En este dí­a, se hizo una reunión grupal para decidir las tareas de cada miembro, lo cual estableció: 
 
 \begin{itemize}
 	\item Luis Leon: Control general del circuito - Controlador VGA
@@ -80,14 +80,14 @@ t El reto de este Ãºltimo surge, principalmente, de comunicar el circuito al RTC
 	\item Keylor Mena: Encargado de testbench.
 \end{itemize}
 
-No se estableciÃ³ ninguna aproximaciÃ³n al diseÃ±o del proyecto para dar tiempo de que cada miembro pueda estudiar el instructivo y el RTC con calma y de forma individual. Asimismo, se quedÃ³ que el dÃ­a de maÃ±ana, esta tarea serÃ¡ efectuada al igual que la distribuciÃ³n de todas las tareas que puede implicar el proyecto. \\
+No se estableció ninguna aproximación al diseño del proyecto para dar tiempo de que cada miembro pueda estudiar el instructivo y el RTC con calma y de forma individual. Asimismo, se quedó que el dí­a de mañana, esta tarea será efectuada al igual que la distribución de todas las tareas que puede implicar el proyecto. \\
 
-Sin embargo, se ha decido usar el control VGA que se ha diseÃ±ado en el proyecto anterior para agilizar la tarea del nuevo diseÃ±o de proyecto, asumiendo de que se conocen todas las partes de este controlador. Por otro lado, para efectos de la comprensiÃ³n del nuevo proyecto, se asistiÃ³ a la tutorÃ­a el dÃ­a anterior, brindando la facilidad de que uno de los miembros conozca el sistema de antemano. Para ello serÃ¡ recomendado ver el enlace de interÃ©s al final de esta entrada. \\
+Sin embargo, se ha decido usar el control VGA que se ha diseñado en el proyecto anterior para agilizar la tarea del nuevo diseño de proyecto, asumiendo de que se conocen todas las partes de este controlador. Por otro lado, para efectos de la comprensión del nuevo proyecto, se asistió a la tutorí­a el dí­a anterior, brindando la facilidad de que uno de los miembros conozca el sistema de antemano. Para ello será recomendado ver el enlace de interés al final de esta entrada. \\
 
-\noindent \textbf{Enlaces de interÃ©s:}
+\noindent \textbf{Enlaces de interés:}
 \begin{itemize}
 	
-	\item Documento de la tutorÃ­a: http://bit.ly/2bEI3RZ
+	\item Documento de la tutorí­a: http://bit.ly/2bEI3RZ
 	\item Datasheet del RTC: http://bit.ly/2cpNGJa
 \end{itemize}
 
@@ -104,7 +104,7 @@ Sin embargo, se ha decido usar el control VGA que se ha diseÃ±ado en el proyecto
 \textbf{Hora:} 7:30 - 8:00 \\[1ex]
 \textbf{Actividad:} \\[2ex]
 
-Se incorporaron los apartados de descripciÃ³n del problema, introducciÃ³n al proyecto y los objetivos dentro del documento de control de eventos (bitÃ¡cora). Esto para seguir el formato de la plantilla proporcionada por el profesor. \\[2ex]
+Se incorporaron los apartados de descripción del problema, introducción al proyecto y los objetivos dentro del documento de control de eventos (bitácora). Esto para seguir el formato de la plantilla proporcionada por el profesor. \\[2ex]
 
 % Nueva entrada
 \begin{flushright}
@@ -117,7 +117,7 @@ Se incorporaron los apartados de descripciÃ³n del problema, introducciÃ³n al pro
 \textbf{Hora:} 8:00-9:00\\[1ex]
 \textbf{Actividad:} \\[2ex]
 
-Se realizÃ³ una reuniÃ³n de todos los miembros del grupo, donde se plasmaron las ideas del control del RTC y se establecieron las comunicaciones entre los mÃ³dulos principales, donde se destacan \\
+Se realizó una reunión de todos los miembros del grupo, donde se plasmaron las ideas del control del RTC y se establecieron las comunicaciones entre los módulos principales, donde se destacan \\
 
 \begin{enumerate}
 	\item Control VGA
@@ -126,7 +126,7 @@ Se realizÃ³ una reuniÃ³n de todos los miembros del grupo, donde se plasmaron las
 	\item Control de RTC
 \end{enumerate}
 
-Como parte del protocolo, se estableciÃ³ una comunicaciÃ³n entre el control principal (de Memoria) con el control RTC, ilustrado en la siguiente imagen de la Figura \ref{fig:protocolRTC} \\
+Como parte del protocolo, se estableció una comunicación entre el control principal (de Memoria) con el control RTC, ilustrado en la siguiente imagen de la Figura \ref{fig:protocolRTC} \\
 
 \begin{figure}[hbtp]
 	\centering
@@ -135,7 +135,7 @@ Como parte del protocolo, se estableciÃ³ una comunicaciÃ³n entre el control prin
 	\label{fig:protocolRTC}
 \end{figure}
 
-Por otro lado, se hizo un acercamiento al diagrama de flujo del mÃ³dulo de RTC, mostrado en la Figura \ref{fig:RTCdiagramaflujo} \\
+Por otro lado, se hizo un acercamiento al diagrama de flujo del módulo de RTC, mostrado en la Figura \ref{fig:RTCdiagramaflujo} \\
 
 \begin{figure}[hbtp]
 	\centering
@@ -172,7 +172,7 @@ ACTUALIZACION REQUERIDA \\[2ex]
 \textbf{Hora:} 13:00 - 16:00 \\[1ex]
 \textbf{Actividad:} \\[2ex]
 
-Se hizo el diseÃ±o del sistema, que incorpora la etapa de control de acceso a la memoria por parte del control de usuario y el RTC. AdemÃ¡s, se incorporÃ³ el mÃ³dulo VGA como parte del control de memoria. Esto se puede ver en la figura \ref{fig:sysdesign1} \\
+Se hizo el diseño del sistema, que incorpora la etapa de control de acceso a la memoria por parte del control de usuario y el RTC. Además, se incorporó el módulo VGA como parte del control de memoria. Esto se puede ver en la figura \ref{fig:sysdesign1} \\
 
 \begin{figure}[hbtp]
 	\centering
@@ -181,23 +181,23 @@ Se hizo el diseÃ±o del sistema, que incorpora la etapa de control de acceso a la
 	\label{fig:sysdesign1}
 \end{figure}
 
-En cuando al acceso a la memoria, esta se regirÃ¡ por una FSM (mÃ¡quina de estados), cuyos diseÃ±os se presentan el las figuras \ref{fig:mainctrl1} y \ref{fig:mainctrl2}.\\
+En cuando al acceso a la memoria, esta se regirá por una FSM (máquina de estados), cuyos diseños se presentan el las figuras \ref{fig:mainctrl1} y \ref{fig:mainctrl2}.\\
 
 \begin{figure}[hbtp]
 	\centering
 	\includegraphics[width=16cm]{Img/mainctrl1.jpg}
-	\caption{Diagrama de flujo de la mÃ¡quina de estados principal}
+	\caption{Diagrama de flujo de la máquina de estados principal}
 	\label{fig:mainctrl1}
 \end{figure}
 
 \begin{figure}[hbtp]
 	\centering
 	\includegraphics[width=16cm]{Img/mainctrl2.jpg}
-	\caption{Diagrama de estados de la mÃ¡quina de estados principal}
+	\caption{Diagrama de estados de la máquina de estados principal}
 	\label{fig:mainctrl2}
 \end{figure}	
 
-\noindent \textbf{Enlaces de interÃ©s:} 
+\noindent \textbf{Enlaces de interés:} 
 http://bit.ly/2c3durR
 
 \newpage
@@ -212,7 +212,7 @@ http://bit.ly/2c3durR
 \textbf{Hora:} 13:00 - 16:00 \\[1ex]
 \textbf{Actividad:} \\[2ex]
 
-Se programo el nuevo registro dual con actualizacion controlada, este permite aislar etapas principales teniendo registros individuales entre ellas y actualizando estos con seÃ±ales o banderas, se llamo memoria DRULC(Dual Register Update Log Controller), una manera de apreciar se representa en la figura\ref{fig:memoriaDRULC} \\
+Se programo el nuevo registro dual con actualizacion controlada, este permite aislar etapas principales teniendo registros individuales entre ellas y actualizando estos con señales o banderas, se llamo memoria DRULC(Dual Register Update Log Controller), una manera de apreciar se representa en la figura\ref{fig:memoriaDRULC} \\
 
 \begin{figure}[hbtp]
 	\centering
@@ -234,7 +234,7 @@ Se programo el nuevo registro dual con actualizacion controlada, este permite ai
 \textbf{Hora:} 14:30 - 17:00 \\[1ex]
 \textbf{Actividad:} \\[2ex]
 
-Se hicieron los diagramas de bloques del control VGA y del control de usuario. Estos diagramas contienen unidades de control y otras subunidades que deben ser descritas, por ello, se hace un pequeÃ±o Ã­ndice de los elaborado el dÃ­a de hoy. \\
+Se hicieron los diagramas de bloques del control VGA y del control de usuario. Estos diagramas contienen unidades de control y otras subunidades que deben ser descritas, por ello, se hace un pequeño í­ndice de los elaborado el dí­a de hoy. \\
 
 \begin{itemize}
 	\item Control VGA: 
@@ -247,7 +247,7 @@ Se hicieron los diagramas de bloques del control VGA y del control de usuario. E
 	\subitem Diagrama de flujo (Figura \ref{fig:FlujoUsuario1})
 \end{itemize}
 
-Finalmente, por algunos problemas de salud, se ha decidido colaborar en la parte de implementaciÃ³n del cÃ³digo en Verilog y al diseÃ±o del control VGA. Se expondrÃ¡ a los compaÃ±eros la situaciÃ³n y, por otro lado, se aclararÃ¡n algunos aspectos de memoria que deben ser discutidos para que haya armonÃ­a en la implementaciÃ³n.
+Finalmente, por algunos problemas de salud, se ha decidido colaborar en la parte de implementación del código en Verilog y al diseño del control VGA. Se expondrá a los compañeros la situación y, por otro lado, se aclararán algunos aspectos de memoria que deben ser discutidos para que haya armoní­a en la implementación.
 
 \begin{figure}[hbtp]
 	\centering
@@ -266,14 +266,14 @@ Finalmente, por algunos problemas de salud, se ha decidido colaborar en la parte
 \begin{figure}[hbtp]
 	\centering
 	\includegraphics[width=15cm]{Img/ControlDireccionamientoVGABloques.jpg}
-	\caption{Diagrama de Bloques del Control VGA - SecciÃ³n de Direccionamiento}
+	\caption{Diagrama de Bloques del Control VGA - Sección de Direccionamiento}
 	\label{fig:DireccionamientoBloquesVGA1}
 \end{figure}
 
 \begin{figure}[hbtp]
 	\centering
 	\includegraphics[width=15cm]{Img/ControlDireccionamientoVGAFlujo.jpg}
-	\caption{Diagrama de Bloques del Control VGA - SecciÃ³n de Direccionamiento}
+	\caption{Diagrama de Bloques del Control VGA - Sección de Direccionamiento}
 	\label{fig:DireccionamientoFlujoVGA1}
 \end{figure}
 
@@ -301,7 +301,7 @@ Finalmente, por algunos problemas de salud, se ha decidido colaborar en la parte
 \textbf{Hora:} 21:00 - 22:00 \\[1ex]
 \textbf{Actividad:} \\[2ex]
 
-Actividad: Se realizÃ³ un primer diseÃ±o del control del RTC, por lo que se resaltÃ³ la ruta de datos e inicialmente se crearon tres mÃ¡quinas de estado, una de escritura, otra de lectura, y la principal, la cual controla los procedimientos iniciales luego de un reset. TambiÃ©n para controlar los tiempos se colocÃ³ un contador. Esto se puede ver en la figura \ref{fig:ControlRTC1} \\
+Actividad: Se realizó un primer diseño del control del RTC, por lo que se resaltó la ruta de datos e inicialmente se crearon tres máquinas de estado, una de escritura, otra de lectura, y la principal, la cual controla los procedimientos iniciales luego de un reset. También para controlar los tiempos se colocó un contador. Esto se puede ver en la figura \ref{fig:ControlRTC1} \\
 
 \begin{figure}[hbtp]
 	\centering
@@ -324,7 +324,7 @@ Actividad: Se realizÃ³ un primer diseÃ±o del control del RTC, por lo que se resa
 \textbf{Hora:} 7:00 - 9:00 \\[1ex]
 \textbf{Actividad:} \\[2ex]
 
-se realizo un diseÃ±o la maquina de estados del control RTC usando el mÃ©todo de factorizacion. por lo cual tenemos la jerarquÃ­a de la figura \ref{fig:JerarquiaRTC} el flujo de cada maquina de estados estan en las figuras \ref{fig:FlujoInt},\ref{fig:FlujoEsc},\ref{fig:Flujolec}.\\
+se realizo un diseño la maquina de estados del control RTC usando el método de factorizacion. por lo cual tenemos la jerarquí­a de la figura \ref{fig:JerarquiaRTC} el flujo de cada maquina de estados estan en las figuras \ref{fig:FlujoInt},\ref{fig:FlujoEsc},\ref{fig:Flujolec}.\\
 \begin{figure}[hbtp]
 	\centering
 	\includegraphics[width=16cm]{Img/JerarquiaRTC.jpg}
@@ -334,7 +334,7 @@ se realizo un diseÃ±o la maquina de estados del control RTC usando el mÃ©todo de
 \begin{figure}[hbtp]
 	\centering
 	\includegraphics[width=16cm]{Img/FlujoInit.jpg}
-	\caption{flujo del proceso de inicializaciÃ³n}
+	\caption{flujo del proceso de inicialización}
 	\label{fig:FlujoInt}
 \end{figure}
 \begin{figure}[hbtp]
@@ -349,4 +349,110 @@ se realizo un diseÃ±o la maquina de estados del control RTC usando el mÃ©todo de
 	\caption{flujo del proceso de lectura}
 	\label{fig:Flujolec}
 \end{figure}
+
+\newpage
+%Nueva entrada
+\begin{flushright}
+	\begin{large}
+		\textbf{Fecha: 11 de Septiembre}\\[5ex]
+	\end{large}
+\end{flushright}
+
+\noindent \textbf{Integrantes:} Luis Leon \\[1ex]
+\textbf{Hora:} Variada \\[1ex]
+\textbf{Actividad:} \\[2ex]
+
+Se implementó el control VGA empleando una ROM para la plantilla. Sin embargo, esta implementación empleó muchos recursos valiosos de la VGA, destacando que se usaban 75 \% bloques LUT, lo que obligó a hacer un replanteamiento del bloque.\\
+
+
+%Nueva entrada
+\begin{flushright}
+	\begin{large}
+		\textbf{Fecha: 12 de Septiembre}\\[5ex]
+	\end{large}
+\end{flushright}
+
+\noindent \textbf{Integrantes:} Luis Leon \\[1ex]
+\textbf{Hora:} 14:00-21:00 \\[1ex]
+\textbf{Actividad:} \\[2ex]
+
+Se asistió a la tutoría del laboratorio de Diseño de Sistemas Digitales, donde se adquirió la idea de comprimir la imagen para disminuir el uso de la memoria ROM y del problema descrito el día anterior. Asimismo, se recomendó usar colores fundamentales para evitar un uso excesivo de los recursos de la FPGA. \\
+
+Por otro lado, se inició con hacer una nueva interfaz usando un programa de dibujo vectorial, que en este caso se llama Inkscape, que es de uso libre. La ventaja que supone usar un diagrama de dibujo vectorial es que se puede escalar sin perder calidad de la imagen, a comparación del uso de mapa de bits (bitmap). La interfaz se encuentra a en la Figura \ref{fig:plantillaInterfaz}. Esta interfaz será combinada con otras plantillas que tendrán los indicadores y los números. El cambio entre plantillas será efectuado mediante punteros de memoria.\\
+
+Finalmente, se ha escrito el script de Matlab para poder convertir la imagen en un archivo de texto para importarla a la ROM mediante la síntesis y se elaboró el diagrama de bloques del control VGA nuevamente, el cual se ilustra en la Figura \ref{fig:controlVGA2}. \\
+
+\noindent \textbf{Enlaces de interés:}
+\begin{itemize}
+	
+	\item Carpeta de scripts de Matlab: http://bit.ly/2cz3gi0
+
+\end{itemize}
+
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm]{Img/interfaz.png}
+	\caption{Plantilla de interfaz de usuario}
+	\label{fig:plantillaInterfaz}
+\end{figure}
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=16cm]{Img/controlVGABloques2.png}
+	\caption{Diseño de bloques (2) del control VGA}
+	\label{fig:controlVGA2}
+\end{figure}
+
+
+\newpage
+
+% Nueva entrada
+\begin{flushright}
+	\begin{large}
+		\textbf{Fecha: 13 de Septiembre}\\[5ex]
+	\end{large}
+\end{flushright}
+
+\noindent \textbf{Integrantes:} Luis Leon \\[1ex]
+\textbf{Hora:} 7:00 - 14:00 \\[1ex]
+\textbf{Actividad:} \\[2ex]
+
+Se comenzó con la implementación del control VGA en HDL. Se crearon los diversos bloques y quedaron listos para someterlos a prueba. El día de mañana se realizarán pruebas intensivas. Asimismo, se elaboró el script de Matlab para poder decodificar los resultados del testbench en la imagen correspondiente. Para ello, se estableció un formato, el cual es \_XXX\_YYY\_CCC, donde X es la posición en el eje X, Y en el eje Y y C es el color en medio byte de colores RGB. \\
+
+\noindent \textbf{Enlaces de interés:}
+\begin{itemize}
+	
+	\item Carpeta de scripts de Matlab: http://bit.ly/2cz3gi0
+	
+\end{itemize}
+
+% Nueva entrada
+\begin{flushright}
+	\begin{large}
+		\textbf{Fecha: 14 de Septiembre}\\[5ex]
+	\end{large}
+\end{flushright}
+
+\noindent \textbf{Integrantes:} Luis Leon \\[1ex]
+\textbf{Hora:} 7:00 - 10:00 y 18:00 - 21:00 \\[1ex]
+\textbf{Actividad:} \\[2ex]
+
+Se realizaron las pruebas del módulo, encontrando problemas con los punteros y un ligero problema con la memoria emulada en el testbench, lo que provocaba que la imagen se vea como se plasma en la Figura \ref{fig:errorVGA1}. Asimismo, se encontró un serio deterioro de la imagen producto de la ampliación de la imagen, por lo cual, se decidió implementarla en la escala normal como fue diseñada (640X480). Esto, de forma consciente de que se utilizarán más recursos, pero con la ventaja de que esto elevará la calidad del trabajo. Al final, el resultado obtenido se puede apreciar en la Figura \ref{fig:resultVGA1}. Con esto, el trabajo sobre el módulo de la VGA queda concluido y listo para que los demás compañeros puedan ejecutar su trabajo. \\
+
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=14cm]{Img/errorVGA1.png}
+	\caption{Problemas con la memoria VGA}
+	\label{fig:errorVGA1}
+\end{figure}
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=14cm]{Img/resultVGA1.png}
+	\caption{Resultado exitoso de la prueba de la VGA}
+	\label{fig:resultVGA1}
+\end{figure}
+
 \end{document}
