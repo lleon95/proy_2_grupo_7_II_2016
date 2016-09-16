@@ -19,18 +19,17 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module ControlRTC(reset,clk,RD,CS,AD,WR,DatAdd,ADDreadreg,datmen,readmen,writedata,selectores, interruptores);
+	input [7:0] writedata;
 	input reset,clk,readmen;
 	input [3:0] ADDreadreg;
-	output RD,CS,AD,WR;
-	output datmen;
-	wire [7:0]datmen;
+	input [3:0] selectores;
+	input [2:0] interruptores;
 	output[7:0]  DatAdd;
-	input [7:0] writedata;
+	output RD,CS,AD,WR;
+	output[7:0] datmen;
 	wire clonar1,clonar2,iniciar,whileT,CrontUs;
 	wire finint,finwt,finct;
 	wire esc;
-	input [3:0] selectores;
-	input [2:0] interruptores;
 	wire [1:0] banderas;
 	//Addres
 	wire [3:0] ADDUsr,ADDwtr,ADDreg;
@@ -54,7 +53,7 @@ module ControlRTC(reset,clk,RD,CS,AD,WR,DatAdd,ADDreadreg,datmen,readmen,writeda
 	mux2x7 mux2(.Dato1(ADDwrite),.Dato2(ADDread_out),.selector(esc),.salida(ADDout));
 	mux2x7 mux3(.Dato1(ADDwt),.Dato2(ADDUsr2),.selector(whileT),.salida(ADDw));
 	mux3x7 mux4(.Dato1(datoutinit),.Dato2(datoutwt),.Dato3(datoutusr),.selector(iniciar),.selector2(whileT),.salida(datoinwr));
-	controlprinciapal	maquinaprincipal(.reset(reset),.CLK(clk),.finint(finint),.finwt(finwt),.finct(finct),.usuario(solus),.clonar1(clonar1),.clonar2(clonar2),.iniciar(iniciar),.whileT(whileT),.CrontUs(CrontUs));
+	controlprinciapal maquinaprincipal(.reset(reset),.CLK(clk),.finint(finint),.finwt(finwt),.finct(finct),.usuario(solus),.clonar1(clonar1),.clonar2(clonar2),.iniciar(iniciar),.whileT(whileT),.CrontUs(CrontUs));
 	controldeususario controldeusuario(.CLK(clk),.reset(reset),.selectores(selectores),.interruptores(interruptores),.fin(finesc),.Maquina_in(CrontUs),.Maquina_out(solus),.ADD(ADDUsr),.ADD2(ADDUsr2),.read(readreg),.Dato_in(datours),.Dato_out(datouturs),.escritura(initescu),.final(finct));
 	inicializacion	inicia(.reset(reset),.iniciar(iniciar),.clk(clk),.fin(finesc),.dir(ADDdir),.dato(datooutint),.escritura(initesci),.true(finint));
 	while_true WT(.reset(reset),.clk(clk),.iniciar(whileT),.fin(finwht),.dir(ADDwt),.dir_reg(ADDwtr),.dato(datoutwt),.escritura(inwrite),.write(escreg),.lectura(inlec),.final(finwt));
