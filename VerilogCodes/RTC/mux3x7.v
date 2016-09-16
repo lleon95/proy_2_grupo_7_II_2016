@@ -23,7 +23,13 @@ module mux3x7(Dato1,Dato2,Dato3,selector,selector2,salida);
 	input [7:0] Dato1,Dato2,Dato3;
 	output salida;
 	wire [7:0]salida;
-	assign salida=(selector)?Dato1:(selector2)?Dato2:Dato3;
+	//assign salida=(selector)?Dato1:(selector2)?Dato2:Dato3;
+	always @ *
+	begin
+	if(selector) salida=Dato1;
+	else if(selector2)salida=Dato2;
+		else salida=Dato3;
+	end
 
 
 endmodule
