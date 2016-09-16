@@ -1,4 +1,4 @@
-controlprinciapal(reset,CLK,finint,finwt,finct,usuario,clonar1,clonar2,iniciar,whileT,CrontUs);
+module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,clonar1,clonar2,iniciar,whileT,CrontUs);
   input reset,CLK,finint,finwt,finct,usuario;
   output clonar1,clonar2,iniciar,whileT,CrontUs;
   reg clonar1,clonar2,iniciar,whileT,CrontUs;
