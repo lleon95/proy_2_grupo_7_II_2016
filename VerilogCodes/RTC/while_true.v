@@ -18,25 +18,23 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module while_true(reset,clk,iniciar,fin,dir,dir_reg,dato,read,write,escritura,lectura,final);
+module while_true(reset,clk,iniciar,fin,dir,dir_reg,dato,write,escritura,lectura,final);
 //inicio input output
 input reset;
 input iniciar;
 input clk;
 input fin;
 output [7:0] dir;
-output [7:0] dir_reg;
+output [3:0] dir_reg;
 output [7:0] dato;
-output read;
 output write;
 output escritura;
 output lectura;
 output final;
 //fin input output
 reg [7:0] dir;
-reg [7:0] dir_reg;
+reg [3:0] dir_reg;
 reg [7:0] dato;
-reg read;
 reg write;
 reg escritura;
 reg lectura;
@@ -141,7 +139,6 @@ begin
   dir <= 8'b0;
   dir_reg <= 8'b0;
   dato <= 8'b0;
-  read <= 1'b0;
   write <= 1'b0;
   escritura <= 1'b0;
   lectura <= 1'b0;
@@ -156,7 +153,6 @@ begin
            dir <= 8'b0;
 			  dir_reg <= 8'b0;
            dato <= 8'b0;
-           read <= 1'b0;
            write <= 1'b0;
            escritura <= 1'b0;
            lectura <= 1'b0;
@@ -166,7 +162,6 @@ begin
            dir <= 8'b11110000;
 			  dir_reg <= 8'b0;
            dato <= 8'b0;
-           read <= 1'b0;
            write <= 1'b0;
            escritura <= 1'b1;
            lectura <= 1'b0;
@@ -176,7 +171,6 @@ begin
            dir <= 8'b00100001;
 			  dir_reg <= 8'b00000001;
            dato <= 8'b0;
-           read <= 1'b0;
            write <= 1'b1;
            escritura <= 1'b0;
            lectura <= 1'b1;
@@ -186,7 +180,6 @@ begin
            dir <= 8'b00100010;
 			  dir_reg <= 8'b00000010;
            dato <= 8'b0;
-           read <= 1'b0;
            write <= 1'b1;
            escritura <= 1'b0;
            lectura <= 1'b1;
@@ -196,7 +189,6 @@ begin
            dir <= 8'b00100011;
 			  dir_reg <= 8'b00000011;
            dato <= 8'b0;
-           read <= 1'b0;
            write <= 1'b1;
            escritura <= 1'b0;
            lectura <= 1'b1;
@@ -206,7 +198,6 @@ begin
            dir <= 8'b00100100;
 			  dir_reg <= 8'b00001100;
            dato <= 8'b0;
-           read <= 1'b0;
            write <= 1'b1;
            escritura <= 1'b0;
            lectura <= 1'b1;
@@ -216,7 +207,6 @@ begin
            dir <= 8'b00100101;
 			  dir_reg <= 8'b00001101;
            dato <= 8'b0;
-           read <= 1'b0;
            write <= 1'b1;
            escritura <= 1'b0;
            lectura <= 1'b1;
@@ -226,7 +216,6 @@ begin
            dir <= 8'b00100110;
 			  dir_reg <= 8'b00001110;
            dato <= 8'b0;
-           read <= 1'b0;
            write <= 1'b1;
            escritura <= 1'b0;
            lectura <= 1'b1;
@@ -236,7 +225,6 @@ begin
            dir <= 8'b01000001;
 			  dir_reg <= 8'b00001001;
            dato <= 8'b0;
-           read <= 1'b0;
            write <= 1'b1;
            escritura <= 1'b0;
            lectura <= 1'b1;
@@ -246,7 +234,6 @@ begin
            dir <= 8'b01000010;
 			  dir_reg <= 8'b00001010;
            dato <= 8'b0;
-           read <= 1'b0;
            write <= 1'b1;
            escritura <= 1'b0;
            lectura <= 1'b1;
@@ -256,7 +243,6 @@ begin
            dir <= 8'b01000011;
 			  dir_reg <= 8'b00001011;
            dato <= 8'b0;
-           read <= 1'b0;
            write <= 1'b1;
            escritura <= 1'b0;
            lectura <= 1'b1;

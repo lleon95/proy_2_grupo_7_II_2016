@@ -18,7 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module inicializacion(reset,iniciar,clk,fin,dir,dato,escritura,write_reg,true);
+module inicializacion(reset,iniciar,clk,fin,dir,dato,escritura,true);
 //inicio input output
 input reset;
 input iniciar;
@@ -27,13 +27,11 @@ input fin;
 output [7:0] dir;
 output [7:0] dato;
 output escritura;
-output write_reg;
 output true;
 //fin input output
 reg [7:0] dir;
 reg [7:0] dato;
 reg escritura;
-reg write_reg;
 reg true;
 //inicio variables y parametros internos
 reg [2:0] state;
@@ -102,7 +100,6 @@ begin
 	 dir <= 8'b0;
     dato <= 8'b0;
     escritura <= 1'b0;
-	 write_reg <= 1'b0;
     true <= 1'b0;
 	 state <= inicio;
 	end
@@ -114,42 +111,36 @@ begin
 	          dir <= 8'b0;
              dato <= 8'b0;
              escritura <= 1'b0;
-				 write_reg <= 1'b0;
              true <= 1'b0;
             end
      bit_on:begin
-	          dir <= 2'h02;
+	          dir <= 8'h02;
              dato <= 8'b00010000;
              escritura <= 1'b1;
-				 write_reg <= 1'b0;
              true <= 1'b0;
             end
 	  bit_off:begin
-	           dir <= 2'h02;
+	           dir <= 8'h02;
               dato <= 1'd0;
               escritura <= 1'b1;
-				  write_reg <= 1'b0;
               true <= 1'b0;
 				 end
 	  mascara:begin
-	           dir <= 2'h01;
+	           dir <= 8'h01;
               dato <= 8'b01000100;
               escritura <= 1'b1;
-				  write_reg <= 1'b0;
               true <= 1'b0;
              end
 	  enable:begin
-	           dir <= 2'h00;
+	           dir <= 8'h00;
               dato <= 8'b00001000;
               escritura <= 1'b1;
-				  write_reg <= 1'b0;
               true <= 1'b0;
              end
      init_hora:begin
 	            dir <= 8'b00100011;
                dato <= 8'b00001100;
                escritura <= 1'b1;
-					write_reg <= 1'b0;
                true <= 1'b1;
               end
      default:begin

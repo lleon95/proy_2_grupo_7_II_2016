@@ -21,20 +21,20 @@
 module lectura(reset,clk,dir,dir_reg,esc_reg,iniciar,fin,final,activa,w,reg_out,dir_out);
 //inicio input output
 input reset;
-input [7:0] dir_reg;
+input [3:0] dir_reg;
 input iniciar;
 input [7:0] dir;
 input clk;
 input fin;
 input esc_reg;
 output [7:0] dir_out;
-output [7:0] reg_out;
+output [3:0] reg_out;
 output final;
 output activa;
 output w;
 //fin input output
 reg [7:0] dir_out;
-reg [7:0] reg_out;
+reg [3:0] reg_out;
 reg w;
 reg activa;
 reg final;

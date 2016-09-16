@@ -34,7 +34,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maquina_out,ADD,ADD2,read,Dato_in,Dato_out,escritura);
+module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maquina_out,ADD,ADD2,read,Dato_in,Dato_out,escritura,final);
 	input CLK,reset;
 	input [3:0]selectores;
 	input [2:0]interruptores;
@@ -46,11 +46,13 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 	input [7:0]Dato_in;
 	output Dato_out;
 	output escritura;
+	output final;
 	reg [7:0] Dato_out;
 	reg Maquina_out,escritura;
 	reg [3:0]ADD;
 	reg [7:0]ADD2;
 	reg read;
+	reg final;
 	reg [7:0] cambiospos[0:15];
 	reg [7:0] cambiosneg[0:15];
 	reg [7:0] dir2[0:15];
@@ -60,6 +62,7 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 	begin
 		if(reset)
 		begin
+			final <=0;
 			read<=0;
 			ADD<=0;
 			ADD2<=0;
@@ -121,6 +124,7 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 		begin
 			if(interruptores != 0)
 			begin
+				Maquina_out<=1;
 				//escritura
 				if(selectores[3] && puntero !=0)puntero<=puntero-1;
 				else if(selectores[1] && puntero !=13) puntero <= puntero +1;
@@ -162,13 +166,13 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 				if(selectores[0])cambiosneg[puntero]<=cambiosneg[puntero]+1;
 				else if(selectores[2]) cambiospos[puntero] <= cambiospos[puntero] +1;
 					else begin end
-				if(puntero2 == 0) Maquina_out<=0;
+				if(puntero2 == 0) final<=0;
 				else begin end
 				if(Maquina_in)
 					if(puntero2 ==12) 
 					begin
 						puntero2<=0;
-						Maquina_out<=1;
+						final<=1;
 					end
 					else
 					begin
@@ -180,7 +184,7 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 						end
 						else
 						begin
-							Maquina_out=0;
+							final<=0;
 							read<=1;
 							ADD<=puntero2;
 							ADD2<=dir2[puntero2];
@@ -190,7 +194,7 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 					end
 				else puntero2<=0;
 			end
-			else Maquina_out<=1;
+			else Maquina_out<=0;
 		end
 	end
 

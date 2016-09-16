@@ -18,7 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module control_salida(reset,direccion,dato,clk,iniciar,escribe,data_out,CS,AD,RD,WR,final,contador);
+module control_salida(reset,direccion,dato,clk,iniciar,escribe,data_out,CS,AD,RD,WR,final);
 input reset;
 input iniciar;
 input clk;
@@ -31,7 +31,6 @@ output AD;
 output RD;
 output WR;
 output final;
-output [4:0] contador;
 //fin input output
 reg CS;
 reg [7:0] data_out;

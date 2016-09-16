@@ -32,16 +32,14 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,DAT2,Dato1,Dato2,Dato3,flags,clk,reset,w1,w2,r1,r2,r3);
-	input clk,reset,w1,w2,r1,r2,r3;
+module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,Dato2,Dato3,flags,clk,reset,w1,r2,r3);
+	input clk,reset,w1,r2,r3;
 	input[3:0] ADD1;
 	input[3:0] ADD2;
 	input[3:0] ADD3;
 	input[7:0] DAT1;
-	input[7:0] DAT2;
-	input[2:0] flags;
-	output Dato1,Dato2,Dato3;
-	reg [7:0] Dato1;
+	input[1:0] flags;
+	output Dato2,Dato3;
 	reg [7:0] Dato2;
 	reg [7:0] Dato3;
 	reg [7:0] memoria1[0:15];
@@ -51,9 +49,8 @@ module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,DAT2,Dato1,Dato2,Dato3,flags,clk,reset,
 	begin
 		if(reset)
 		begin
-			Dato1=0;
-			Dato2=0;
-		
+			Dato2<=0;
+			Dato3<=0;
 			memoria1[0]<=0;
 			memoria1[1]<=0;
 			memoria1[2]<=0;
@@ -127,26 +124,6 @@ module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,DAT2,Dato1,Dato2,Dato3,flags,clk,reset,
 					memoria2[30]<=memoria1[14];
 					memoria2[31]<=memoria1[15];
 				end
-				else
-					if(flags[2])
-					begin
-						memoria1[0]<=memoria2[16];
-						memoria1[1]<=memoria2[17];
-						memoria1[2]<=memoria2[18];
-						memoria1[3]<=memoria2[19];
-						memoria1[4]<=memoria2[20];
-						memoria1[5]<=memoria2[21];
-						memoria1[6]<=memoria2[22];
-						memoria1[7]<=memoria2[23];
-						memoria1[8]<=memoria2[24];
-						memoria1[9]<=memoria2[25];
-						memoria1[10]<=memoria2[26];
-						memoria1[11]<=memoria2[27];
-						memoria1[12]<=memoria2[28];
-						memoria1[13]<=memoria2[29];
-						memoria1[14]<=memoria2[30];
-						memoria1[15]<=memoria2[31];
-					end
 					else
 					begin
 						if(flags[0])
@@ -173,34 +150,23 @@ module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,DAT2,Dato1,Dato2,Dato3,flags,clk,reset,
 			end
 			else
 			begin
-				if(w1 || w2)
-					if(w1) memoria1[ADD1]=DAT1;
-					else memoria2[ADD2]=DAT2;
+				if(w1) memoria1[ADD1]<=DAT1;
 				else
-					if(r1 || r2 || r3)
-						if(r1) 
+					if(r2 || r3)	
+						if(r2)
 						begin
-							Dato1=memoria1[ADD1];
-							Dato2=0;
-							Dato3=0;
+							Dato2<=memoria2[ADD2];
+							Dato3<=0;
 						end
-						else	
-							if(r2)
-							begin
-								Dato1=0;
-								Dato2=memoria2[ADD2];
-								Dato3=0;
-							end
-							else
-							begin
-								Dato1=0;
-								Dato2=0;
-								Dato3=memoria2[ADD3+15];
-							end
+						else
+						begin
+							Dato2<=0;
+							Dato3<=memoria2[ADD3+15];
+						end
 					else
 					begin
-						Dato1=0;
-						Dato2=0;
+						Dato2<=0;
+						Dato3<=0;
 					end
 			end
 		end
