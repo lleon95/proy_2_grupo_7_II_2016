@@ -34,7 +34,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maquina_out,ADD,ADD2,read,Dato_in,Dato_out,escritura,final);
+module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maquina_out,ADD,ADD2,Dato_in,Dato_out,escritura,final);
 	input CLK,reset;
 	input [3:0]selectores;
 	input [2:0]interruptores;
@@ -42,7 +42,6 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 	input Maquina_in;
 	output Maquina_out;
 	output ADD,ADD2;
-	output read;
 	input [7:0]Dato_in;
 	output Dato_out;
 	output escritura;
@@ -51,7 +50,6 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 	reg Maquina_out,escritura;
 	reg [3:0]ADD;
 	reg [7:0]ADD2;
-	reg read;
 	reg final;
 	reg [7:0] cambiospos[0:15];
 	reg [7:0] cambiosneg[0:15];
@@ -63,7 +61,6 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 		if(reset)
 		begin
 			final <=0;
-			read<=0;
 			ADD<=0;
 			ADD2<=0;
 			Maquina_out<=0;
@@ -185,7 +182,6 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 						else
 						begin
 							final<=0;
-							read<=1;
 							ADD<=puntero2;
 							ADD2<=dir2[puntero2];
 							Dato_out<=Dato_in+cambiospos[puntero2]-cambiosneg[puntero2];

@@ -18,48 +18,72 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module ControlRTC(reset,clk,RD,CS,AD,WR,DatAdd,ADDreadreg,datmen,readmen,writedata,selectores, interruptores);
+module ControlRTC(reset,clk,RD,CS,AD,WR,DatAdd,ADDreadreg,datamemoria,writedata,selectores, interruptores);
 	input [7:0] writedata;
-	input reset,clk,readmen;
+	input reset,clk;
 	input [3:0] ADDreadreg;
 	input [3:0] selectores;
 	input [2:0] interruptores;
 	output[7:0]  DatAdd;
 	output RD,CS,AD,WR;
-	output[7:0] datmen;
-	wire clonar1,clonar2,iniciar,whileT,CrontUs;
-	wire finint,finwt,finct;
-	wire esc;
-	wire [1:0] banderas;
-	//Addres
-	wire [3:0] ADDUsr,ADDwtr,ADDreg;
-	wire [7:0] ADDUsr2,ADDint,ADDwt,ADDwrite,ADDread,ADDout,ADDread_out,ADDw;
-	//control
-	//fin
-	wire finesc,finread,finout;
-	wire finwht;
-	//iniciar
-	wire inlec,inwrit,inou,initescu,inwrite,initesci,activa_wr,activa_rd;
+	output[7:0] datamemoria;
+	wire data_out;
 	//activacion
-	wire solus,escriturareg,escreg,readreg;
+	//control principal
+	wire inwt,inint,inus,solocitudus;
+	//escritura y lectura
+	wire activawtesc,activawtlec,activaintesc,activausesc,activainesc;
+	//control de salida
+	wire activaoutesc,activaoutlec,activainout;
+	//final
+	//maquina principal
+	wire finwt,finint,finct;
+	//escritura y lectura
+	wire finesc,finlec,fininwt;
+	//control de salida
+	wire finout;
+	//ADD
+	//registros
+	//jerarquia 1
+	wire [3:0] ADDregwt,ADDregurs;
+	//jerarquia 2
+	wire [3:0] ADDreglect;
+	//completa
+	//jerarquia 1
+	wire [7:0] ADDwt,ADDin,ADDusr,ADDinesc;
+	//jerarquia 2
+	wire [7:0] ADDoutlec,ADDoutesc,ADDinout;
 	//datos
-	wire [7:0] datousr;
-	wire [7:0] datoutusr,datoutint,datoutwt,datoinwr,datoutwr;
-	or2 Compor1(.dato1(finesc),.dato2(finread),.salida(inou));
-	or2 Compor2(.dato1(activa_wr),.dato2(activa_rd),.salida(finwht));
-	or3 Compor3(.dato1(initescu),.dato2(initesci),.dato3(inwrite),.salida(inwrite));
+	//jerarquia 1
+	wire [7:0] DATwt,DATint,DATusr,DATinesc;
+	//jerarquia 2
+	wire [7:0] DATinout;
+	//memoria
+	wire [7:0] DATmen;
+	//bitextras
+	//banderas
+	wire [1:0] banderas;
+	wire clonar1,clonar2;
+	//escritura
+	wire signalesc;
+	//escritura en registro
+	wire regesc,escreg,escriturareg;
+	//salida de datos
+	assign DatAdd=(escreg)?8'bz:data_out;
+	or2 Compor1(.dato1(activaoutesc),.dato2(activaoutlec),.salida(activainout));
+	or2 Compor2(.dato1(finesc),.dato2(finlec),.salida(fininwt));
+	or3 Compor3(.dato1(activawtesc),.dato2(activaintesc),.dato3(activausesc),.salida(activainesc));
 	concatenador conc1(.primero(clonar1),.segundo(clonar2),.salida(banderas));
-	mux2x7 mux1(.Dato1(ADDint),.Dato2(ADDwt),.selector(iniciar),.salida(ADDread));
-	mux2x7 mux2(.Dato1(ADDwrite),.Dato2(ADDread_out),.selector(esc),.salida(ADDout));
-	mux2x7 mux3(.Dato1(ADDwt),.Dato2(ADDUsr2),.selector(whileT),.salida(ADDw));
-	mux3x7 mux4(.Dato1(datoutinit),.Dato2(datoutwt),.Dato3(datoutusr),.selector(iniciar),.selector2(whileT),.salida(datoinwr));
-	controlprinciapal maquinaprincipal(.reset(reset),.CLK(clk),.finint(finint),.finwt(finwt),.finct(finct),.usuario(solus),.clonar1(clonar1),.clonar2(clonar2),.iniciar(iniciar),.whileT(whileT),.CrontUs(CrontUs));
-	controldeususario controldeusuario(.CLK(clk),.reset(reset),.selectores(selectores),.interruptores(interruptores),.fin(finesc),.Maquina_in(CrontUs),.Maquina_out(solus),.ADD(ADDUsr),.ADD2(ADDUsr2),.read(readreg),.Dato_in(datours),.Dato_out(datouturs),.escritura(initescu),.final(finct));
-	inicializacion	inicia(.reset(reset),.iniciar(iniciar),.clk(clk),.fin(finesc),.dir(ADDdir),.dato(datooutint),.escritura(initesci),.true(finint));
-	while_true WT(.reset(reset),.clk(clk),.iniciar(whileT),.fin(finwht),.dir(ADDwt),.dir_reg(ADDwtr),.dato(datoutwt),.escritura(inwrite),.write(escreg),.lectura(inlec),.final(finwt));
-	escritura write(.reset(reset),.clk(clk),.dir(ADDw),.dato(datoinwr),.iniciar(inwrit),.fin(finout),.data_out(datoutwr),.dir_out(ADDwrite),.escribe(esc),.final(finesc),.activa(activa_wr));
-	lectura read(.reset(reset),.clk(clk),.dir(ADDread),.dir_reg(ADDwtr),.esc_reg(escreg),.iniciar(inlec),.fin(finout),.final(finread),.activa(activa_rd),.w(escriturareg),.reg_out(ADDreg),.dir_out(ADDread_out));
-	control_salida Cront_out(.reset(reset),.direccion(ADDout),.dato(datoutwr),.clk(clk),.iniciar(inou),.escribe(esc),.data_out(DatAdd),.CS(CS),.AD(AD),.RD(RD),.WR(WR),.final(finout));
-	memoria_DMULC memoria(.ADD1(ADDreg),.ADD2(ADDreadreg),.ADD3(ADDUsr),.DAT1(writedata),.Dato2(datmen),.Dato3(datours),.flags(banderas),.clk(clk),.reset(reset),.w1(escriturareg),.r2(readmen),.r3(readreg));
+	mux2x7 mux1(.Dato1(ADDoutesc),.Dato2(ADDoutlec),.selector(signalesc),.salida(ADDinout));
+	mux3x7 mux2(.Dato1(ADDwt),.Dato2(ADDin),.Dato3(ADDusr),.selector(inwt),.selector2(inint),.salida(ADDinesc));
+	mux3x7 mux3(.Dato1(DATwt),.Dato2(DATint),.Dato3(DATusr),.selector(inwt),.selector2(inint),.salida(DATinesc));
+	controlprinciapal maquinaprincipal(.reset(reset),.CLK(clk),.finint(finint),.finwt(finwt),.finct(finct),.usuario(solocitudus),.clonar1(clonar1),.clonar2(clonar2),.iniciar(inint),.whileT(inwt),.CrontUs(inus));
+	controldeususario controldeusuario(.CLK(clk),.reset(reset),.selectores(selectores),.interruptores(interruptores),.fin(finesc),.Maquina_in(inus),.Maquina_out(solocitudus),.ADD(ADDregurs),.ADD2(ADDusr),.Dato_in(DATmen),.Dato_out(DATusr),.escritura(activausesc),.final(finct));
+	inicializacion	inicia(.reset(reset),.iniciar(inint),.clk(clk),.fin(finesc),.dir(ADDin),.dato(DATint),.escritura(activaintesc),.true(finint));
+	while_true WT(.reset(reset),.clk(clk),.iniciar(inwt),.fin(fininwt),.dir(ADDwt),.dir_reg(ADDregwt),.dato(DATwt),.escritura(activawtesc),.write(regesc),.lectura(activawtlec),.final(finwt));
+	escritura write(.reset(reset),.clk(clk),.dir(ADDinesc),.dato(DATinesc),.iniciar(activainesc),.fin(fininwt),.data_out(DATinout),.dir_out(ADDoutesc),.escribe(signalesc),.final(finesc),.activa(activaoutesc));
+	lectura read(.reset(reset),.clk(clk),.dir(ADDwt),.dir_reg(ADDregwt),.esc_reg(regesc),.iniciar(activawtlec),.fin(finout),.final(finlec),.activa(activaoutlec),.w(escriturareg),.reg_out(ADDreglect),.dir_out(ADDoutlec));
+	control_salida Cront_out(.reset(reset),.direccion(ADDinout),.dato(DATinout),.clk(clk),.iniciar(activainout),.escribe(signalesc),.data_out(data_out),.CS(CS),.AD(AD),.RD(RD),.WR(WR),.final(finout),.esc(escriturareg),.escreg(escreg));
+	memoria_DMULC memoria(.ADD1(ADDreglect),.ADD2(ADDreadreg),.ADD3(ADDregurs),.DAT1(writedata),.Dato2(datamemoria),.Dato3(DATmen),.flags(banderas),.clk(clk),.reset(reset),.w1(escreg));
 
 endmodule

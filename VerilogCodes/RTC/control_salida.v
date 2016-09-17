@@ -18,7 +18,8 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module control_salida(reset,direccion,dato,clk,iniciar,escribe,data_out,CS,AD,RD,WR,final);
+module control_salida(reset,direccion,dato,clk,iniciar,escribe,data_out,CS,AD,RD,WR,final,esc,escreg);
+input esc;
 input reset;
 input iniciar;
 input clk;
@@ -26,12 +27,14 @@ input escribe;
 input [7:0] direccion;
 input [7:0] dato;
 output CS;
+output escreg;
 output [7:0] data_out;
 output AD;
 output RD;
 output WR;
 output final;
 //fin input output
+reg escreg;
 reg CS;
 reg [7:0] data_out;
 reg AD;
@@ -58,6 +61,7 @@ begin
  begin
   if (iniciar == 1'b0)
   begin
+	escreg<=0;
    CS <= 1'b1;
    AD <= 1'b1;
    RD <= 1'b1;
@@ -76,6 +80,7 @@ begin
 			    RD <= 1'b1;
 			    WR <= 1'b1;
 			    final <= 1'b0;
+				 escreg<=0;
 				 data_out<= direccion;
 	  end
 	 5'b00010:begin
@@ -114,6 +119,7 @@ begin
 			     RD <= 1'b1;
 			     WR <= 1'b0;
 			     final <= 1'b0;
+				  escreg<=0;
 				  data_out <= dato;
 				 end
 				 else
@@ -123,6 +129,7 @@ begin
 			     RD <= 1'b0;
 			     WR <= 1'b1;
 			     final <= 1'b0;
+				  escreg<=esc;
 				  data_out <= 0;
 				 end
 	  end
