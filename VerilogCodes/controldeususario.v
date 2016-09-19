@@ -18,7 +18,7 @@
 //								3.horas
 //								4.dias
 //								5.mes
-//								6.año
+//								6.aÃ±o
 //								alarma
 //								7.segundos
 //								8.minutos
@@ -51,9 +51,9 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 	reg [3:0]ADD;
 	reg [7:0]ADD2;
 	reg final;
-	reg [7:0] cambiospos[0:15];
-	reg [7:0] cambiosneg[0:15];
-	reg [7:0] dir2[0:15];
+	reg [7:0] cambiospos[15:0];
+	reg [7:0] cambiosneg[15:0];
+	reg [7:0] dir2[15:0];
 	reg [3:0] puntero;
 	reg [3:0] puntero2;
 	always @(posedge CLK)
