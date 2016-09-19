@@ -1,23 +1,3 @@
-`timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date:    10:28:12 09/11/2016 
-// Design Name: 
-// Module Name:    control_salida 
-// Project Name: 
-// Target Devices: 
-// Tool versions: 
-// Description: 
-//
-// Dependencies: 
-//
-// Revision: 
-// Revision 0.01 - File Created
-// Additional Comments: 
-//
-//////////////////////////////////////////////////////////////////////////////////
 module control_salida(reset,direccion,dato,clk,iniciar,escribe,data_out,CS,AD,RD,WR,final,esc,escreg);
 input esc;
 input reset;
