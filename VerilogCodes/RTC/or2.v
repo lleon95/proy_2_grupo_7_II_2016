@@ -21,7 +21,7 @@
 module or2(dato1,dato2,salida);
 	input dato1,dato2;
 	output salida;
-	wire salida;
+	reg salida;
 	
 	always @*
 		salida=dato1||dato2;
