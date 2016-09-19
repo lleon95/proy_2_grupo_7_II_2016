@@ -1,27 +1,7 @@
-`timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date:    10:12:55 09/15/2016 
-// Design Name: 
-// Module Name:    controlprinciapal 
-// Project Name: 
-// Target Devices: 
-// Tool versions: 
-// Description: 
-//
-// Dependencies: 
-//
-// Revision: 
-// Revision 0.01 - File Created
-// Additional Comments: 
-//
-//////////////////////////////////////////////////////////////////////////////////
-module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,clonar1,clonar2,iniciar,whileT,CrontUs);
+module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,CrontUs);
 	input reset,CLK,finint,finwt,finct,usuario;
-	output clonar1,clonar2,iniciar,whileT,CrontUs;
-	reg clonar1,clonar2,iniciar,whileT,CrontUs;
+	output iniciar,whileT,CrontUs;
+	reg iniciar,whileT,CrontUs;
 	reg [2:0] State;
 	reg [2:0] NextState;
 	//estados
@@ -62,8 +42,6 @@ module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,clonar1,clonar2,in
 	begin
 		if(reset)
 		begin
-			clonar1<=0;
-			clonar2<=0;
 			iniciar<=0;
 			whileT<=0;
 			CrontUs<=0;
@@ -83,21 +61,13 @@ module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,clonar1,clonar2,in
 				actualizacion1:
 					begin
 						whileT<=0;
-						clonar1<=1;
 					end
-				solicitud:
-					clonar1<=0;
-				actualizacion2:
-					clonar2<=1;
 				controlusuario:
 				begin
-					clonar2<=0;
 					CrontUs<=1;
 				end
 				default:
 				begin
-					clonar1<=0;
-					clonar2<=0;
 					iniciar<=0;
 					whileT<=0;
 					CrontUs<=0;
