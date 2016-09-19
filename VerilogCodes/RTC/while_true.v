@@ -55,6 +55,7 @@ parameter [3:0] year = 4'b0111;
 parameter [3:0] timer_segundos = 4'b1000;
 parameter [3:0] timer_minutos = 4'b1001;
 parameter [3:0] timer_horas = 4'b1010;
+parameter [3:0] finalizacion = 4'b1011;
 //logica de estado siguiente
 always @(state or iniciar or fin)
 begin
@@ -122,10 +123,12 @@ begin
    end
   timer_horas:begin
           if (fin == 1'b1)
-			  next_state = inicio;
+			  next_state = finalizacion;
 			 else
 			  next_state = timer_horas;
-   end
+			  end
+	finalizacion:
+			next_state = inicio;
   default:begin
           next_state = inicio;
    end
@@ -248,8 +251,17 @@ begin
            lectura <= 1'b1;
            final <= 1'b0;
     end
+	 finalizacion:begin
+           dir <= 8'b0;
+			  dir_reg <= 8'b0;
+           dato <= 8'b0;
+           write <= 1'b0;
+           escritura <= 1'b0;
+           lectura <= 1'b0;
+           final <= 1'b1;
+    end
    default:begin
-          next_state = inicio;
+          state <= inicio;
    end
   endcase
  end
