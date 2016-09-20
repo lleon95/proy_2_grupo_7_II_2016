@@ -73,8 +73,8 @@ begin
 			  next_state = clk_transfer;
    end
   finalizar:begin
-			  next_state = inicio;
-   end
+			  next_state = inicio;   
+			end
   default:begin
           next_state = inicio;
    end
@@ -85,7 +85,7 @@ end
 
 always @(posedge clk)
 begin
- if (reset)
+ if (reset || ~iniciar)
  begin
   data_out <= 8'b0;
   dir_out <= 8'b0;

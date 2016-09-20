@@ -128,7 +128,8 @@ begin
 			  next_state = timer_horas;
 			  end
 	finalizacion:
-			next_state = inicio;
+			if (iniciar == 1'b1)
+			  next_state = inicio;
   default:begin
           next_state = inicio;
    end
@@ -137,7 +138,7 @@ end
 //logica de salida
 always @(posedge clk)
 begin
- if (reset)
+ if (reset || ~iniciar)
  begin
   dir <= 8'b0;
   dir_reg <= 8'b0;

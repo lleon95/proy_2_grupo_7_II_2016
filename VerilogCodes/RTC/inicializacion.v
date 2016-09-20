@@ -43,6 +43,7 @@ parameter [2:0] bit_off = 3'b010;
 parameter [2:0] mascara = 3'b011;
 parameter [2:0] enable = 3'b100;
 parameter [2:0] init_hora = 3'b101;
+parameter [2:0] finalizacion = 3'b110;
 
 //logica de estado siguiente
 
@@ -82,9 +83,12 @@ begin
 		end
  init_hora:begin
          if (fin == 1'b1)
-         next_state = inicio;
+         next_state = finalizacion;
 		  else
 		   next_state = init_hora;
+		end
+ finalizacion:begin
+		   next_state = inicio;
 		end
  default:begin
           next_state = inicio;
@@ -96,7 +100,8 @@ end
 
 always @(posedge clk)
 begin
-	if (reset)begin
+	if (reset || ~iniciar)
+	begin
 	 dir <= 8'b0;
     dato <= 8'b0;
     escritura <= 1'b0;
@@ -141,6 +146,12 @@ begin
 	            dir <= 8'b00100011;
                dato <= 8'b00001100;
                escritura <= 1'b1;
+               true <= 1'b1;
+              end
+	  finalizacion:begin
+	            dir <= 8'b00000000;
+               dato <= 8'b00000000;
+               escritura <= 1'b0;
                true <= 1'b1;
               end
      default:begin

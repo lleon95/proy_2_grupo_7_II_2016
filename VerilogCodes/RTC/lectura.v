@@ -67,8 +67,8 @@ begin
 			  next_state = lee;
    end
   finalizar:begin
-			  next_state = inicio;
-	end
+			  next_state = inicio;	
+			 end
   default:begin
           next_state = inicio;
    end
@@ -79,7 +79,7 @@ end
 
 always @(posedge clk)
 begin
- if (reset)
+ if (reset || ~iniciar)
  begin
   dir_out <= 0;
   reg_out <= 0;
