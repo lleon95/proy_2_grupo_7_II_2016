@@ -104,7 +104,7 @@ begin
            reg_out <= dir_reg;
            w <= esc_reg;
            activa <= 1;
-           final <= 1;
+           final <= 0;
 	 end
    finalizar:begin
 	        dir_out <= 0;
