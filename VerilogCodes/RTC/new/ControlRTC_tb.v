@@ -1,27 +1,3 @@
-`timescale 1ns / 1ps
-
-////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer:
-//
-// Create Date:   20:04:12 09/17/2016
-// Design Name:   ControlRTC
-// Module Name:   C:/Xilinx/VGA/CrontrolRTC_tb.v
-// Project Name:  VGA
-// Target Device:  
-// Tool versions:  
-// Description: 
-//
-// Verilog Test Fixture created by ISE for module: ControlRTC
-//
-// Dependencies:
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-////////////////////////////////////////////////////////////////////////////////
-
 module CrontrolRTC_tb;
 
 	// Inputs
@@ -87,3 +63,4 @@ module CrontrolRTC_tb;
 	end
       
 endmodule
+
