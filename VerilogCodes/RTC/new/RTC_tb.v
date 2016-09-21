@@ -4,9 +4,9 @@
 // Company: 
 // Engineer:
 //
-// Create Date:   17:26:43 09/15/2016
+// Create Date:   20:04:12 09/17/2016
 // Design Name:   ControlRTC
-// Module Name:   C:/Users/User/Documents/proy_2_grupo_7_II_2016/VerilogCodes/RTC/RTC_tb.v
+// Module Name:   C:/Xilinx/VGA/CrontrolRTC_tb.v
 // Project Name:  VGA
 // Target Device:  
 // Tool versions:  
@@ -22,13 +22,12 @@
 // 
 ////////////////////////////////////////////////////////////////////////////////
 
-module RTC_tb;
+module CrontrolRTC_tb;
 
 	// Inputs
 	reg reset;
 	reg clk;
 	reg [3:0] ADDreadreg;
-	reg readmen;
 	reg [7:0] writedata;
 	reg [3:0] selectores;
 	reg [2:0] interruptores;
@@ -39,7 +38,7 @@ module RTC_tb;
 	wire AD;
 	wire WR;
 	wire [7:0] DatAdd;
-	wire [7:0] datmen;
+	wire [7:0] datamemoria;
 
 	// Instantiate the Unit Under Test (UUT)
 	ControlRTC uut (
@@ -51,26 +50,40 @@ module RTC_tb;
 		.WR(WR), 
 		.DatAdd(DatAdd), 
 		.ADDreadreg(ADDreadreg), 
-		.datmen(datmen), 
-		.readmen(readmen), 
+		.datamemoria(datamemoria), 
 		.writedata(writedata), 
 		.selectores(selectores), 
 		.interruptores(interruptores)
 	);
-	initial forever #5 clk =!clk;
+	initial forever #5 clk=~clk;
 	initial begin
 		// Initialize Inputs
 		reset = 1;
 		clk = 0;
 		ADDreadreg = 0;
-		readmen = 0;
 		writedata = 0;
 		selectores = 0;
 		interruptores = 0;
-		#10 reset=0;
+		#10 reset =0;
+		#4800;
+		writedata=10;
+		#3400;
+		$stop;
+		interruptores = 3'b001;
+		#5000;
+		$stop;
+		selectores=4'b0100;
+		#40;
+		selectores=4'b0011;
+		#40;
+		selectores=0;
+		#10;
+		$stop;
+		// Wait 100 ns for global reset to finish
+		#100;
+      
 		// Add stimulus here
 
 	end
       
 endmodule
-
