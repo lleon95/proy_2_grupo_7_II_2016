@@ -40,7 +40,6 @@ module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,Dato2,Dato3,clk,reset,w1,puntero);
 	reg [7:0] Dato2;
 	reg [7:0] Dato3;
 	reg [7:0] memoria1[0:15];
-	reg [7:0] memoria2[0:31];
 
 	always @(posedge clk)
 	begin

@@ -18,19 +18,21 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module inicializacion(reset,iniciar,clk,fin,dir,dato,escritura,true);
+module inicializacion(reset,iniciar,clk,fin,dirout,datoout,escritura,true);
 //inicio input output
 input reset;
 input iniciar;
 input clk;
 input fin;
-output [7:0] dir;
-output [7:0] dato;
+output [7:0] dirout;
+output [7:0] datoout;
 output escritura;
 output true;
 //fin input output
-reg [7:0] dir;
-reg [7:0] dato;
+reg [2:0] dir;
+assign dirout = {2'd0,dir[2],3'd0,dir[1:0]};
+reg [3:0] dato;
+assign datoout = {1'b0,dato[3],1'b0,dato[2:0],2'b0};
 reg escritura;
 reg true;
 //inicio variables y parametros internos
@@ -102,8 +104,8 @@ always @(posedge clk)
 begin
 	if (reset || ~iniciar)
 	begin
-	 dir <= 8'b0;
-    dato <= 8'b0;
+	 dir <= 3'b0;
+    dato <= 4'b0;
     escritura <= 1'b0;
     true <= 1'b0;
 	 state <= inicio;
@@ -113,44 +115,44 @@ begin
 	 state <= next_state;
 	 case(state)
      inicio:begin
-	          dir <= 8'b0;
-             dato <= 8'b0;
+	          dir <= 3'b0;
+             dato <= 4'b0;
              escritura <= 1'b0;
              true <= 1'b0;
             end
      bit_on:begin
-	          dir <= 8'h02;
-             dato <= 8'b00010000;
+	          dir <= 3'h2;
+             dato <= 4'b0100;//8'b00010000
              escritura <= 1'b1;
              true <= 1'b0;
             end
 	  bit_off:begin
-	           dir <= 8'h02;
-              dato <= 1'd0;
+	           dir <= 3'h2;
+              dato <= 4'd0;
               escritura <= 1'b1;
               true <= 1'b0;
 				 end
 	  mascara:begin
-	           dir <= 8'h01;
-              dato <= 8'b01000100;
+	           dir <= 3'h1;
+              dato <= 4'b1001;//8'b01000100
               escritura <= 1'b1;
               true <= 1'b0;
              end
 	  enable:begin
-	           dir <= 8'h00;
-              dato <= 8'b00001000;
+	           dir <= 3'h0;
+              dato <= 4'b0010;//8'b00001000
               escritura <= 1'b1;
               true <= 1'b0;
              end
      init_hora:begin
-	            dir <= 8'b00100011;
-               dato <= 8'b00001100;
+	            dir <= 3'b111;
+               dato <= 8'b0011;//8'b00001100
                escritura <= 1'b1;
                true <= 1'b1;
               end
 	  finalizacion:begin
-	            dir <= 8'b00000000;
-               dato <= 8'b00000000;
+	            dir <= 3'b0;
+               dato <= 4'b0;
                escritura <= 1'b0;
                true <= 1'b1;
               end
