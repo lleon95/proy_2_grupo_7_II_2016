@@ -1,0 +1,161 @@
+`timescale 1ns / 1ps
+
+////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer:
+//
+// Create Date:   16:08:33 09/21/2016
+// Design Name:   control_salida
+// Module Name:   C:/Users/User/Documents/proy_2_grupo_7_II_2016/VerilogCodes/RTC/new/Controlsalida_tiempos_tb.v
+// Project Name:  VGA
+// Target Device:  
+// Tool versions:  
+// Description: 
+//
+// Verilog Test Fixture created by ISE for module: control_salida
+//
+// Dependencies:
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+////////////////////////////////////////////////////////////////////////////////
+
+module Controlsalida_tiempos_tb;
+
+	// Inputs
+	reg reset;
+	reg [7:0] direccion;
+	reg [7:0] dato;
+	reg clk;
+	reg iniciar;
+	reg escribe;
+	reg esc;
+	reg tiempo;
+	// Outputs
+	wire [7:0] data_out;
+	wire CS;
+	wire AD;
+	wire RD;
+	wire WR;
+	wire final;
+	wire escreg;
+
+	integer id;
+	integer reloj;
+	// Instantiate the Unit Under Test (UUT)
+	control_salida uut (
+		.reset(reset), 
+		.direccion(direccion), 
+		.dato(dato), 
+		.clk(clk), 
+		.iniciar(iniciar), 
+		.escribe(escribe), 
+		.data_out(data_out), 
+		.CS(CS), 
+		.AD(AD), 
+		.RD(RD), 
+		.WR(WR), 
+		.final(final), 
+		.esc(esc), 
+		.escreg(escreg)
+	);
+	initial forever #5 clk = ~clk;
+	initial forever #1 tiempo = ~tiempo;
+	initial begin
+		id=$fopen("C:/Users/User/Documents/proy_2_grupo_7_II_2016/Simulations/testbech/resultados/tiemposout.txt","w+");
+		// Initialize Inputs
+		reloj =0;
+		tiempo =0;
+		reset = 1;
+		direccion = 0;
+		dato = 0;
+		clk = 0;
+		iniciar = 0;
+		escribe = 0;
+		esc = 0;
+		#10 reset=0;
+		// Wait 100 ns for global reset to finish
+		#10;
+		//analisis de lectura
+      iniciar=1;
+		escribe=1;
+		direccion=8'hff;
+		dato=0;
+		@(negedge AD);
+		$fwrite(id,"TADS \t : ");
+		reloj=0;
+		@(negedge CS);
+		$fwrite(id,reloj);
+		reloj=0;
+		$fwrite(id,"\n TCS y TWR: \t");
+		@(posedge CS);
+		$fwrite(id,reloj);
+		reloj=0;
+		$fwrite(id,"\n TADT \t : ");
+		@(posedge AD);
+		$fwrite(id,reloj);
+		$fwrite(id,"\n TW \t : ");
+		@(negedge CS);
+		$fwrite(id,reloj);
+		reloj=0;
+		$fwrite(id,"\n TUD0 \t : ");
+		while(data_out !=0)
+		begin end
+		$fwrite(id,reloj);
+		$fwrite(id,"\n TCS2 \t : ");
+		@(posedge CS);
+		$fwrite(id,reloj);
+		reloj=0;
+		$fwrite(id,"\n TUF \t : ");
+		@(posedge final);
+		$fwrite(id,reloj);
+		
+		iniciar=0;
+		reset=1;
+		$fwrite(id,"\n \n segunda toma de tiempos \n lectura \n \n");
+		#10;
+		iniciar=1;
+		escribe=0;
+		reset=0;
+		@(negedge AD);
+		$fwrite(id,"TADS \t : ");
+		reloj=0;
+		@(negedge CS);
+		$fwrite(id,reloj);
+		reloj=0;
+		$fwrite(id,"\n TCS y TWR: \t");
+		@(posedge CS);
+		$fwrite(id,reloj);
+		reloj=0;
+		$fwrite(id,"\n TADT \t : ");
+		@(posedge AD);
+		$fwrite(id,reloj);
+		$fwrite(id,"\n TW \t : ");
+		@(negedge CS);
+		$fwrite(id,reloj);
+		reloj=0;
+		$fwrite(id,"\n TUDZ \t : ");
+		while(data_out ==8'hff)
+		begin end
+		$fwrite(id,reloj);
+		$fwrite(id,"\n TCS2 \t : ");
+		@(posedge CS);
+		$fwrite(id,reloj);
+		reloj=0;
+		$fwrite(id,"\n TUF \t : ");
+		@(posedge final);
+		$fwrite(id,reloj);
+		
+		reloj=0;
+		$fclose(id);
+		$finish;
+		
+		
+	end
+   
+	always @ (posedge tiempo or negedge tiempo)
+		reloj=reloj+1;
+endmodule
+
