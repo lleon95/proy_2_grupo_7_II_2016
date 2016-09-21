@@ -23,11 +23,15 @@
 //								7.segundos
 //								8.minutos
 //								9.horas
-//								10.dias
-//								cronometro
-//								11.segundos
-//								12.minutos
-//								13.horas
+//								luis
+//								10.finalizado
+//								11.activado
+//								12.cursor
+//								Status
+//								13.status1
+//								14.status2
+//								15.status3
+//								
 //
 // Revision: 
 // Revision 0.01 - File Created
@@ -71,11 +75,11 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 			puntero2<=0;
 			Dato_out <=0;
 			dir2[0]<=80;
-			dir2[1]<=32;
-			dir2[2]<=33;
-			dir2[3]<=34;
-			dir2[4]<=35;
-			dir2[5]<=36;
+			dir2[1]<=33;
+			dir2[2]<=34;
+			dir2[3]<=35;
+			dir2[4]<=36;
+			dir2[5]<=37;
 			dir2[6]<=38;
 			dir2[7]<=49;
 			dir2[8]<=50;
@@ -83,9 +87,9 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 			dir2[10]<=52;
 			dir2[11]<=65;
 			dir2[12]<=65;
-			dir2[13]<=67;
-			dir2[14]<=0;
-			dir2[15]<=0;
+			dir2[13]<=0;
+			dir2[14]<=1;
+			dir2[15]<=2;
 			cambiospos[0]<=0;
 			cambiospos[1]<=0;
 			cambiospos[2]<=0;
@@ -196,7 +200,7 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 			else 
 			begin
 				Maquina_out<=0;
-				punteroOut=0;
+				punteroOut<=0;
 			end
 		end
 	end
