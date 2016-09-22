@@ -114,6 +114,7 @@ begin
 				 end
 	  end
 	 5'b11010:begin
+				 escreg=0;	
 	          CS <= 1'b1;
 			    AD <= 1'b1;
 			    RD <= 1'b1;
