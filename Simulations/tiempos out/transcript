@@ -1,0 +1,32 @@
+# reading /home/lleon95/altera/13.1/modelsim_ase/linux/../modelsim.ini
+# Loading project SimulacionControlSalida
+# Compile of control_salida_synthesis.v was successful.
+# Compile of Controlsalida_tiempos_tb.v was successful.
+# 2 compiles, 0 failed with no errors. 
+vsim -L /home/lleon95/altera/13.1/modelsim_ase/lib/unisim Controlsalida_tiempos_tb unisim.glbl
+# vsim -L /home/lleon95/altera/13.1/modelsim_ase/lib/unisim Controlsalida_tiempos_tb unisim.glbl 
+# Loading work.Controlsalida_tiempos_tb
+# Loading work.control_salida
+# Loading unisim.FDS
+# Loading unisim.FDR
+# Loading unisim.FDE
+# Loading unisim.LUT2
+# Loading unisim.LUT3
+# Loading unisim.LUT4
+# Loading unisim.IBUF
+# Loading unisim.OBUF
+# Loading unisim.OBUFT
+# Loading unisim.MUXF5
+# Loading unisim.BUFGP
+# Loading unisim.INV
+# Loading unisim.LUT4_D
+# Loading unisim.LUT4_L
+# Loading unisim.LUT2_D
+# Loading unisim.LUT2_L
+# Loading unisim.LUT3_L
+# Loading unisim.glbl
+run -all
+# ** Note: $finish    : /home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/tiempos out/Controlsalida_tiempos_tb.v(153)
+#    Time: 685100 ps  Iteration: 0  Instance: /Controlsalida_tiempos_tb
+# 1
+# Break in Module Controlsalida_tiempos_tb at /home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/tiempos out/Controlsalida_tiempos_tb.v line 153

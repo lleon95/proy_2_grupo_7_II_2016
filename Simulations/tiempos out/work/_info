@@ -1,0 +1,63 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/home/lleon95/altera/13.1/modelsim_ase
+vcontrol_salida
+Z1 !s100 gDCk_S?O[mCh[9GPjO>fZ0
+Z2 IPdLf];ScoYfjXMoD_2gOm2
+Z3 VHbYRb7XoU7i3ieO7B=E1m0
+Z4 d/home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/tiempos out
+Z5 w1474566062
+Z6 8/home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/tiempos out/control_salida_synthesis.v
+Z7 F/home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/tiempos out/control_salida_synthesis.v
+L0 36
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s108 1474566703.432758
+Z10 !s107 /home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/tiempos out/control_salida_synthesis.v|
+Z11 !s90 -reportprogress|300|-work|work|/home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/tiempos out/control_salida_synthesis.v|
+Z12 o-work work -O0
+!i10b 1
+!s85 0
+!s101 -O0
+vControlsalida_tiempos_tb
+!i10b 1
+!s100 bQbMF?YIf^T3J0N0Ue:3h0
+IWCVOI319BhMCQg`cd_zAe2
+Z13 VhNAcYoXc[nhRVl7c9A]`z0
+R4
+w1474566460
+Z14 8/home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/tiempos out/Controlsalida_tiempos_tb.v
+Z15 F/home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/tiempos out/Controlsalida_tiempos_tb.v
+L0 25
+R8
+r1
+!s85 0
+31
+!s108 1474566703.475706
+!s107 /home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/tiempos out/Controlsalida_tiempos_tb.v|
+Z16 !s90 -reportprogress|300|-work|work|/home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/tiempos out/Controlsalida_tiempos_tb.v|
+!s101 -O0
+R12
+Z17 n@controlsalida_tiempos_tb
+vglbl
+Z18 !s100 0`PT@=@RNi4j6PNe_IECD0
+Z19 IOQ1YB9T3WP]dQJO0Cm]ZS1
+Z20 VM[9mS]S:KA1i4VeCMX35[3
+R4
+R5
+R6
+R7
+Z21 L0 1016
+R8
+r1
+31
+R9
+R10
+R11
+R12
+!i10b 1
+!s85 0
+!s101 -O0

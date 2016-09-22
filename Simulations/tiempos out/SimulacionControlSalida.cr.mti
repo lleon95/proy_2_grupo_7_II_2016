@@ -1,0 +1,17 @@
+{/home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/tiempos out/Controlsalida_tiempos_tb.v} {1 {vlog -work work {/home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/tiempos out/Controlsalida_tiempos_tb.v}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module Controlsalida_tiempos_tb
+
+Top level modules:
+	Controlsalida_tiempos_tb
+
+} {} {}} {/home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/tiempos out/control_salida_synthesis.v} {1 {vlog -work work {/home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/tiempos out/control_salida_synthesis.v}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module control_salida
+-- Compiling module glbl
+
+Top level modules:
+	control_salida
+	glbl
+
+} {} {}}

@@ -64,7 +64,7 @@ module Controlsalida_tiempos_tb;
 	initial forever #5 clk = ~clk;
 	initial forever #1 tiempo = ~tiempo;
 	initial begin
-		id=$fopen("/home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/results.txt","w+");
+		id=$fopen("~/GitHub/proy_2_grupo_7_II_2016/Simulations/results.txt","w+");
 		// Initialize Inputs
 		reloj =0;
 		tiempo =0;

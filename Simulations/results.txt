@@ -1,0 +1,18 @@
+TADS 	 :          10
+ TCS y TWR: 	         60
+ TADT 	 :          20
+ TW 	 :         120
+ TUD0 	 :           0
+ TCS2 	 :          60
+ TUF 	 :          20
+ 
+ segunda toma de tiempos 
+ lectura 
+ 
+TADS 	 :          10
+ TCS y TWR: 	         60
+ TADT 	 :          20
+ TW 	 :         120
+ TUDZ 	 :           0
+ TCS2 	 :          60
+ TUF 	 :          20

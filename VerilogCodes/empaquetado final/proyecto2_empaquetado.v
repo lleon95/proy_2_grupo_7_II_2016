@@ -39,7 +39,7 @@ wire [7:0] DatoMem;
 wire flag0,flag1,flag2,flag3;
 //wires de asiganacion
 wire [3:0] selectores;
-wire [2:0] interruptore;
+wire [2:0] interruptores;
 //asignacion
 assign selectores ={flag3,flag2,flag1,flag0};
 assign interruptores = {int1,int2,int3};

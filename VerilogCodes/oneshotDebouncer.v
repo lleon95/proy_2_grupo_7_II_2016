@@ -4,7 +4,7 @@
 	Antirrebote y sincronizador - OneShot
 	
 	Descripcion: 
-	Permite sincronizar y quitar rebote a las señales momentaneas
+	Permite sincronizar y quitar rebote a las seales momentaneas
 	
 	Entradas y salidas:
 	CLK
@@ -17,23 +17,23 @@
 	
 */
 
-module oneshotDebouncer(
+module debouncer(
 
-	input CLK,
-	input SignalIn,
-	output SignalOut,
-	input RESET
+	input Clk,
+	input signalInput,
+	output signalOutput,
+	input Reset
     );
 
 	reg [2:0] contador;
 
-   always @ (posedge CLK)
-      if (RESET == 1)
+   always @ (posedge Clk)
+      if (Reset == 1)
          contador <= 3'b000;
       else
-         contador <= {contador[1:0], SignalIn};
+         contador <= {contador[1:0], signalInput};
 
-   assign SignalOut = contador[0] & contador[1] & !contador[2];
+   assign signalOutput = contador[0] & contador[1] & !contador[2];
 	
 	
 endmodule
