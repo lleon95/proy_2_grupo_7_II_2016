@@ -55,7 +55,7 @@ module PunterosVGA(
 	PointerTable PT2(.PointY(PointerYU),.Value(BCDBuffer[3:0]));
 	
 	// Proceso de actualizacion
-	always @(negedge CLK)
+	always @(posedge CLK)
 	begin
 		if(RESET)
 			begin
