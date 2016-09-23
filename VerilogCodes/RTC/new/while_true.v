@@ -202,7 +202,7 @@ begin
     end
    dia:begin
            dir <= 7'b0010100;//8'b00100100
-			  dir_reg <= 8'b00001100;
+			  dir_reg <= 8'b00000100;
            dato <= 8'b0;
            write <= 1'b1;
            escritura <= 1'b0;
@@ -211,7 +211,7 @@ begin
     end
    mes:begin
            dir <= 7'b0010101;// 8'b00100101
-			  dir_reg <= 8'b00001101;
+			  dir_reg <= 8'b00000101;
            dato <= 8'b0;
            write <= 1'b1;
            escritura <= 1'b0;
@@ -220,7 +220,7 @@ begin
     end
    year:begin
            dir <= 7'b0010110;//8'b00100110
-			  dir_reg <= 8'b00001110;
+			  dir_reg <= 8'b00000110;
            dato <= 8'b0;
            write <= 1'b1;
            escritura <= 1'b0;
@@ -229,7 +229,7 @@ begin
     end
    timer_segundos:begin
            dir <= 7'b0100001;//8'b01000001
-			  dir_reg <= 8'b00001001;
+			  dir_reg <= 8'b00000111;
            dato <= 8'b0;
            write <= 1'b1;
            escritura <= 1'b0;
@@ -238,7 +238,7 @@ begin
     end
    timer_minutos:begin
            dir <= 7'b0100010;//8'b01000010
-			  dir_reg <= 8'b00001010;
+			  dir_reg <= 8'b00001000;
            dato <= 8'b0;
            write <= 1'b1;
            escritura <= 1'b0;
@@ -247,7 +247,7 @@ begin
     end
    timer_horas:begin
            dir <= 7'b0100011;//8'b01000011
-			  dir_reg <= 8'b00001011;
+			  dir_reg <= 8'b00001001;
            dato <= 8'b0;
            write <= 1'b1;
            escritura <= 1'b0;

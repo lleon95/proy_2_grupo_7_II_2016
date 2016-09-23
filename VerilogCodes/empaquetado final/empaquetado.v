@@ -84,7 +84,7 @@ module empaquetado;
 	initial forever #5 clk = !clk;
 	initial begin
 		// Initialize Inputs
-		id=$fopen("/home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/testbech/resultados/pantallazo1.txt","w+");
+		id=$fopen("C:/Users/User/Documents/proy_2_grupo_7_II_2016/Simulations/testbech/resultados/pantallazo1.txt","w+");
 		reset = 1;
 		ADD =0;
 		datoin=0;
@@ -115,7 +115,7 @@ module empaquetado;
 		#10 reset = 0;
 		#8400000;
 		$fclose(id);
-		id=$fopen("/home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/testbech/resultados/pantallazo2.txt","w+");
+		id=$fopen("C:/Users/User/Documents/proy_2_grupo_7_II_2016/Simulations/testbech/resultados/pantallazo2.txt","w+");
 		int1=1;
 		Up=10;
 		#10;
@@ -133,16 +133,15 @@ module empaquetado;
 			if(!CS&&!WR&&!AD&&RD)
 			begin
 				case(DatAdd)
-				8'd32:ADD=4'd1;
-				8'd33:ADD=4'd2;
-				8'd34:ADD=4'd3;
-				8'd35:ADD=4'd4;
-				8'd36:ADD=4'd5;
-				8'd37:ADD=4'd6;
-				8'd38:ADD=4'd7;
-				8'd49:ADD=4'd8;
-				8'd50:ADD=4'd9;
-				8'd51:ADD=4'd10;
+				8'd33:ADD=4'd1;
+				8'd34:ADD=4'd2;
+				8'd35:ADD=4'd3;
+				8'd36:ADD=4'd4;
+				8'd37:ADD=4'd5;
+				8'd38:ADD=4'd6;
+				8'd49:ADD=4'd7;
+				8'd50:ADD=4'd8;
+				8'd51:ADD=4'd9;
 				default: ADD = 0;
 				endcase
 			end
