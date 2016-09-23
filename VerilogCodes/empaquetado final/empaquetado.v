@@ -84,7 +84,8 @@ module empaquetado;
 	initial forever #5 clk = !clk;
 	initial begin
 		// Initialize Inputs
-		id=$fopen("C:/Users/User/Documents/proy_2_grupo_7_II_2016/Simulations/testbech/resultados/pantallazo1.txt","w+");
+		//id=$fopen("C:/Users/User/Documents/proy_2_grupo_7_II_2016/Simulations/testbech/resultados/pantallazo1.txt","w+");
+		id=$fopen("/home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/testbech/resultados/pantallazo1.txt","w+");
 		reset = 1;
 		ADD =0;
 		datoin=0;
@@ -115,7 +116,8 @@ module empaquetado;
 		#10 reset = 0;
 		#8400000;
 		$fclose(id);
-		id=$fopen("C:/Users/User/Documents/proy_2_grupo_7_II_2016/Simulations/testbech/resultados/pantallazo2.txt","w+");
+		id=$fopen("/home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/testbech/resultados/pantallazo2.txt","w+");
+		//id=$fopen("C:/Users/User/Documents/proy_2_grupo_7_II_2016/Simulations/testbech/resultados/pantallazo2.txt","w+");
 		int1=1;
 		Up=10;
 		#10;
