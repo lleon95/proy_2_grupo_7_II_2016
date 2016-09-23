@@ -119,7 +119,7 @@ module empaquetado;
 		id=$fopen("/home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/testbech/resultados/pantallazo2.txt","w+");
 		//id=$fopen("C:/Users/User/Documents/proy_2_grupo_7_II_2016/Simulations/testbech/resultados/pantallazo2.txt","w+");
 		int1=1;
-		Up=10;
+		Up=1;
 		#10;
 		Left=1;
 		#8400000;
