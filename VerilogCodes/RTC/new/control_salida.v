@@ -25,10 +25,55 @@ reg final;
 //inicio variables y parametros internos
 
 reg [4:0] contador;
+reg [2:0] state;
+reg [2:0] nextstate;
+
+//parametros
+parameter inicio=3'b0;
+parameter ADdown=3'b001;
+parameter CSdown=3'b010;
+parameter CSup=3'b011;
+parameter ADup=3'b100;
+parameter esclec=3'b101;
+parameter finalesc=3'b110;
+parameter finalizacion=3'b111;
+
+always@(contador)
+begin
+nextstate=0;
+case(state)
+inicio: 
+	if(contador == 5'b00001) nextstate=ADdown;
+	else nextstate=inicio;
+ADdown: 
+	if(contador == 5'b00010) nextstate=CSdown;
+	else nextstate=ADdown;
+CSdown: 
+	if(contador == 5'b01000) nextstate=CSup;
+	else nextstate=CSdown;
+CSup: 
+	if(contador == 5'b01010) nextstate=ADup;
+	else nextstate=CSup;
+ADup: 
+	if(contador == 5'b10100) nextstate=esclec;
+	else nextstate=ADup;
+esclec: 
+	if(contador == 5'b11010) nextstate=finalesc;
+	else nextstate=esclec;
+finalesc: 
+	if(contador == 5'b11100) nextstate=finalizacion;
+	else nextstate=finalesc;
+finalizacion:
+	nextstate=inicio;
+default:
+	nextstate=inicio;
+endcase
+end
+
 
 always @(posedge clk)
 begin
- if (reset)
+ if (reset || ~iniciar)
  begin
   CS <= 1'b1;
   AD <= 1'b1;
@@ -36,62 +81,52 @@ begin
   WR <= 1'b1;
   final <= 1'b0;
   contador <=0;
+  escreg<=0;
+  state<=inicio;
  end
  else
- begin
-  if (iniciar == 1'b0)
-  begin
-	escreg<=0;
-   CS <= 1'b1;
-   AD <= 1'b1;
-   RD <= 1'b1;
-   WR <= 1'b1;
-   final <= 1'b0;
-   contador <= 0;
-	data_out <= 0;
-  end
-  else
   begin
    contador <= contador + 1;
-	case(contador)
-	 5'b00001:begin
+	state<=nextstate;
+	case(state)
+	inicio:begin
 	          CS <= 1'b1;
-			    AD <= 1'b0;
+			    AD <= 1'b1;
 			    RD <= 1'b1;
 			    WR <= 1'b1;
 			    final <= 1'b0;
 				 escreg<=0;
 				 data_out<= direccion;
 	  end
-	 5'b00010:begin
+	 ADdown:begin
+	          CS <= 1'b1;
+			    AD <= 1'b0;
+			    RD <= 1'b1;
+			    WR <= 1'b1;
+			    final <= 1'b0;
+	  end
+	 CSdown:begin
 	          CS <= 1'b0;
 			    AD <= 1'b0;
 			    RD <= 1'b1;
 			    WR <= 1'b0;
 			    final <= 1'b0;
 	  end
-	 5'b01000:begin
+	 CSup:begin
 	          CS <= 1'b1;
 			    AD <= 1'b0;
 			    RD <= 1'b1;
 			    WR <= 1'b1;
 			    final <= 1'b0;
 	  end
-	 5'b01010:begin
+	 ADup:begin
 	          CS <= 1'b1;
 			    AD <= 1'b1;
 			    RD <= 1'b1;
 			    WR <= 1'b1;
 			    final <= 1'b0;
 	  end
-	 5'b10011:begin
-	          CS <= 1'b1;
-			    AD <= 1'b1;
-			    RD <= 1'b1;
-			    WR <= 1'b1;
-			    final <= 1'b0;		 
-	  end
-	 5'b10100:begin
+	 esclec:begin
 	          if (escribe)
 				 begin
 	           CS <= 1'b0;
@@ -113,7 +148,7 @@ begin
 				  data_out <= 8'bz;
 				 end
 	  end
-	 5'b11010:begin
+	 finalesc:begin
 				 escreg<=0;	
 	          CS <= 1'b1;
 			    AD <= 1'b1;
@@ -121,7 +156,7 @@ begin
 			    WR <= 1'b1;
 		       final <= 1'b0;
 	  end
-	 5'b11100:begin
+	 finalizacion:begin
 	          CS <= 1'b1;
 			    AD <= 1'b1;
 			    RD <= 1'b1;
@@ -129,11 +164,9 @@ begin
 		       final <= 1'b1;
 				 contador <= 0;
 	  end
-	 default:begin
-	  end
+	 default:state<=inicio;
 	endcase
-  end
- end
+	end
 end
 
 endmodule
