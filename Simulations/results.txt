@@ -1,10 +1,10 @@
-TADS 	 :          10
- TCS y TWR: 	         60
- TADT 	 :          20
- TW 	 :         120
- TUD0 	 :           0
- TCS2 	 :          60
- TUF 	 :          20
+TADS 	 :          10        'Tiempo Caida AD a CS
+ TCS y TWR: 	         60   'Tiempo CS apagado
+ TADT 	 :          20	      'Tiempo AD en apagarse despues de CS
+ TW 	 :         120	      'Tiempo CS y WR encendido
+ TUD0 	 :           0        'Transicion direccion a dato
+ TCS2 	 :          60        'Tiempo CS apagado
+ TUF 	 :          20        'Tiempo para que termine el ciclo
  
  segunda toma de tiempos 
  lectura 
@@ -13,6 +13,6 @@ TADS 	 :          10
  TCS y TWR: 	         60
  TADT 	 :          20
  TW 	 :         120
- TUDZ 	 :           0
+ TUDZ 	 :           0        'Tiempo HighZ
  TCS2 	 :          60
  TUF 	 :          20

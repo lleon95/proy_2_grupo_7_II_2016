@@ -1,32 +1,70 @@
 # reading /home/lleon95/altera/13.1/modelsim_ase/linux/../modelsim.ini
 # Loading project SimulacionControlSalida
-# Compile of control_salida_synthesis.v was successful.
-# Compile of Controlsalida_tiempos_tb.v was successful.
+# Compile of empaquetado.v was successful.
+# Compile of proyecto2_empaquetado_synthesis.v was successful.
 # 2 compiles, 0 failed with no errors. 
-vsim -L /home/lleon95/altera/13.1/modelsim_ase/lib/unisim Controlsalida_tiempos_tb unisim.glbl
-# vsim -L /home/lleon95/altera/13.1/modelsim_ase/lib/unisim Controlsalida_tiempos_tb unisim.glbl 
-# Loading work.Controlsalida_tiempos_tb
-# Loading work.control_salida
-# Loading unisim.FDS
+vsim -L /home/lleon95/altera/13.1/modelsim_ase/lib/unisim empaquetado unisim.glbl
+# vsim -L /home/lleon95/altera/13.1/modelsim_ase/lib/unisim empaquetado unisim.glbl 
+# Loading work.empaquetado
+# Loading work.proyecto2_empaquetado
+# Loading unisim.GND
+# Loading unisim.VCC
 # Loading unisim.FDR
+# Loading unisim.FDS
 # Loading unisim.FDE
-# Loading unisim.LUT2
+# Loading unisim.FDRE
+# Loading unisim.LUT5
+# Loading unisim.LUT6
+# Loading unisim.MUXF7
+# Loading unisim.MUXF8
+# Loading unisim.FD
 # Loading unisim.LUT3
+# Loading unisim.XORCY
 # Loading unisim.LUT4
+# Loading unisim.MUXCY
+# Loading unisim.LUT2
+# Loading unisim.DSP48E1
+# Loading unisim.FD_1
 # Loading unisim.IBUF
 # Loading unisim.OBUF
-# Loading unisim.OBUFT
-# Loading unisim.MUXF5
+# Loading unisim.LUT1
 # Loading unisim.BUFGP
 # Loading unisim.INV
-# Loading unisim.LUT4_D
-# Loading unisim.LUT4_L
-# Loading unisim.LUT2_D
-# Loading unisim.LUT2_L
-# Loading unisim.LUT3_L
+# Loading unisim.IOBUF
+# Loading unisim.RAMB36E1
 # Loading unisim.glbl
+# Loading unisim.RB36_INTERNAL_VLOG
+# ** Warning: Design size of 29 instances exceeds ModelSim ALTERA recommended capacity.
+# This may because you are loading cell libraries which are not recommended with
+# the ModelSim Altera version. Expect performance to be adversely affected.
+add wave -position insertpoint  \
+sim:/empaquetado/reset \
+sim:/empaquetado/clk \
+sim:/empaquetado/Up \
+sim:/empaquetado/Down \
+sim:/empaquetado/Left \
+sim:/empaquetado/Rig \
+sim:/empaquetado/int1 \
+sim:/empaquetado/int2 \
+sim:/empaquetado/int3 \
+sim:/empaquetado/RD \
+sim:/empaquetado/CS \
+sim:/empaquetado/AD \
+sim:/empaquetado/WR \
+sim:/empaquetado/R \
+sim:/empaquetado/G \
+sim:/empaquetado/B \
+sim:/empaquetado/HSync \
+sim:/empaquetado/VSync \
+sim:/empaquetado/PosX \
+sim:/empaquetado/PosY \
+sim:/empaquetado/DatAdd \
+sim:/empaquetado/datoin \
+sim:/empaquetado/memoria \
+sim:/empaquetado/ADD \
+sim:/empaquetado/id
 run -all
-# ** Note: $finish    : /home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/tiempos out/Controlsalida_tiempos_tb.v(153)
-#    Time: 685100 ps  Iteration: 0  Instance: /Controlsalida_tiempos_tb
+# ** Note: $finish    : /home/lleon95/GitHub/proy_2_grupo_7_II_2016/VerilogCodes/empaquetado final/empaquetado.v(127)
+#    Time: 16800020 ns  Iteration: 0  Instance: /empaquetado
 # 1
-# Break in Module Controlsalida_tiempos_tb at /home/lleon95/GitHub/proy_2_grupo_7_II_2016/Simulations/tiempos out/Controlsalida_tiempos_tb.v line 153
+# Break in Module empaquetado at /home/lleon95/GitHub/proy_2_grupo_7_II_2016/VerilogCodes/empaquetado final/empaquetado.v line 127

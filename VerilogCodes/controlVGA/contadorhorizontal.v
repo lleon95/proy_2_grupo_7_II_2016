@@ -11,8 +11,8 @@ module contadorhorizontal(Clk, Reset, cntHorizontal, vflag);
 	//salida
 	output wire [9:0] cntHorizontal;
 	output vflag;
-	reg [10:0] Horizontal;
-	assign cntHorizontal[9:0] = Horizontal[10:1];
+	reg [11:0] Horizontal;
+	assign cntHorizontal[9:0] = Horizontal[11:2];
 	reg vflag;
 	always @ (posedge Clk)
 	begin
@@ -26,7 +26,7 @@ module contadorhorizontal(Clk, Reset, cntHorizontal, vflag);
 		// Contar de forma ascendente
 		begin
 			//final de la cuenta
-			if (Horizontal == 1599) 
+			if (Horizontal == 3199) 
 			begin
 			// Reset counter
 				Horizontal <= 0;
@@ -38,7 +38,7 @@ module contadorhorizontal(Clk, Reset, cntHorizontal, vflag);
 				Horizontal <= Horizontal + 11'd1;
 			end
 			// Controlar bandera
-			if (Horizontal == 1320) vflag <= 1'b1; // Rise flag //1320 desfase
+			if (Horizontal == 2640) vflag <= 1'b1; // Rise flag //1320 desfase
 			else vflag <= 1'b0; 
 		end
 	end
