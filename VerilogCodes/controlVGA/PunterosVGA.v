@@ -80,21 +80,22 @@ module PunterosVGA(
 				MemAddrIN <= contador;
 				
 				case(contador)
-					4'd0 : segReloj <= {PointerYD, PointerYU};
-					4'd1 : minReloj <= {PointerYD, PointerYU};
-					4'd2 : horReloj <= {PointerYD, PointerYU};
-					4'd3 : dayReloj <= {PointerYD, PointerYU};
-					4'd4 : monReloj <= {PointerYD, PointerYU};
-					4'd5 : yearReloj <= {PointerYD, PointerYU};
-					4'd6 : segCrono <= {PointerYD, PointerYU};
-					4'd7 : minCrono <= {PointerYD, PointerYU};
-					4'd8 : horCrono <= {PointerYD, PointerYU};
-					4'd9 : ringCrono <= MemDataIN[0];
-					4'd10 : actCrono <= MemDataIN[0];
-					4'd11 : Cursor <= MemDataIN;
+					4'd1 : segReloj <= {PointerYD, PointerYU};
+					4'd2 : minReloj <= {PointerYD, PointerYU};
+					4'd3 : horReloj <= {PointerYD, PointerYU};
+					4'd4 : dayReloj <= {PointerYD, PointerYU};
+					4'd5 : monReloj <= {PointerYD, PointerYU};
+					4'd6 : yearReloj <= {PointerYD, PointerYU};
+					4'd7 : segCrono <= {PointerYD, PointerYU};
+					4'd8 : minCrono <= {PointerYD, PointerYU};
+					4'd9 : horCrono <= {PointerYD, PointerYU};
+					4'd10 : ringCrono <= MemDataIN[0];
+					4'd11 : actCrono <= MemDataIN[0];
+					4'd12 : Cursor <= MemDataIN;
+					default: begin end
 				endcase
 				// Actualizacion del banco
-				if(contador < 4'd11) contador <= contador + 4'd1;
+				if(contador < 4'd12) contador <= contador + 4'd1;
 				else contador <= 0;
 			end
 	end

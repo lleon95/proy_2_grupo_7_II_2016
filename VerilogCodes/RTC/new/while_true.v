@@ -167,7 +167,7 @@ begin
    command:begin
            dir <= 7'b1111000;//8'b11110000
 			  dir_reg <= 8'b0;
-           dato <= 8'b0;
+           dato <= 8'hff;
            write <= 1'b0;
            escritura <= 1'b1;
            lectura <= 1'b0;

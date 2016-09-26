@@ -146,7 +146,7 @@ begin
              end
      init_hora:begin
 	            dir <= 3'b111;
-               dato <= 8'b0011;//8'b00001100
+               dato <= 4'b0011;//8'b00001100
                escritura <= 1'b1;
                true <= 1'b1;
               end
