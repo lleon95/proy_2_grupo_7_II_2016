@@ -59,19 +59,19 @@ module ControlRTC(reset,clk,RD,CS,AD,WR,DatAdd,ADDreadreg,datamemoria/*,writedat
 	// START LLEON
 		reg [7:0] writedata, writeRTC;
 		wire [7:0] readdata;
-		reg writeMEM;
+		//reg writeMEM;
 		wire escreg;
-		assign DatAdd = writeMEM ? 8'bzz : writeRTC;
+		assign DatAdd = escreg ? 8'bzz : writeRTC;
 		
 		always @(posedge clk)
       if (reset) begin
          writedata  <= 1'b0;
          writeRTC <= 1'b0;
-         writeMEM <= 1'b0;
+         //writeMEM <= 1'b0;
       end else begin
-			if(!writeMEM) writedata  <= DatAdd;
+			if(escreg) writedata  <= DatAdd;
          writeRTC <= readdata;
-         writeMEM <= escreg;
+         //writeMEM <= escreg;
       end
 	// END LLEON
 	
