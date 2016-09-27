@@ -104,6 +104,7 @@ begin
 			    RD <= 1'b1;
 			    WR <= 1'b1;
 			    final <= 1'b0;
+				 data_out<= direccion;
 	  end
 	 CSdown:begin
 	          CS <= 1'b0;
@@ -111,6 +112,7 @@ begin
 			    RD <= 1'b1;
 			    WR <= 1'b0;
 			    final <= 1'b0;
+				 data_out<= direccion;
 	  end
 	 CSup:begin
 	          CS <= 1'b1;
@@ -118,6 +120,7 @@ begin
 			    RD <= 1'b1;
 			    WR <= 1'b1;
 			    final <= 1'b0;
+				 data_out<= direccion;
 	  end
 	 ADup:begin
 	          CS <= 1'b1;
@@ -125,6 +128,7 @@ begin
 			    RD <= 1'b1;
 			    WR <= 1'b1;
 			    final <= 1'b0;
+				 data_out<= direccion;
 	  end
 	 esclec:begin
 	          if (escribe)
