@@ -145,10 +145,10 @@ begin
               true <= 1'b0;
              end
      init_hora:begin
-	            dir <= 3'b111;
-               dato <= 4'b0011;//8'b00001100
+	            dir <= 3'b110;
+               dato <= 4'b0010;//8'b00001100
                escritura <= 1'b1;
-               true <= 1'b1;
+               true <= 1'b0;
               end
 	  finalizacion:begin
 	            dir <= 3'b0;

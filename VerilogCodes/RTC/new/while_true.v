@@ -165,7 +165,7 @@ begin
            final <= 1'b0;
     end
    command:begin
-           dir <= 7'b1111000;//8'b11110000
+           dir <= 7'b1111001;//8'b11110000
 			  dir_reg <= 8'b0;
            dato <= 8'h00;
            write <= 1'b0;
