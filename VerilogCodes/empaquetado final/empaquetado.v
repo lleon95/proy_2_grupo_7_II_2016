@@ -71,8 +71,6 @@ module empaquetado;
 		.B(B), 
 		.HSync(HSync), 
 		.VSync(VSync), 
-		.PosX(PosX), 
-		.PosY(PosY), 
 		.Up(Up), 
 		.Down(Down), 
 		.Left(Left), 
@@ -156,7 +154,7 @@ module empaquetado;
 				else begin end
 			end
 	end
-	
+	/*
 	always @(PosX)
 	begin
 		//dataIN = memoria[addrOUT];
@@ -171,6 +169,6 @@ module empaquetado;
 		$fwrite(id, "%H",B);
 		$fwrite(id, "\n");
 	end
-   
+   */
 endmodule
 

@@ -69,7 +69,7 @@ module ControlRTC(reset,clk,RD,CS,AD,WR,DatAdd,ADDreadreg,datamemoria/*,writedat
          writeRTC <= 1'b0;
          writeMEM <= 1'b0;
       end else begin
-         writedata  <= DatAdd;
+			if(!writeMEM) writedata  <= DatAdd;
          writeRTC <= readdata;
          writeMEM <= escreg;
       end

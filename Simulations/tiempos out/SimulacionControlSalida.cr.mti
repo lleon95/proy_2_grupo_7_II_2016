@@ -1,1 +1,10 @@
+{/home/lleon95/Documentos/TEC local/ControlVGA_2Digitales/Prueba2/netgen/synthesis/proyecto2_empaquetado_synthesis.v} {1 {vlog -work work {/home/lleon95/Documentos/TEC local/ControlVGA_2Digitales/Prueba2/netgen/synthesis/proyecto2_empaquetado_synthesis.v}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module proyecto2_empaquetado
+-- Compiling module glbl
 
+Top level modules:
+	proyecto2_empaquetado
+	glbl
+
+} {} {}}
