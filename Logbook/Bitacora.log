@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.8.9)  16 SEP 2016 13:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.8.9)  27 SEP 2016 13:12
 entering extended mode
 **./Bitacora.tex
 (Bitacora.tex
@@ -131,6 +131,10 @@ Package: lastpage 2015/03/29 v1.2m Refers to last page's name (HMM; JPG)
 (Bitacora.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
+
+
+LaTeX Warning: Label `fig:tiempos' multiply defined.
+
 )
 \openout1 = `Bitacora.aux'.
 
@@ -148,8 +152,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count94
 \scratchdimen=\dimen114
@@ -628,40 +631,90 @@ Underfull \hbox (badness 10000) in paragraph at lines 465--468
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 469--470
+Underfull \hbox (badness 10000) in paragraph at lines 469--471
 
  []
 
-<Img/tiempos.png, id=97, 586.19pt x 1043.9pt>
+[22] [23 <./Img/errorVGA1.png> <./Img/resultVGA1.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 478--481
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 482--484
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 491--494
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 495--497
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 520--523
+
+ []
+
+[24]
+
+LaTeX Warning: Reference `' on page 25 undefined on input line 524.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 524--525
+
+ []
+
+<Img/tiempos.png, id=108, 586.19pt x 1043.9pt>
 File: Img/tiempos.png Graphic file (type png)
  <use Img/tiempos.png>
-Package pdftex.def Info: Img/tiempos.png used on input line 474.
+Package pdftex.def Info: Img/tiempos.png used on input line 528.
 (pdftex.def)             Requested size: 398.33858pt x 709.36475pt.
 
 
-LaTeX Warning: Float too large for page by 33.41498pt on input line 477.
+LaTeX Warning: Float too large for page by 33.41498pt on input line 531.
 
-[22] [23 <./Img/errorVGA1.png> <./Img/resultVGA1.png (PNG copy)>]
+
+Underfull \hbox (badness 10000) in paragraph at lines 545--547
+
+ []
+
 
 AED: lastpage setting LastPage
-[24] [25 <./Img/tiempos.png>] (Bitacora.aux
+
+Underfull \hbox (badness 10000) in paragraph at lines 555--560
+
+ []
+
+[25] [26 <./Img/tiempos.png>] (Bitacora.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
-) ) 
+)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3141 strings out of 493335
- 44999 string characters out of 3136663
- 120283 words of memory out of 3000000
- 6613 multiletter control sequences out of 15000+200000
+ 3142 strings out of 493335
+ 45001 string characters out of 3136663
+ 120322 words of memory out of 3000000
+ 6614 multiletter control sequences out of 15000+200000
  8605 words of font info for 30 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,11n,43p,781b,384s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb
-><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on Bitacora.pdf (26 pages, 5182058 bytes).
+ 40i,12n,43p,781b,384s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+Output written on Bitacora.pdf (27 pages, 5184374 bytes).
 PDF statistics:
- 123 PDF objects out of 1000 (max. 8388607)
+ 126 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  111 words of extra memory for PDF output out of 10000 (max. 10000000)
 

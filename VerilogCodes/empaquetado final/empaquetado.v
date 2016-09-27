@@ -45,8 +45,6 @@ module empaquetado;
 	wire [3:0] B;
 	wire HSync;
 	wire VSync;
-	wire [9:0] PosX;
-	wire [9:0] PosY;
 
 	// Bidirs
 	wire [7:0] DatAdd;
