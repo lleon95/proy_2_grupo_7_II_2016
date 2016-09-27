@@ -38,7 +38,7 @@ parameter esclec=3'b101;
 parameter finalesc=3'b110;
 parameter finalizacion=3'b111;
 
-always@(contador)
+always@*
 begin
 nextstate=0;
 case(state)
@@ -86,7 +86,7 @@ begin
  end
  else
   begin
-   contador <= contador + 1;
+   contador <= contador + 5'd1;
 	state<=nextstate;
 	case(state)
 	inicio:begin
@@ -145,7 +145,7 @@ begin
 			     WR <= 1'b1;
 			     final <= 1'b0;
 				  escreg<=esc;
-				  data_out <= 8'bz;
+				  data_out <= 8'b0;
 				 end
 	  end
 	 finalesc:begin

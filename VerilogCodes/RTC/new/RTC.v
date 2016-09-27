@@ -1,10 +1,17 @@
-module ControlRTC(reset,clk,RD,CS,AD,WR,DatAdd,ADDreadreg,datamemoria,writedata,selectores, interruptores);
-	input [7:0] writedata;
+module ControlRTC(reset,clk,RD,CS,AD,WR,DatAdd,ADDreadreg,datamemoria/*,writedata*/,selectores, interruptores);
+	
 	input reset,clk;
 	input [3:0] ADDreadreg;
 	input [3:0] selectores;
 	input [2:0] interruptores;
-	output[7:0]  DatAdd;
+	
+	// START LLEON 
+	
+		//input [7:0] writedata;
+		//output[7:0]  DatAdd;
+		inout [7:0] DatAdd;
+	
+	// END LLEON
 	output RD,CS,AD,WR;
 	output[7:0] datamemoria;
 	//wire [7:0] data_out;
@@ -44,11 +51,30 @@ module ControlRTC(reset,clk,RD,CS,AD,WR,DatAdd,ADDreadreg,datamemoria,writedata,
 	//escritura
 	wire signalesc;
 	//escritura en registro
-	wire regesc,escreg,escriturareg;
+	wire regesc,escriturareg;
 	//puntero
 	wire [3:0] puntero;
 	//salida de datos
-	//assign DatAdd=(escreg)?8'bz:data_out;
+	
+	// START LLEON
+		reg [7:0] writedata, writeRTC;
+		wire [7:0] readdata;
+		reg writeMEM;
+		wire escreg;
+		assign DatAdd = writeMEM ? 8'bzz : writeRTC;
+		
+		always @(posedge clk)
+      if (reset) begin
+         writedata  <= 1'b0;
+         writeRTC <= 1'b0;
+         writeMEM <= 1'b0;
+      end else begin
+         writedata  <= DatAdd;
+         writeRTC <= readdata;
+         writeMEM <= escreg;
+      end
+	// END LLEON
+	
 	or2 Compor1(.dato1(activaoutesc),.dato2(activaoutlec),.salida(activainout));
 	or2 Compor2(.dato1(finesc),.dato2(finlec),.salida(fininwt));
 	or3 Compor3(.dato1(activawtesc),.dato2(activaintesc),.dato3(activausesc),.salida(activainesc));
@@ -61,7 +87,7 @@ module ControlRTC(reset,clk,RD,CS,AD,WR,DatAdd,ADDreadreg,datamemoria,writedata,
 	while_true WT(.reset(reset),.clk(clk),.iniciar(inwt),.fin(fininwt),.dirout(ADDwt),.dir_reg(ADDregwt),.dato(DATwt),.escritura(activawtesc),.write(regesc),.lectura(activawtlec),.final(finwt));
 	escritura write(.reset(reset),.clk(clk),.dir(ADDinesc),.dato(DATinesc),.iniciar(activainesc),.fin(finout),.data_out(DATinout),.dir_out(ADDoutesc),.escribe(signalesc),.final(finesc),.activa(activaoutesc));
 	lectura read(.reset(reset),.clk(clk),.dir(ADDwt),.dir_reg(ADDregwt),.esc_reg(regesc),.iniciar(activawtlec),.fin(finout),.final(finlec),.activa(activaoutlec),.w(escriturareg),.reg_out(ADDreglect),.dir_out(ADDoutlec));
-	control_salida Cront_out(.reset(reset),.direccion(ADDinout),.dato(DATinout),.clk(clk),.iniciar(activainout),.escribe(signalesc),.data_out(DatAdd),.CS(CS),.AD(AD),.RD(RD),.WR(WR),.final(finout),.esc(escriturareg),.escreg(escreg));
+	control_salida Cront_out(.reset(reset),.direccion(ADDinout),.dato(DATinout),.clk(clk),.iniciar(activainout),.escribe(signalesc),.data_out(readdata),.CS(CS),.AD(AD),.RD(RD),.WR(WR),.final(finout),.esc(escriturareg),.escreg(escreg));
 	memoria_DMULC memoria(.ADD1(ADDreglect),.ADD2(ADDreadreg),.ADD3(ADDregurs),.DAT1(writedata),.Dato2(datamemoria),.Dato3(DATmen),.clk(clk),.reset(reset),.w1(escreg),.puntero(puntero));
 
 endmodule

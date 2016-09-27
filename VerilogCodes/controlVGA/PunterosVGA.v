@@ -33,8 +33,8 @@ module PunterosVGA(
 	/*
 		  Banco de registros temporales
 	*/
-	
-	reg [19:0] segReloj, minReloj, horReloj, dayReloj, monReloj, yearReloj, segCrono, minCrono, horCrono; // 2 Bit CS, 10 Bit D, 10 Bit U
+	//19 -4: 15
+	reg [15:0] segReloj, minReloj, horReloj, dayReloj, monReloj, yearReloj, segCrono, minCrono, horCrono; // 2 Bit CS, 10 Bit D, 10 Bit U
 	reg [3:0] contador;
 	reg ringCrono, actCrono;
 	wire [7:0] BCDBuffer;
@@ -80,15 +80,15 @@ module PunterosVGA(
 				MemAddrIN <= contador;
 				
 				case(contador)
-					4'd1 : segReloj <= {PointerYD, PointerYU};
-					4'd2 : minReloj <= {PointerYD, PointerYU};
-					4'd3 : horReloj <= {PointerYD, PointerYU};
-					4'd4 : dayReloj <= {PointerYD, PointerYU};
-					4'd5 : monReloj <= {PointerYD, PointerYU};
-					4'd6 : yearReloj <= {PointerYD, PointerYU};
-					4'd7 : segCrono <= {PointerYD, PointerYU};
-					4'd8 : minCrono <= {PointerYD, PointerYU};
-					4'd9 : horCrono <= {PointerYD, PointerYU};
+					4'd1 : segReloj <= {PointerYD[9:2], PointerYU[9:2]};
+					4'd2 : minReloj <= {PointerYD[9:2], PointerYU[9:2]};
+					4'd3 : horReloj <= {PointerYD[9:2], PointerYU[9:2]};
+					4'd4 : dayReloj <= {PointerYD[9:2], PointerYU[9:2]};
+					4'd5 : monReloj <= {PointerYD[9:2], PointerYU[9:2]};
+					4'd6 : yearReloj <= {PointerYD[9:2], PointerYU[9:2]};
+					4'd7 : segCrono <= {PointerYD[9:2], PointerYU[9:2]};
+					4'd8 : minCrono <= {PointerYD[9:2], PointerYU[9:2]};
+					4'd9 : horCrono <= {PointerYD[9:2], PointerYU[9:2]};
 					4'd10 : ringCrono <= MemDataIN[0];
 					4'd11 : actCrono <= MemDataIN[0];
 					4'd12 : Cursor <= MemDataIN;
@@ -165,48 +165,48 @@ module PunterosVGA(
 		if(PosY >= FechaY && PosY <= (FechaY + DigitosHeight))
 		// Para Fechas
 		begin
-			// Cursor es 4
+
 			if(PosX >= DDayX && PosX <= (DDayX + DigitosWidth) && !(Cursor == 4 && PosY >= (FechaY + DigitosHeight - 5)))
 				begin
 				// Poner el puntero
 					ChipSelector <= 2'b01;
 				// Calcular el pixel de puntero
-					Pixel <= (PosX[9:0] - DDayX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - FechaY[9:0] + dayReloj[19:10]);
+					Pixel <= (PosX[9:0] - DDayX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - FechaY[9:0] + (dayReloj[15:8] << 2));
 				end
 			else if(PosX >= UDayX && PosX <= (UDayX + DigitosWidth) && !(Cursor == 4 && PosY >= (FechaY + DigitosHeight - 5)))
 				begin
 				// Poner el puntero
 					ChipSelector <= 2'b01;
 				// Calcular el pixel de puntero
-					Pixel <= (PosX[9:0] - UDayX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - FechaY[9:0] + dayReloj[9:0]);
+					Pixel <= (PosX[9:0] - UDayX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - FechaY[9:0] + (dayReloj[7:0] << 2));
 				end
 			else if(PosX >= DMonthX && PosX <= (DMonthX + DigitosWidth) && !(Cursor == 5 && PosY >= (FechaY + DigitosHeight - 5)))
 				begin
 				// Poner el puntero
 					ChipSelector <= 2'b01;
 				// Calcular el pixel de puntero
-					Pixel <= (PosX[9:0] - DMonthX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - FechaY[9:0] + monReloj[19:10]);
+					Pixel <= (PosX[9:0] - DMonthX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - FechaY[9:0] + (monReloj[15:8] << 2));
 				end
 			else if(PosX >= UMonthX && PosX <= (UMonthX + DigitosWidth) && !(Cursor == 5 && PosY >= (FechaY + DigitosHeight - 5)))
 				begin
 				// Poner el puntero
 					ChipSelector <= 2'b01;
 				// Calcular el pixel de puntero
-					Pixel <= (PosX[9:0] - UMonthX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - FechaY[9:0] + monReloj[9:0]);
+					Pixel <= (PosX[9:0] - UMonthX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - FechaY[9:0] + (monReloj[7:0] << 2));
 				end
 			else if(PosX >= DYearX && PosX <= (DYearX + DigitosWidth) && !(Cursor == 6 && PosY >= (FechaY + DigitosHeight - 5)))
 				begin
 				// Poner el puntero
 					ChipSelector <= 2'b01;
 				// Calcular el pixel de puntero
-					Pixel <= (PosX[9:0] - DYearX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - FechaY[9:0] + yearReloj[19:10]);
+					Pixel <= (PosX[9:0] - DYearX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - FechaY[9:0] + (yearReloj[15:8] << 2));
 				end
 			else if(PosX >= UYearX && PosX <= (UYearX + DigitosWidth) && !(Cursor == 6 && PosY >= (FechaY + DigitosHeight - 5)))
 				begin
 				// Poner el puntero
 					ChipSelector <= 2'b01;
 				// Calcular el pixel de puntero
-					Pixel <= (PosX[9:0] - UYearX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - FechaY[9:0] + yearReloj[9:0]);
+					Pixel <= (PosX[9:0] - UYearX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - FechaY[9:0] + (yearReloj[7:0] << 2));
 				end	
 			// Caso no cursor ni puntero
 			else
@@ -224,84 +224,84 @@ module PunterosVGA(
 					// Poner el puntero
 						ChipSelector <= 2'b01;
 					// Calcular el pixel de puntero
-						Pixel <= (PosX[9:0] - DRHourX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + horReloj[19:10]);
+						Pixel <= (PosX[9:0] - DRHourX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + (horReloj[15:8] << 2));
 					end
 				else if(PosX >= URHourX && PosX <= (URHourX + DigitosWidth) && !(Cursor == 3 && PosY >= (HoraY + DigitosHeight - 5)))
 					begin
 					// Poner el puntero
 						ChipSelector <= 2'b01;
 					// Calcular el pixel de puntero
-						Pixel <= (PosX[9:0] - URHourX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + horReloj[9:0]);
+						Pixel <= (PosX[9:0] - URHourX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + (horReloj[7:0] << 2));
 					end
 				else if(PosX >= DRMinuteX && PosX <= (DRMinuteX + DigitosWidth) && !(Cursor == 2 && PosY >= (HoraY + DigitosHeight - 5)))
 					begin
 					// Poner el puntero
 						ChipSelector <= 2'b01;
 					// Calcular el pixel de puntero
-						Pixel <= (PosX[9:0] - DRMinuteX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + minReloj[19:10]);
+						Pixel <= (PosX[9:0] - DRMinuteX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + (minReloj[15:8] << 2));
 					end
 				else if(PosX >= URMinuteX && PosX <= (URMinuteX + DigitosWidth) && !(Cursor == 2 && PosY >= (HoraY + DigitosHeight - 5)))
 					begin
 					// Poner el puntero
 						ChipSelector <= 2'b01;
 					// Calcular el pixel de puntero
-						Pixel <= (PosX[9:0] - URMinuteX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + minReloj[9:0]);
+						Pixel <= (PosX[9:0] - URMinuteX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + (minReloj[7:0] << 2));
 					end
 				else if(PosX >= DRSecondX && PosX <= (DRSecondX + DigitosWidth) && !(Cursor == 1 && PosY >= (HoraY + DigitosHeight - 5)))
 					begin
 					// Poner el puntero
 						ChipSelector <= 2'b01;
 					// Calcular el pixel de puntero
-						Pixel <= (PosX[9:0] - DRSecondX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + segReloj[19:10]);
+						Pixel <= (PosX[9:0] - DRSecondX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + (segReloj[15:8] << 2));
 					end
 				else if(PosX >= URSecondX && PosX <= (URSecondX + DigitosWidth) && !(Cursor == 1 && PosY >= (HoraY + DigitosHeight - 5)))
 					begin
 					// Poner el puntero
 						ChipSelector <= 2'b01;
 					// Calcular el pixel de puntero
-						Pixel <= (PosX[9:0] - URSecondX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + segReloj[9:0]);
+						Pixel <= (PosX[9:0] - URSecondX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + (segReloj[7:0] << 2));
 					end
 				else if(PosX >= DCHourX && PosX <= (DCHourX + DigitosWidth) && !(Cursor == 9 && PosY >= (HoraY + DigitosHeight - 5)))
 					begin
 					// Poner el puntero
 						ChipSelector <= 2'b01;
 					// Calcular el pixel de puntero
-						Pixel <= (PosX[9:0] - DCHourX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + horCrono[19:10]);
+						Pixel <= (PosX[9:0] - DCHourX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + (horCrono[15:8] << 2));
 					end
 				else if(PosX >= UCHourX && PosX <= (UCHourX + DigitosWidth) && !(Cursor == 9 && PosY >= (HoraY + DigitosHeight - 5)))
 					begin
 					// Poner el puntero
 						ChipSelector <= 2'b01;
 					// Calcular el pixel de puntero
-						Pixel <= (PosX[9:0] - UCHourX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + horCrono[9:0]);
+						Pixel <= (PosX[9:0] - UCHourX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + (horCrono[7:0] << 2));
 					end
 				else if(PosX >= DCMinuteX && PosX <= (DCMinuteX + DigitosWidth) && !(Cursor == 8 && PosY >= (HoraY + DigitosHeight - 5)))
 					begin
 					// Poner el puntero
 						ChipSelector <= 2'b01;
 					// Calcular el pixel de puntero
-						Pixel <= (PosX[9:0] - DCMinuteX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + minCrono[19:10]);
+						Pixel <= (PosX[9:0] - DCMinuteX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + (minCrono[15:8] << 2));
 					end
 				else if(PosX >= UCMinuteX && PosX <= (UCMinuteX + DigitosWidth) && !(Cursor == 8 && PosY >= (HoraY + DigitosHeight - 5)))
 					begin
 					// Poner el puntero
 						ChipSelector <= 2'b01;
 					// Calcular el pixel de puntero
-						Pixel <= (PosX[9:0] - UCMinuteX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + minCrono[9:0]);
+						Pixel <= (PosX[9:0] - UCMinuteX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + (minCrono[7:0] << 2));
 					end
 				else if(PosX >= DCSecondX && PosX <= (DCSecondX + DigitosWidth) && !(Cursor == 7 && PosY >= (HoraY + DigitosHeight - 5)))
 					begin
 					// Poner el puntero
 						ChipSelector <= 2'b01;
 					// Calcular el pixel de puntero
-						Pixel <= (PosX[9:0] - DCSecondX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + segCrono[19:10]);
+						Pixel <= (PosX[9:0] - DCSecondX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + (segCrono[15:8] << 2));
 					end
 				else if(PosX >= UCSecondX && PosX <= (UCSecondX + DigitosWidth) && !(Cursor == 7 && PosY >= (HoraY + DigitosHeight - 5)))
 					begin
 					// Poner el puntero
 						ChipSelector <= 2'b01;
 					// Calcular el pixel de puntero
-						Pixel <= (PosX[9:0] - UCSecondX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + segCrono[9:0]);
+						Pixel <= (PosX[9:0] - UCSecondX[9:0]) + DigitosWidth[18:0] * (PosY[9:0] - HoraY[9:0] + (segCrono[7:0] << 2));
 					end
 				// Caso no cursor ni puntero
 				else

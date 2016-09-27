@@ -129,8 +129,8 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 			begin
 				Maquina_out<=1;
 				//escritura
-				if(selectores[3] && puntero !=0)puntero<=puntero-1;
-				else if(selectores[1] && puntero !=13) puntero <= puntero +1;
+				if(selectores[3] && puntero !=0)puntero<=puntero-4'd1;
+				else if(selectores[1] && puntero !=13) puntero <= puntero +4'd1;
 					else begin end
 				punteroOut<=puntero;
 				case (interruptores)
@@ -167,8 +167,8 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 					default if(puntero>13)puntero<=13;
 						else begin end
 				endcase
-				if(selectores[0])cambiosneg[puntero]<=cambiosneg[puntero]+1;
-				else if(selectores[2]) cambiospos[puntero] <= cambiospos[puntero] +1;
+				if(selectores[0])cambiosneg[puntero]<=cambiosneg[puntero]+8'd1;
+				else if(selectores[2]) cambiospos[puntero] <= cambiospos[puntero] +8'd1;
 					else begin end
 				if(puntero2 == 0) final<=0;
 				else begin end
@@ -184,7 +184,7 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 						begin
 							cambiospos[puntero2]<=0;
 							cambiosneg[puntero2]<=0;
-							puntero2<=puntero2+1;
+							puntero2<=puntero2+4'd1;
 						end
 						else
 						begin

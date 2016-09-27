@@ -43,7 +43,7 @@ wire [2:0] interruptores;
 //asignacion
 assign selectores ={flag3,flag2,flag1,flag0};
 assign interruptores = {int1,int2,int3};
-ControlRTC RTC(.reset(reset),.clk(clk),.RD(RD),.CS(CS),.AD(AD),.WR(WR),.DatAdd(DatAdd),.ADDreadreg(ADDmen),.datamemoria(DatoMem),.writedata(DatAdd),.selectores(selectores), .interruptores(interruptores));
+ControlRTC RTC(.reset(reset),.clk(clk),.RD(RD),.CS(CS),.AD(AD),.WR(WR),.DatAdd(DatAdd),.ADDreadreg(ADDmen),.datamemoria(DatoMem)/*,.writedata(DatAdd)*/,.selectores(selectores), .interruptores(interruptores));
 ControlVGACentral VGA(.CLK(clk),.RESET(reset),.MemDataIN(DatoMem), .MemAddrOut(ADDmen),.R(R),.G(G),.B(B),.HSync(HSync),.VSync(VSync)/*,.PosX(PosX),.PosY(PosY)*/);
 debouncer deb1(.signalInput(Up), .signalOutput(flag2), .Clk(clk), .Reset(reset));
 debouncer deb2(.signalInput(Down), .signalOutput(flag0), .Clk(clk), .Reset(reset));
