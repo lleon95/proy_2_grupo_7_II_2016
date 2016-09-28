@@ -27,9 +27,9 @@ module ControlVGACentral(
 		output [3:0] G,
 		output [3:0] B,
 		output HSync,
-		output VSync /*,
+		output VSync ,
 		output [9:0] PosX, 
-		output [9:0] PosY*/
+		output [9:0] PosY
     );
 
 	
@@ -42,7 +42,7 @@ module ControlVGACentral(
 	SyncCounters SyncMachine(.CLK(CLK),.RESET(RESET),.Blank(BLANK),.HSync(HSync),.VSync(VSync),.PosX(PosX),.PosY(PosY));
 
 	// Vincular Punteros
-	PunterosVGABK Pointers(.MemDataIN(MemDataIN),.PosX(PosX),
+	PunterosVGA Pointers(.MemDataIN(MemDataIN),.PosX(PosX),
 								.PosY(PosY),.MemAddrIN(MemAddrOut),.ROMAddrOut(ROMAddr),
 								.ROMCS(ROMCS),.CLK(CLK),.RESET(RESET));
 								

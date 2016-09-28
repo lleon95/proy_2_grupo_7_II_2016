@@ -54,7 +54,7 @@ module ControlVGA_tb;
 		memoria[3]=3;  //Hora Reloj
 		memoria[4]=4;  // Dia Reloj
 		memoria[5]=3;  // Mes Reloj
-		memoria[6]=15; // Año reloj
+		memoria[6]=15; // Ao reloj
 		memoria[7]=3;  // Sec Crono
 		memoria[8]=50; // Min Cron
 		memoria[9]=3;  // Hora Crono
@@ -65,7 +65,7 @@ module ControlVGA_tb;
 		memoria[14]=0;
 		memoria[15]=0;
 		#10 RESET=0;
-		#8400000 $fclose(id);
+		#16800000 $fclose(id);
 		$stop;
 	end
 	
