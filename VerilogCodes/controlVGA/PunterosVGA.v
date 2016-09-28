@@ -37,7 +37,7 @@ module PunterosVGA(
 	reg [15:0] segReloj, minReloj, horReloj, dayReloj, monReloj, yearReloj, segCrono, minCrono, horCrono; // 2 Bit CS, 10 Bit D, 10 Bit U
 	reg [3:0] contador;
 	reg ringCrono, actCrono;
-	wire [7:0] BCDBuffer;
+	//wire [7:0] BCDBuffer;
 	reg [7:0] Cursor;
 	
 	/*
@@ -45,14 +45,14 @@ module PunterosVGA(
 	*/
 	
 	//	Vincular el convertidor de BCD BCDConverter(number, tens, ones)
-	BCDConverter BCD(MemDataIN[6:0], BCDBuffer[7:4], BCDBuffer[3:0]);
+	//DEBUG! BCDConverter BCD(MemDataIN[6:0], BCDBuffer[7:4], BCDBuffer[3:0]);
 
 	// Cambiar Numeros BCD por Punteros
 	wire [9:0] PointerYD, PointerYU;
 	//reg [3:0] Value;
 	
-	PointerTable PT1(.PointY(PointerYD),.Value(BCDBuffer[7:4]));
-	PointerTable PT2(.PointY(PointerYU),.Value(BCDBuffer[3:0]));
+	PointerTable PT1(.PointY(PointerYD),.Value(MemDataIN[7:4]));
+	PointerTable PT2(.PointY(PointerYU),.Value(MemDataIN[3:0]));
 	
 	// Proceso de actualizacion
 	always @(posedge CLK)
