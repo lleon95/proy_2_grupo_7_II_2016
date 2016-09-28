@@ -29,23 +29,28 @@ output [7:0] datoout;
 output escritura;
 output true;
 //fin input output
-reg [2:0] dir;
-assign dirout = {2'd0,dir[2],3'd0,dir[1:0]};
+reg [7:0] dirout;
+//assign dirout = {2'd0,dir[2],3'd0,dir[1:0]};
 reg [3:0] dato;
 assign datoout = {1'b0,dato[3],1'b0,dato[2:0],2'b0};
 reg escritura;
 reg true;
 //inicio variables y parametros internos
-reg [2:0] state;
-reg [2:0] next_state;
+reg [3:0] state;
+reg [3:0] next_state;
 
-parameter [2:0] inicio = 3'b000;
-parameter [2:0] bit_on = 3'b001;
-parameter [2:0] bit_off = 3'b010;
-parameter [2:0] mascara = 3'b011;
-parameter [2:0] enable = 3'b100;
-parameter [2:0] init_hora = 3'b101;
-parameter [2:0] finalizacion = 3'b110;
+parameter [3:0] inicio = 4'b0000;
+parameter [3:0] bit_on = 4'b0001;
+parameter [3:0] bit_off = 4'b0010;
+parameter [3:0] mascara = 4'b0011;
+parameter [3:0] enable = 4'b0100;
+parameter [3:0] init_segundos = 4'b0101;
+parameter [3:0] init_minutos = 4'b0110;
+parameter [3:0] init_hora = 4'b0111;
+parameter [3:0] init_dias = 4'b1000;
+parameter [3:0] init_mes = 4'b1001;
+parameter [3:0] init_year = 4'b1010;
+parameter [3:0] finalizacion = 4'b1011;
 
 //logica de estado siguiente
 
@@ -83,11 +88,41 @@ begin
 		  else
 		   next_state = enable;
 		end
+ init_segundos:begin
+         if (fin == 1'b1)
+         next_state = init_minutos;
+		  else
+		   next_state = init_segundos;
+		end
+ init_minutos:begin
+         if (fin == 1'b1)
+         next_state = init_hora;
+		  else
+		   next_state = init_minutos;
+		end
  init_hora:begin
+         if (fin == 1'b1)
+         next_state = init_dias;
+		  else
+		   next_state = init_hora;
+		end
+ init_dias:begin
+         if (fin == 1'b1)
+         next_state = init_mes;
+		  else
+		   next_state = init_dias;
+		end
+ init_mes:begin
+         if (fin == 1'b1)
+         next_state = init_year;
+		  else
+		   next_state = init_mes;
+		end
+ init_year:begin
          if (fin == 1'b1)
          next_state = finalizacion;
 		  else
-		   next_state = init_hora;
+		   next_state = init_year;
 		end
  finalizacion:begin
 		   next_state = inicio;
@@ -104,7 +139,7 @@ always @(posedge clk)
 begin
 	if (reset || ~iniciar)
 	begin
-	 dir <= 3'b0;
+	 dirout <= 8'b0;
     dato <= 4'b0;
     escritura <= 1'b0;
     true <= 1'b0;
@@ -115,43 +150,73 @@ begin
 	 state <= next_state;
 	 case(state)
      inicio:begin
-	          dir <= 3'b0;
+	          dirout <= 8'b0;
              dato <= 4'b0;
              escritura <= 1'b0;
              true <= 1'b0;
             end
      bit_on:begin
-	          dir <= 3'h2;
+	          dirout <= 8'h2;
              dato <= 4'b0100;//8'b00010000
              escritura <= 1'b1;
              true <= 1'b0;
             end
 	  bit_off:begin
-	           dir <= 3'h2;
+	           dirout <= 8'h2;
               dato <= 4'd0;
               escritura <= 1'b1;
               true <= 1'b0;
 				 end
 	  mascara:begin
-	           dir <= 3'h1;
+	           dirout <= 8'h1;
               dato <= 4'b1001;//8'b01000100
               escritura <= 1'b1;
               true <= 1'b0;
              end
 	  enable:begin
-	           dir <= 3'h0;
+	           dirout <= 8'h0;
               dato <= 4'b0010;//8'b00001000
               escritura <= 1'b1;
               true <= 1'b0;
              end
-     init_hora:begin
-	            dir <= 3'b110;
+	  init_segundos:begin
+	            dirout <= 8'h21;
+               dato <= 4'b0000;//8'b00001100
+               escritura <= 1'b1;
+               true <= 1'b0;
+              end
+     init_minutos:begin
+	            dirout <= 8'h22;
+               dato <= 4'b0000;//8'b00001100
+               escritura <= 1'b1;
+               true <= 1'b0;
+              end
+	  init_hora:begin
+	            dirout <= 8'h23;
                dato <= 4'b0010;//8'b00001100
                escritura <= 1'b1;
                true <= 1'b0;
               end
+	  init_dias:begin
+	            dirout <= 8'h24;
+               dato <= 4'b0000;//8'b00001100
+               escritura <= 1'b1;
+               true <= 1'b0;
+              end
+	  init_mes:begin
+	            dirout <= 8'h25;
+               dato <= 4'b0000;//8'b00001100
+               escritura <= 1'b1;
+               true <= 1'b0;
+              end
+	  init_year:begin
+	            dirout <= 8'h26;
+               dato <= 4'b0000;//8'b00001100
+               escritura <= 1'b1;
+               true <= 1'b0;
+              end
 	  finalizacion:begin
-	            dir <= 3'b0;
+	            dirout <= 8'b0;
                dato <= 4'b0;
                escritura <= 1'b0;
                true <= 1'b1;
