@@ -113,8 +113,8 @@ begin
            final <= 1'b0;
 	 end
    clk_transfer:begin
-	        data_out <= 8'hf1;//estaba en f0
-           dir_out <= 8'hf1;//estabaen f0
+	        data_out <= 8'hf0;//estaba en f0
+           dir_out <= 8'hf0;//estaba en f0
            escribe <= 1'b1;
            activa <= 1'b1;
            final <= 1'b0;

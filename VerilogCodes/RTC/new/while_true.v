@@ -165,7 +165,7 @@ begin
            final <= 1'b0;
     end
    command:begin
-           dir <= 7'b1111001;//8'b11110000
+           dir <= 7'b1111000;//8'b11110000
 			  dir_reg <= 8'b0;
            dato <= 8'h00;
            write <= 1'b0;
@@ -228,7 +228,7 @@ begin
            final <= 1'b0;
     end
    timer_segundos:begin
-           dir <= 7'b0011001;//8'b000110001
+           dir <= 7'b0100001;//8'b000110001
 			  dir_reg <= 8'b00000111;
            dato <= 8'b0;
            write <= 1'b1;
@@ -237,7 +237,7 @@ begin
            final <= 1'b0;
     end
    timer_minutos:begin
-           dir <= 7'b0011010;//8'b000110010
+           dir <= 7'b0100010;//8'b000110010
 			  dir_reg <= 8'b00001000;
            dato <= 8'b0;
            write <= 1'b1;
@@ -246,7 +246,7 @@ begin
            final <= 1'b0;
     end
    timer_horas:begin
-           dir <= 7'b0011011;//8'b000110011
+           dir <= 7'b0100011;//8'b000110011
 			  dir_reg <= 8'b00001001;
            dato <= 8'b0;
            write <= 1'b1;
