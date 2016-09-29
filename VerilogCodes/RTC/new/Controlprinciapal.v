@@ -1,6 +1,6 @@
-module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,CrontUs);
+module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,CrontUs,State);
 	input reset,CLK,finint,finwt,finct,usuario;
-	output iniciar,whileT,CrontUs;
+	output iniciar,whileT,CrontUs,State;
 	reg iniciar,whileT,CrontUs;
 	reg [1:0] State;
 	reg [1:0] NextState;

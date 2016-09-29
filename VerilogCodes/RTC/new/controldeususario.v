@@ -154,17 +154,7 @@ module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maqui
 						if(puntero < 9) puntero<=10;
 						else begin end
 					end
-					3'b101:
-					begin
-						if(puntero < 6 || puntero > 9) begin end
-						else puntero<=1;
-					end
-					3'b110:
-					begin
-						if(puntero < 6) puntero<=7;
-						else begin end
-					end
-					default if(puntero>13)puntero<=13;
+					default if(puntero>9)puntero<=1;
 						else begin end
 				endcase
 				if(selectores[0])cambiosneg[puntero]<=cambiosneg[puntero]+8'd1;
