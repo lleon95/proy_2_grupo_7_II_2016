@@ -117,7 +117,6 @@ always @(posedge clk)
 begin
  if (reset || ~interr)
  begin
-  dir1 <= 0;
   dir2 <= 0;
   punteroOut <= 0;
   state<=inicio;

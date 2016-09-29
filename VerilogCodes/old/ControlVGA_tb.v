@@ -38,7 +38,7 @@ module ControlVGA_tb;
 	ControlVGACentral_MemoryPointed uut(.CLK(CLK),.RESET(RESET),.MemAddrOut(addrOUT),.MemDataIN(dataIN),.HSync(HSync),.VSync(VSync),.R(R),.G(G),.B(B),.PosX(PosX),.PosY(PosY));
 	initial forever #5 CLK=~CLK;
 	
-	always @(posedge CLK or negedge CLK)
+	always @(posedge CLK)
 		dataIN <= memoria[addrOUT];
 	
 	initial
@@ -51,16 +51,16 @@ module ControlVGA_tb;
 		memoria[0]=0;
 		memoria[1]=8'h30; // Sec Reloj
 		memoria[2]=8'h15; // Min Rloj
-		memoria[3]=8'h3;  //Hora Reloj
-		memoria[4]=8'h4;  // Dia Reloj
-		memoria[5]=8'h3;  // Mes Reloj
+		memoria[3]=8'h03;  //Hora Reloj
+		memoria[4]=8'h04;  // Dia Reloj
+		memoria[5]=8'h07;  // Mes Reloj
 		memoria[6]=8'h15; // Ao reloj
-		memoria[7]=8'h3;  // Sec Crono
+		memoria[7]=8'h08;  // Sec Crono
 		memoria[8]=8'h50; // Min Cron
-		memoria[9]=8'h3;  // Hora Crono
-		memoria[10]=8'h0;
-		memoria[11]=8'h1;
-		memoria[12]=8'h1;
+		memoria[9]=8'h09;  // Hora Crono
+		memoria[10]=8'h00;
+		memoria[11]=8'h01;
+		memoria[12]=8'h02;
 		memoria[13]=0;
 		memoria[14]=0;
 		memoria[15]=0;

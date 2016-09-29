@@ -1,9 +1,9 @@
-module ControlRTC(reset,clk,RD,CS,AD,WR,DatAdd,ADDreadreg,datamemoria/*,writedata*/,selectores, interruptores,State);
+module ControlRTC(reset,clk,RD,CS,AD,WR,DatAdd,ADDreadreg,datamemoria/*,writedata*/,Up,Down,Left, interruptores,State);
 	output [1:0] State;
 	input reset,clk;
 	input [3:0] ADDreadreg;
-	input [3:0] selectores;
-	input [2:0] interruptores;
+	input Up,Down,Left;
+	input  interruptores;
 	
 	// START LLEON 
 	
@@ -17,7 +17,7 @@ module ControlRTC(reset,clk,RD,CS,AD,WR,DatAdd,ADDreadreg,datamemoria/*,writedat
 	//wire [7:0] data_out;
 	//activacion
 	//control principal
-	wire inwt,inint,inus,solocitudus;
+	wire inwt,inint,inus/*,solocitudus*/;
 	//escritura y lectura
 	wire activawtesc,activawtlec,activaintesc,activausesc,activainesc;
 	//control de salida
@@ -81,8 +81,8 @@ module ControlRTC(reset,clk,RD,CS,AD,WR,DatAdd,ADDreadreg,datamemoria/*,writedat
 	Mux2x7 mux1(.Dato1(ADDoutesc),.Dato2(ADDoutlec),.selector(signalesc),.salida(ADDinout));
 	mux3x7 mux2(.Dato1(ADDwt),.Dato2(ADDin),.Dato3(ADDusr),.selector(inwt),.selector2(inint),.salida(ADDinesc));
 	mux3x7 mux3(.Dato1(DATwt),.Dato2(DATint),.Dato3(DATusr),.selector(inwt),.selector2(inint),.salida(DATinesc));
-	controlprinciapal maquinaprincipal(.reset(reset),.CLK(clk),.finint(finint),.finwt(finwt),.finct(finct),.usuario(solocitudus),.iniciar(inint),.whileT(inwt),.CrontUs(inus),.State(State));
-	controldeususario controldeusuario(.CLK(clk),.reset(reset),.selectores(selectores),.interruptores(interruptores),.fin(finesc),.Maquina_in(inus),.Maquina_out(solocitudus),.ADD(ADDregurs),.ADD2(ADDusr),.Dato_in(DATmen),.Dato_out(DATusr),.escritura(activausesc),.final(finct),.punteroOut(puntero));
+	controlprinciapal maquinaprincipal(.reset(reset),.CLK(clk),.finint(finint),.finwt(finwt),.finct(finct),.usuario(interruptores),.iniciar(inint),.whileT(inwt),.CrontUs(inus),.State(State));
+	controldeususario controldeusuario(.CLK(clk),.reset(reset),.Up(Up),.Down(Down),.Left(Left),.interruptores(interruptores),.fin(finesc),.Maquina_in(inus)/*.Maquina_out(solocitudus)*/,.ADD(ADDregurs),.ADD2(ADDusr),.Dato_in(DATmen),.Dato_out(DATusr),.escritura(activausesc),.final(finct),.punteroOut(puntero));
 	inicializacion	inicia(.reset(reset),.iniciar(inint),.clk(clk),.fin(finesc),.dirout(ADDin),.datoout(DATint),.escritura(activaintesc),.true(finint));
 	while_true WT(.reset(reset),.clk(clk),.iniciar(inwt),.fin(fininwt),.dirout(ADDwt),.dir_reg(ADDregwt),.dato(DATwt),.escritura(activawtesc),.write(regesc),.lectura(activawtlec),.final(finwt));
 	escritura write(.reset(reset),.clk(clk),.dir(ADDinesc),.dato(DATinesc),.iniciar(activainesc),.fin(finout),.data_out(DATinout),.dir_out(ADDoutesc),.escribe(signalesc),.final(finesc),.activa(activaoutesc));

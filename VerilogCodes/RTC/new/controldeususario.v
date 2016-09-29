@@ -38,161 +38,25 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module controldeususario(CLK,reset,selectores,interruptores,fin,Maquina_in,Maquina_out,ADD,ADD2,Dato_in,Dato_out,escritura,final,punteroOut);
-	input CLK,reset;
-	input [3:0]selectores;
-	input [2:0]interruptores;
-	input fin;
+module controldeususario(CLK,reset,Up,Down,Left,interruptores,fin,Maquina_in,ADD,ADD2,Dato_in,Dato_out,escritura,final,punteroOut);
+	input CLK,reset,interruptores,fin;
+	input Up,Down,Left;
 	input Maquina_in;
-	output Maquina_out;
-	output ADD,ADD2;
-	output punteroOut;
-	input [7:0]Dato_in;
-	output Dato_out;
+	output [7:0]ADD2;
+	output [3:0]ADD;
+	input [7:0] Dato_in;
+	output [7:0] Dato_out;
 	output escritura;
 	output final;
-	reg [3:0]punteroOut;
-	reg [7:0] Dato_out;
-	reg Maquina_out,escritura;
-	reg [3:0]ADD;
-	reg [7:0]ADD2;
-	reg final;
-	reg [7:0] cambiospos[15:0];
-	reg [7:0] cambiosneg[15:0];
-	reg [7:0] dir2[15:0];
-	reg [3:0] puntero;
-	reg [3:0] puntero2;
-	always @(posedge CLK)
-	begin
-		if(reset)
-		begin
-			final <=0;
-			ADD<=0;
-			ADD2<=0;
-			Maquina_out<=0;
-			escritura<=0;
-			puntero<=1;
-			puntero2<=1;
-			Dato_out <=0;
-			dir2[0]<=80;
-			dir2[1]<=33;
-			dir2[2]<=34;
-			dir2[3]<=35;
-			dir2[4]<=36;
-			dir2[5]<=37;
-			dir2[6]<=38;
-			dir2[7]<=49;
-			dir2[8]<=50;
-			dir2[9]<=51;
-			dir2[10]<=0;
-			dir2[11]<=0;
-			dir2[12]<=0;
-			dir2[13]<=0;
-			dir2[14]<=0;
-			dir2[15]<=0;
-			cambiospos[0]<=0;
-			cambiospos[1]<=0;
-			cambiospos[2]<=0;
-			cambiospos[3]<=0;
-			cambiospos[4]<=0;
-			cambiospos[5]<=0;
-			cambiospos[6]<=0;
-			cambiospos[7]<=0;
-			cambiospos[8]<=0;
-			cambiospos[9]<=0;
-			cambiospos[10]<=0;
-			cambiospos[11]<=0;
-			cambiospos[12]<=0;
-			cambiospos[13]<=0;
-			cambiospos[14]<=0;
-			cambiospos[15]<=0;
-			cambiosneg[0]<=0;
-			cambiosneg[1]<=0;
-			cambiosneg[2]<=0;
-			cambiosneg[3]<=0;
-			cambiosneg[4]<=0;
-			cambiosneg[5]<=0;
-			cambiosneg[6]<=0;
-			cambiosneg[7]<=0;
-			cambiosneg[8]<=0;
-			cambiosneg[9]<=0;
-			cambiosneg[10]<=0;
-			cambiosneg[11]<=0;
-			cambiosneg[12]<=0;
-			cambiosneg[13]<=0;
-			cambiosneg[14]<=0;
-			cambiosneg[15]<=0;
-		end
-		else
-		begin
-			if(interruptores != 0)
-			begin
-				Maquina_out<=1;
-				//escritura
-				if(selectores[3] && puntero !=0)puntero<=puntero-4'd1;
-				else if(selectores[1] && puntero !=13) puntero <= puntero +4'd1;
-					else begin end
-				punteroOut<=puntero;
-				case (interruptores)
-					3'b001:
-					begin
-						if(puntero > 6) puntero<=1;
-						else begin end
-					end
-					3'b010:
-					begin
-						if(puntero < 6 || puntero > 10) puntero<=7;
-						else begin end
-					end
-					3'b011:
-					begin
-						if(puntero > 9) puntero<=1;
-						else begin end
-					end
-					3'b100:
-					begin
-						if(puntero < 9) puntero<=10;
-						else begin end
-					end
-					default if(puntero>9)puntero<=1;
-						else begin end
-				endcase
-				if(selectores[0])cambiosneg[puntero]<=cambiosneg[puntero]+8'd1;
-				else if(selectores[2]) cambiospos[puntero] <= cambiospos[puntero] +8'd1;
-					else begin end
-				if(puntero2 == 0) final<=0;
-				else begin end
-				if(Maquina_in)
-					if(puntero2 ==10) 
-					begin
-						puntero2<=0;
-						final<=1;
-					end
-					else
-					begin
-						if(fin)
-						begin
-							cambiospos[puntero2]<=0;
-							cambiosneg[puntero2]<=0;
-							puntero2<=puntero2+4'd1;
-						end
-						else
-						begin
-							final<=0;
-							ADD<=puntero2;
-							ADD2<=dir2[puntero2];
-							Dato_out<=Dato_in+cambiospos[puntero2]-cambiosneg[puntero2];
-							escritura<=1;
-						end
-					end
-				else puntero2<=0;
-			end
-			else 
-			begin
-				Maquina_out<=0;
-				punteroOut<=0;
-			end
-		end
-	end
+	output [3:0]punteroOut;
+	
+	wire [3:0] dirmemo;
+	wire [3:0] dircontrolup, dircontoldown;
+	wire [7:0] datoup,datodown;
+	punteros(.interr(interruptore),.derecha(Left),.clk(CLK),.reset(reset),.dir2(dirmemo),.punteroOut(punteroOut));
+	memoria_up(.addr(dirmemo),.up(Up),.addrm(dircontrolup),.erase(erase),.reset(reset),.clk(CLK),.dato_up(datoup));
+	memoria_down(.addr(dirmemo),.addrm(dircontroldown),.down(Down),.erase(erase),.reset(reset),.clk(CLK),.dato_down(datodown));
+	maquina_usuario(.erase(erase),.iniciar(Maquina_in),.fin(fin),.reset(reset),.clk(CLK),.dato(dato_in),.dato_up(datoup),.dato_down(datodown),.addr(ADD),.addr_up(dircontrolup),.final(final),.addr_down(dircontoldown),.dato_out(Dato_out),.escribe(escritura),.dir_out(ADD2));
+
 
 endmodule

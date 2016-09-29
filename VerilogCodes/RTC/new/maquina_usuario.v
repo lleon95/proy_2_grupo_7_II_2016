@@ -18,7 +18,8 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module maquina_usuario(iniciar,fin,reset,clk,dato,dato_up,dato_down,addr,addr_up,final,addr_down,dato_out,escribe,dir_out);
+module maquina_usuario(erase,iniciar,fin,reset,clk,dato,dato_up,dato_down,addr,addr_up,final,addr_down,dato_out,escribe,dir_out);
+output erase;
 input reset;
 input clk;
 input fin;
@@ -33,6 +34,7 @@ output [7:0] dato_out;
 output escribe;
 output [7:0] dir_out;
 output final;
+reg erase;
 reg final;
 reg [3:0] addr;
 reg [3:0] addr_up;
@@ -54,7 +56,6 @@ always @(state or iniciar or contador or fin)
 begin
  next_state = 0;
  case(state)
- begin
   inicio:begin
          if (iniciar == 1'b1)
 			  next_state = suma;
@@ -89,6 +90,7 @@ always @(posedge clk)
 begin
  if (reset || ~iniciar)
  begin
+  erase <=0;
   addr <= 0;
   addr_up <=0;
   addr_down <= 0;
@@ -103,7 +105,6 @@ begin
  begin
   state<=next_state;
   case(state)
-  begin
   inicio:begin
          addr <= 0;
          addr_up <=0;
@@ -120,7 +121,6 @@ begin
          dato_out <= dato - dato_down + dato_up;
          escribe <= 0;
          case(contador)
-			begin
 			 4'd1:dir_out <= 8'd33;
 			 4'd2:dir_out <= 8'd34;
 			 4'd3:dir_out <= 8'd35;
@@ -143,7 +143,6 @@ begin
          dato_out <= dato - dato_down + dato_up;
          escribe <= 1;
          case(contador)
-			begin
 			 4'd1:dir_out <= 8'd33;
 			 4'd2:dir_out <= 8'd34;
 			 4'd3:dir_out <= 8'd35;
@@ -158,13 +157,14 @@ begin
 			endcase  
   end
   cont10:begin
+			contador <= contador + 1;
+			erase<=1;
          addr <= 0;
-         addr_up <=0;
-         addr_down <= 0;
+         addr_up <=contador-1;
+         addr_down <= contador-1;
          dato_out <= 0;
          escribe <= 0;
          dir_out <= 0;
-			contador <= contador + 1;
   end
   finalizar:begin
             addr <= 0;
@@ -176,7 +176,7 @@ begin
 			final <= 1;
   end
   default:begin
-          state = inicio;
+          state <= inicio;
   end
   endcase
  end
