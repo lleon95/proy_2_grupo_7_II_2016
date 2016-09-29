@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.8.9)  27 SEP 2016 13:31
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.8.9)  29 SEP 2016 07:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -679,6 +679,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 561--563
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 571--578
+
+ []
+
+
 AED: lastpage setting LastPage
 [26] (./Bitacora.aux
 LaTeX Info: Redefining \. on input line 6.
@@ -695,7 +700,7 @@ Here is how much of TeX's memory you used:
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on Bitacora.pdf (27 pages, 5518439 bytes).
+Output written on Bitacora.pdf (27 pages, 5518834 bytes).
 PDF statistics:
  128 PDF objects out of 1000 (max. 8388607)
  71 compressed objects within 1 object stream

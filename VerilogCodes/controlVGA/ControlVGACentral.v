@@ -27,9 +27,9 @@ module ControlVGACentral(
 		output [3:0] G,
 		output [3:0] B,
 		output HSync,
-		output VSync ,
+		output VSync/* ,
 		output [9:0] PosX, 
-		output [9:0] PosY
+		output [9:0] PosY*/
     );
 
 	
