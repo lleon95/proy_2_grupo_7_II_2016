@@ -39,6 +39,7 @@ module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,Cro
 			iniciar<=0;
 			whileT<=0;
 			CrontUs<=0;
+			State <= inicializar;
 		end
 		else
 		begin
