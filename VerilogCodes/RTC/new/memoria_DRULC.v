@@ -36,8 +36,8 @@ module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,Dato2,Dato3,clk,reset,w1,puntero);
 	input[3:0] ADD2;
 	input[3:0] ADD3;
 	input[7:0] DAT1;
-	output Dato2,Dato3;
-	reg [7:0] registroSeg;
+	output Dato2,Dato3;/*
+	reg [7:0] registroSeg;*/
 	reg [7:0] Dato2;
 	reg [7:0] Dato3;
 	reg [7:0] memoria1[0:15];
@@ -45,8 +45,8 @@ module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,Dato2,Dato3,clk,reset,w1,puntero);
 	always @(posedge clk)
 	begin
 		if(reset)
-		begin
-			registroSeg <=30;
+		begin/*
+			registroSeg <=30;*/
 			Dato2<=0;
 			Dato3<=0;
 			memoria1[0]<=0;
@@ -74,7 +74,7 @@ module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,Dato2,Dato3,clk,reset,w1,puntero);
 				Dato3<=memoria1[ADD3];
 			end
 		memoria1[12]<={4'b0,puntero};
-		if(memoria1[1] == registroSeg)
+		/*if(memoria1[1] == registroSeg)
 		begin
 			if(registroSeg == 8'd0)
 			begin
@@ -103,6 +103,6 @@ module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,Dato2,Dato3,clk,reset,w1,puntero);
 			     registroSeg<=8'd30;
 			else if(memoria1[1]==8'd30)
 			     registroSeg<=8'b0;
-		end
+		end*/
 		end
 endmodule

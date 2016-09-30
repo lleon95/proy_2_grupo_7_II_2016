@@ -22,7 +22,7 @@ module memoria_up(addr,up,addrm,erase,reset,clk,dato_up);
 input up;
 input reset;
 input erase;
-input addrm;
+input [3:0]addrm;
 input clk;
 input [3:0] addr;
 output [7:0] dato_up;
