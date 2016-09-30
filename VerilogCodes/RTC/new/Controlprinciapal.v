@@ -1,23 +1,27 @@
-module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,CrontUs,State);
+module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,CrontUs/*,State*/);
 	input reset,CLK,finint,finwt,finct,usuario;
-	output iniciar,whileT,CrontUs,State;
+	output iniciar,whileT,CrontUs/*,State*/;
 	reg iniciar,whileT,CrontUs;
-	reg [1:0] State;
-	reg [1:0] NextState;
+	reg [2:0] State;
+	reg [2:0] NextState;
 	//estados
 	
-	parameter [1:0] inicializar = 2'b00;
-	parameter [1:0] Whiletrue = 2'b01;
-	parameter [1:0] solicitud = 2'b10;
-	parameter [1:0] controlusuario = 2'b11;
+	parameter [2:0] inicializar = 3'b000;
+	parameter [2:0] ceros = 3'b001;
+	parameter [2:0] Whiletrue = 3'b010;
+	parameter [2:0] solicitud = 3'b011;
+	parameter [2:0] controlusuario = 3'b100;
 	
 	always@ (finint or finwt or finct or usuario or State)
 	begin
 	NextState =0;
 	case(State)
 	inicializar:
-		if(finint)NextState=Whiletrue;
+		if(finint)NextState=ceros;
 		else NextState=inicializar;
+	ceros:
+		if(finct)NextState=Whiletrue;
+		else NextState=ceros;
 	Whiletrue:
 		if(finwt)NextState=solicitud;
 		else NextState=Whiletrue;
@@ -50,6 +54,12 @@ module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,Cro
 					iniciar<=1;
 					whileT<=0;
 					CrontUs<=0;
+				end
+				ceros:
+				begin
+					CrontUs<=1;
+					iniciar<=0;
+					whileT<=0;
 				end
 				Whiletrue:
 					begin

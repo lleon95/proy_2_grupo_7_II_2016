@@ -175,7 +175,7 @@ begin
              end
 	  enable:begin
 	           dirout <= 8'h0;
-              dato <= 4'b0010;//8'b00001000
+              dato <= 4'b0000;//8'b00001000 descativado con bit3 en cero
               escritura <= 1'b1;
               true <= 1'b0;
              end

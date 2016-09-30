@@ -127,53 +127,53 @@ begin
   case (state)
    inicio:begin
          // dir1 <= 8'd33;
-			 dir2 <= 4'b0001;
-			 punteroOut <= 4'b0001;
+			 dir2 <= 4'b0000;
+			 punteroOut <= 4'b0000;
    end
 	clk_segundos:begin
           //dir1 <= 8'd34;
-			 dir2 <= 4'b0010;
-			 punteroOut <= 4'b0010;
+			 dir2 <= 4'b0001;
+			 punteroOut <= 4'b0001;
    end
 	clk_minutos:begin
           //dir1 <= 8'd35;
-			 dir2 <= 4'b0011;
-			 punteroOut <= 4'b0011;
+			 dir2 <= 4'b0010;
+			 punteroOut <= 4'b0010;
    end
 	clk_horas:begin
           //dir1 <= 8'd36;
-			 dir2 <= 4'b0100;
-			 punteroOut <= 4'b0100;
+			 dir2 <= 4'b0011;
+			 punteroOut <= 4'b0011;
    end
 	dia:begin
           //dir1 <= 8'd37;
-			 dir2 <= 4'b0101;
-			 punteroOut <= 4'b0101;
+			 dir2 <= 4'b0100;
+			 punteroOut <= 4'b0100;
    end
 	mes:begin
           //dir1 <= 8'd38;
-			 dir2 <= 4'd6;
-			 punteroOut <= 4'd6;
+			 dir2 <= 4'd5;
+			 punteroOut <= 4'd5;
    end
 	year:begin
           //dir1 <= 8'd39;
-			 dir2 <= 4'd7;
-			 punteroOut <= 4'd7;
+			 dir2 <= 4'd6;
+			 punteroOut <= 4'd6;
    end
 	timer_segundos:begin
           //dir1 <= 8'h41;
-			 dir2 <= 4'd8;
-			 punteroOut <= 4'd8;
+			 dir2 <= 4'd7;
+			 punteroOut <= 4'd7;
    end
 	timer_minutos:begin
           //dir1 <= 8'h42;
-			 dir2 <= 4'd9;
-			 punteroOut <= 4'd9;
+			 dir2 <= 4'd8;
+			 punteroOut <= 4'd8;
    end
 	timer_horas:begin
           //dir1 <= 8'd43;
-			 dir2 <= 4'd10;
-			 punteroOut <= 4'd10;
+			 dir2 <= 4'd9;
+			 punteroOut <= 4'd9;
    end
 	default:begin
 	       state <= inicio;

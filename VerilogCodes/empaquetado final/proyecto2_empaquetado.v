@@ -18,12 +18,12 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module proyecto2_empaquetado(reset,clk,RD,CS,AD,WR,DatAdd,R,G,B,HSync,VSync,Up,Down,Left,int1,State);
+module proyecto2_empaquetado(reset,clk,RD,CS,AD,WR,DatAdd,R,G,B,HSync,VSync,Up,Down,Left,int1/*,State*/);
 input int1;
 input reset,clk;
 input Up,Down,Left;
 inout[7:0]  DatAdd;
-output [1:0] State;
+//output [1:0] State;
 output RD,CS,AD,WR;
 output [3:0] R;
 output [3:0] G;
@@ -39,9 +39,9 @@ wire [7:0] DatoMem;
 //wire de interuptures
 wire flag0,flag1,flag2;
 //wires de asiganacion
-wire [3:0] selectores;
+//wire [3:0] selectores;
 //asignacion
-ControlRTC RTC(.reset(reset),.clk(clk),.RD(RD),.CS(CS),.AD(AD),.WR(WR),.DatAdd(DatAdd),.ADDreadreg(ADDmen),.datamemoria(DatoMem)/*,.writedata(DatAdd)*/,.Up(flag2),.Down(flag0),.Left(flag1), .interruptores(int1), .State(State));
+ControlRTC RTC(.reset(reset),.clk(clk),.RD(RD),.CS(CS),.AD(AD),.WR(WR),.DatAdd(DatAdd),.ADDreadreg(ADDmen),.datamemoria(DatoMem)/*,.writedata(DatAdd)*/,.Up(flag2),.Down(flag0),.Left(flag1), .interruptores(int1) /*.State(State)*/);
 ControlVGACentral_MemoryPointed VGA(.CLK(clk),.RESET(reset),.MemDataIN(DatoMem), .MemAddrOut(ADDmen),.R(R),.G(G),.B(B),.HSync(HSync),.VSync(VSync)/*,.PosX(PosX),.PosY(PosY)*/);
 debouncer deb1(.signalInput(Up), .signalOutput(flag2), .Clk(clk), .Reset(reset));
 debouncer deb2(.signalInput(Down), .signalOutput(flag0), .Clk(clk), .Reset(reset));

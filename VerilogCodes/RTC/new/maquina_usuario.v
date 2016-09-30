@@ -34,6 +34,7 @@ output [7:0] dato_out;
 output escribe;
 output [7:0] dir_out;
 output final;
+reg [7:0] sumaaux;
 reg erase;
 reg final;
 reg [3:0] addr;
@@ -122,7 +123,23 @@ begin
          addr_up <=contador;
          addr_down <= contador;
 			contadoraux<=contador;
-         dato_out <= dato - dato_down + dato_up;
+         sumaaux <= dato - dato_down + dato_up;
+			/*if(sumaaux[3:0] > 4'd9)
+				dato_out<={sumaaux[7:4]+1,sumaaux[3:0]-9};
+			else
+				dato_out<=sumaaux;*/
+			if(sumaaux[3:0] == 4'd10 && sumaaux[7:4] < 4'd10)
+				begin
+					sumaaux[7:4] <= sumaaux[7:4] + 4'd1;
+					sumaaux[3:0] <= 4'd0;
+				end
+			else if(sumaaux[7:4] == 4'd6 && sumaaux[3:0] == 4'd0)
+				begin
+					sumaaux[7:4] <= 4'd0;
+					sumaaux[3:0] <= 4'd0;
+				end
+			else begin end
+			
          escribe <= 0;
          case(contador)
 			 4'd1:dir_out <= 8'd33;
