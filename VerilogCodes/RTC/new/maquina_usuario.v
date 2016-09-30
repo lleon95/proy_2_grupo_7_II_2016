@@ -117,6 +117,7 @@ begin
          final <= 0;			
   end
   suma:begin
+			erase<=0;
 			  addr <= contador;
          addr_up <=contador;
          addr_down <= contador;
