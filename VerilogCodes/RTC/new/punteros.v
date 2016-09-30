@@ -31,16 +31,16 @@ reg [3:0] punteroOut;
 reg [3:0] state;
 reg [3:0] next_state;
 
-parameter [3:0] inicio = 2'b0000;
-parameter [3:0] clk_segundos = 2'b0001;
-parameter [3:0] clk_minutos = 2'b0010;
-parameter [3:0] clk_horas = 2'b0011;
-parameter [3:0] dia = 2'b0100;
-parameter [3:0] mes = 2'b0101;
-parameter [3:0] year = 2'b0110;
-parameter [3:0] timer_segundos = 2'b0111;
-parameter [3:0] timer_minutos = 2'b1000;
-parameter [3:0] timer_horas = 2'b1001;
+parameter [3:0] inicio = 4'b0000;
+parameter [3:0] clk_segundos = 4'b0001;
+parameter [3:0] clk_minutos = 4'b0010;
+parameter [3:0] clk_horas = 4'b0011;
+parameter [3:0] dia = 4'b0100;
+parameter [3:0] mes = 4'b0101;
+parameter [3:0] year = 4'b0110;
+parameter [3:0] timer_segundos = 4'b0111;
+parameter [3:0] timer_minutos = 4'b1000;
+parameter [3:0] timer_horas = 4'b1001;
 
 always @(state or derecha or interr)
 begin
