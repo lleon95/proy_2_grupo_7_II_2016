@@ -43,6 +43,7 @@ reg [7:0] dato_out;
 reg escribe;
 reg [7:0] dir_out;
 reg [3:0] contador;
+reg [3:0] contadoraux;
 reg [2:0] state;
 reg [2:0] next_state;
 
@@ -98,6 +99,7 @@ begin
   escribe <= 0;
   dir_out <= 0;
   contador <= 4'b0001;
+  contadoraux <=0;
   final<= 0;
   state<=inicio;
  end 
@@ -118,6 +120,7 @@ begin
 			  addr <= contador;
          addr_up <=contador;
          addr_down <= contador;
+			contadoraux<=contador;
          dato_out <= dato - dato_down + dato_up;
          escribe <= 0;
          case(contador)
@@ -160,8 +163,8 @@ begin
 			contador <= contador + 1;
 			erase<=1;
          addr <= 0;
-         addr_up <=contador-1;
-         addr_down <= contador-1;
+         addr_up <=contadoraux;
+         addr_down <= contadoraux;
          dato_out <= 0;
          escribe <= 0;
          dir_out <= 0;
@@ -173,6 +176,8 @@ begin
          dato_out <= 0;
          escribe <= 0;
          dir_out <= 0;
+			contador<=1;
+			contadoraux<=0;
 			final <= 1;
   end
   default:begin
