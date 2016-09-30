@@ -79,7 +79,7 @@ begin
           if (fin == 1'b1)
 			  next_state = clk_minutos;
 			 else
-			  next_state = finalizacion;
+			  next_state = clk_segundos;
    end
   clk_minutos:begin
           if (fin == 1'b1)

@@ -45,7 +45,7 @@ module ControlVGACentral_MemoryPointed(
 	// Vincular Punteros
 	PunterosVGA_MemoryPointed Pointers(.MemDataIN(MemDataIN),.PosX(PosX),
 								.PosY(PosY),.MemAddrIN(MemAddrOut),.CLK(CLK),.RESET(RESET),
-								.OutRGB(RGB));
+								.OutRGB(RGB),.VSync(VSync));
 								
 	
 	//VROMs Memoryinput(.CLK(CLK),.ChipSelector(ROMCS),.Address(ROMAddr),.DataOutput(RGB));
