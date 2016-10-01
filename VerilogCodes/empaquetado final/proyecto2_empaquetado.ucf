@@ -33,7 +33,7 @@ NET "DatAdd[4]" LOC = G13;
 NET "DatAdd[5]" LOC = C17;
 NET "DatAdd[6]" LOC = D18;
 NET "DatAdd[7]" LOC = E18;
-
+NET "irq" LOC = U11;
 
 # PlanAhead Generated IO constraints 
 
@@ -70,3 +70,4 @@ NET "reset" IOSTANDARD = LVCMOS33;
 NET "VSync" IOSTANDARD = LVCMOS33;
 NET "Up" IOSTANDARD = LVCMOS33;
 NET "WR" IOSTANDARD = LVCMOS33;
+NET "irq" IOSTANDARD = LVCMOS33;
