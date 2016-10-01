@@ -48,6 +48,17 @@ reg [3:0] contadoraux;
 reg [2:0] state;
 reg [2:0] next_state;
 
+// START LLEON
+// Topes
+parameter [7:0] topSeconds = 8'h59; 
+parameter [7:0] topMinutes = 8'h59;
+parameter [7:0] topHours = 8'h23;
+parameter [7:0] topMonths = 8'h12;
+parameter [7:0] topDays = 8'h31;
+parameter [7:0] topYears = 8'h99;
+reg [7:0] topCounter;
+// END LLEON
+
 parameter [2:0] inicio = 3'b000;
 parameter [2:0] suma = 3'b001;
 parameter [2:0] out = 3'b010;
@@ -119,13 +130,13 @@ begin
   end
   suma:begin
 			erase<=0;
-			  addr <= contador;
+			addr <= contador;
          addr_up <=contador;
          addr_down <= contador;
 			contadoraux<=contador;
 	
          escribe <= 0;
-         case(contador)
+         /*case(contador)
 			 4'd1:dir_out <= 8'd33;
 			 4'd2:dir_out <= 8'd34;
 			 4'd3:dir_out <= 8'd35;
@@ -137,7 +148,23 @@ begin
 			 4'd9:dir_out <= 8'h42;
 			 4'd10:dir_out <= 8'h43;
 			 default:dir_out <= 0;
+			endcase*/
+			
+			// START LLEON
+			case(contador)
+			 4'd1:topCounter <= topSeconds;
+			 4'd2:topCounter <= topMinutes;
+			 4'd3:topCounter <= topHours;
+			 4'd4:topCounter <= topDays;
+			 4'd5:topCounter <= topMonths;
+			 4'd6:topCounter <= topYears;
+			 4'd7:topCounter <= topSeconds;
+			 4'd8:topCounter <= topMinutes;
+			 4'd9:topCounter <= topHours;
+			 4'd10:topCounter <= 8'h60;
+			 default:topCounter <= 8'h60;
 			endcase
+			// END LLEON
 			
 
   end
@@ -147,33 +174,43 @@ begin
          addr_down <= contador;
          contadoraux<=contador;
          // BEGIN LLEON
+			// Cuando se debe incrementar
 			if(dato_up != 8'd0)
 				begin
-					if(dato[3:0] == 4'd9)
+					if(dato == topCounter)
+						// Reset a cero cuando está en tope
+						dato_out <= 8'h00;
+					else if(dato[3:0] == 4'd9)
 						begin
+							// Cuando no está en tope, pero debe cambiar decena
 							dato_out[3:0] <= 4'd0;
-							if(dato[7:4] == 4'd5)
-								dato_out[7:4] <= 4'd0;
-							else dato_out[7:4] <= dato[7:4] + 4'd1;
+							dato_out[7:4] <= dato[7:4] + 4'd1;
 						end
 					else
 						begin
+							// Caso normal
 							dato_out[3:0] <= dato[3:0] + 4'd1;
 							dato_out[7:4] <= dato[7:4];
 						end
 				end
+				// Cuando se debe decrementar
 			else if(dato_down != 8'd0)
 				begin
 					if(dato[3:0] == 4'd0)
 						begin
+							// Caso decremento decena
 							if(dato[7:4] != 0)
 								begin
 									dato_out[7:4] <= dato[7:4] - 4'd1;
 									dato_out[3:0] <= 4'd9;
 								end
+							else
+							// Caso tope 00
+								dato_out <= topCounter;
 						end
 					else
 						begin
+							// Caso normal
 							dato_out[3:0] <= dato[3:0] - 4'd1;
 							dato_out[7:4] <= dato[7:4];
 						end
@@ -192,10 +229,10 @@ begin
 			 4'd4:dir_out <= 8'd36;
 			 4'd5:dir_out <= 8'd37;
 			 4'd6:dir_out <= 8'd38;
-			 4'd7:dir_out <= 8'd39;
-			 4'd8:dir_out <= 8'h41;
-			 4'd9:dir_out <= 8'h42;
-			 4'd10:dir_out <= 8'h43;
+			 4'd7:dir_out <= 8'd65;
+			 4'd8:dir_out <= 8'd66;
+			 4'd9:dir_out <= 8'd67;
+			 4'd10:dir_out <= 8'h00;
 			 default:dir_out <= 0;
 			endcase  
   end
