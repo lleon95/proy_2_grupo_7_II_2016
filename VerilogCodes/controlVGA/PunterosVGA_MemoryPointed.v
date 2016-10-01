@@ -11,7 +11,8 @@ module PunterosVGA_MemoryPointed(
 		//input [5:0] ROMDataIN,
 		input CLK,
 		input RESET,
-		output reg [5:0] OutRGB
+		output reg [5:0] OutRGB,
+		input VSync
     );
 
 	/*
@@ -46,7 +47,7 @@ module PunterosVGA_MemoryPointed(
 				Cursor <= 0;
 				contador <= 0;
 			end
-		else if(!RESET && PosX == 0 && PosY == 0)
+		else if(!RESET && !VSync)
 			begin
 			// Contador de flujo
 					
