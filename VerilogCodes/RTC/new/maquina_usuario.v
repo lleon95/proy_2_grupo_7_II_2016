@@ -123,23 +123,7 @@ begin
          addr_up <=contador;
          addr_down <= contador;
 			contadoraux<=contador;
-         sumaaux <= dato - dato_down + dato_up;
-			/*if(sumaaux[3:0] > 4'd9)
-				dato_out<={sumaaux[7:4]+1,sumaaux[3:0]-9};
-			else
-				dato_out<=sumaaux;*/
-			if(sumaaux[3:0] == 4'd10 && sumaaux[7:4] < 4'd10)
-				begin
-					sumaaux[7:4] <= sumaaux[7:4] + 4'd1;
-					sumaaux[3:0] <= 4'd0;
-				end
-			else if(sumaaux[7:4] == 4'd6 && sumaaux[3:0] == 4'd0)
-				begin
-					sumaaux[7:4] <= 4'd0;
-					sumaaux[3:0] <= 4'd0;
-				end
-			else begin end
-			
+	
          escribe <= 0;
          case(contador)
 			 4'd1:dir_out <= 8'd33;
@@ -161,8 +145,46 @@ begin
          addr <= contador;
          addr_up <=contador;
          addr_down <= contador;
-         dato_out <= dato - dato_down + dato_up;
-         escribe <= 1;
+         contadoraux<=contador;
+         // BEGIN LLEON
+			if(dato_up != 8'd0)
+				begin
+					if(dato[3:0] == 4'd9)
+						begin
+							dato_out[3:0] <= 4'd0;
+							if(dato[7:4] == 4'd5)
+								dato_out[7:4] <= 4'd0;
+							else dato_out[7:4] <= dato[7:4] + 4'd1;
+						end
+					else
+						begin
+							dato_out[3:0] <= dato[3:0] + 4'd1;
+							dato_out[7:4] <= dato[7:4];
+						end
+				end
+			else if(dato_down != 8'd0)
+				begin
+					if(dato[3:0] == 4'd0)
+						begin
+							if(dato[7:4] != 0)
+								begin
+									dato_out[7:4] <= dato[7:4] - 4'd1;
+									dato_out[3:0] <= 4'd9;
+								end
+						end
+					else
+						begin
+							dato_out[3:0] <= dato[3:0] - 4'd1;
+							dato_out[7:4] <= dato[7:4];
+						end
+				end
+			else 
+				begin 
+					dato_out[3:0] <= dato[3:0];
+					dato_out[7:4] <= dato[7:4];
+				end
+			// END LLEON
+			escribe <= 1;
          case(contador)
 			 4'd1:dir_out <= 8'd33;
 			 4'd2:dir_out <= 8'd34;
