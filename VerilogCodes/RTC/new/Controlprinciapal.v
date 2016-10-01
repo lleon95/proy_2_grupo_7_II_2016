@@ -1,5 +1,5 @@
-module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,CrontUs/*,State*/);
-	input reset,CLK,finint,finwt,finct,usuario;
+module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,CrontUs/*,State*/,actready);
+	input reset,CLK,finint,finwt,finct,usuario,actready;
 	output iniciar,whileT,CrontUs/*,State*/;
 	reg iniciar,whileT,CrontUs;
 	reg [2:0] State;
@@ -9,10 +9,11 @@ module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,Cro
 	parameter [2:0] inicializar = 3'b000;
 	parameter [2:0] ceros = 3'b001;
 	parameter [2:0] Whiletrue = 3'b010;
-	parameter [2:0] solicitud = 3'b011;
-	parameter [2:0] controlusuario = 3'b100;
+	parameter [2:0] estable = 3'b011;
+	parameter [2:0] solicitud = 3'b100;
+	parameter [2:0] controlusuario = 3'b101;
 	
-	always@ (finint or finwt or finct or usuario or State)
+	always@ (finint or finwt or finct or usuario or State or actready)
 	begin
 	NextState =0;
 	case(State)
@@ -23,8 +24,11 @@ module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,Cro
 		if(finct)NextState=Whiletrue;
 		else NextState=ceros;
 	Whiletrue:
-		if(finwt)NextState=solicitud;
+		if(finwt)NextState=estable;
 		else NextState=Whiletrue;
+	estable:
+		if(actready)NextState=solicitud;
+		else NextState=estable;
 	solicitud:
 		if(usuario)NextState=controlusuario;
 		else NextState=Whiletrue;
@@ -66,6 +70,12 @@ module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,Cro
 						CrontUs<=0;
 						iniciar<=0;
 						whileT<=1;
+					end
+				estable:
+					begin
+						CrontUs<=0;
+						iniciar<=0;
+						whileT<=0;
 					end
 				solicitud:
 					begin

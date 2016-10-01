@@ -29,80 +29,155 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,Dato2,Dato3,clk,reset,w1,puntero);
+module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,Dato2,Dato3,clk,reset,w1,puntero,whileT,actready);
 	input[3:0] puntero;
 	input clk,reset,w1;
 	input[3:0] ADD1;
 	input[3:0] ADD2;
 	input[3:0] ADD3;
 	input[7:0] DAT1;
-	output Dato2,Dato3;/*
-	reg [7:0] registroSeg;*/
+	input whileT;
+	output actready;
+	output Dato2,Dato3;
+	
+	reg actready;
 	reg [7:0] Dato2;
 	reg [7:0] Dato3;
-	reg [7:0] memoria1[0:15];
+	reg [7:0] memoriain[0:15];
+	reg [7:0] memoriaout[0:15];
+	reg [3:0] contador;
+	
+	reg [2:0] Status;
+	reg [2:0] Next_State;
+	
+	parameter inicio = 3'b000;
+	parameter whileReq = 3'b001;
+	parameter escritura = 3'b010;
+	parameter actualizacion = 3'b011;
+	parameter cont10=3'b100;
+	parameter estable = 3'b101;
 
+	always @(whileT or Status)
+	begin
+	Next_State =0;
+	case(Status)
+	inicio:
+		 Next_State=whileReq;
+	whileReq:
+	begin
+		if(whileT == 1'b1) Next_State=escritura;
+		else Next_State=whileReq;
+	end
+	escritura:
+	begin
+		if(whileT == 1'b0) Next_State=actualizacion;
+		else Next_State=escritura;
+	end
+	actualizacion:
+		Next_State=cont10;
+	cont10:
+	begin
+		if(contador == 4'd10) Next_State=estable;
+		else Next_State=actualizacion;
+	end
+	estable:
+	begin
+		Next_State=inicio;
+	end
+	default: Next_State =inicio;
+	endcase
+	end
+	
 	always @(posedge clk)
 	begin
 		if(reset)
-		begin/*
-			registroSeg <=30;*/
+		begin
+			Status <=inicio;
+			contador <=4'b0;
 			Dato2<=0;
 			Dato3<=0;
-			memoria1[0]<=0;
-			memoria1[1]<=0;
-			memoria1[2]<=0;
-			memoria1[3]<=0;
-			memoria1[4]<=0;
-			memoria1[5]<=0;
-			memoria1[6]<=0;
-			memoria1[7]<=0;
-			memoria1[8]<=0;
-			memoria1[9]<=0;
-			memoria1[10]<=0;
-			memoria1[11]<=0;
-			memoria1[12]<=0;
-			memoria1[13]<=0;
-			memoria1[14]<=0;
-			memoria1[15]<=0;
+			memoriain[0]<=0;
+			memoriain[1]<=0;
+			memoriain[2]<=0;
+			memoriain[3]<=0;
+			memoriain[4]<=0;
+			memoriain[5]<=0;
+			memoriain[6]<=0;
+			memoriain[7]<=0;
+			memoriain[8]<=0;
+			memoriain[9]<=0;
+			memoriain[10]<=0;
+			memoriain[11]<=0;
+			memoriain[12]<=0;
+			memoriain[13]<=0;
+			memoriain[14]<=0;
+			memoriain[15]<=0;
+			
+			memoriaout[0]<=0;
+			memoriaout[1]<=0;
+			memoriaout[2]<=0;
+			memoriaout[3]<=0;
+			memoriaout[4]<=0;
+			memoriaout[5]<=0;
+			memoriaout[6]<=0;
+			memoriaout[7]<=0;
+			memoriaout[8]<=0;
+			memoriaout[9]<=0;
+			memoriaout[10]<=0;
+			memoriaout[11]<=0;
+			memoriaout[12]<=0;
+			memoriaout[13]<=0;
+			memoriaout[14]<=0;
+			memoriaout[15]<=0;
 		end
 		else
 			begin
-				if(w1) memoria1[ADD1]<=DAT1;
-				else begin end
-				Dato2<=memoria1[ADD2];
-				Dato3<=memoria1[ADD3];
-			end
-		memoria1[12]<={4'b0,puntero};
-		/*if(memoria1[1] == registroSeg)
-		begin
-			if(registroSeg == 8'd0)
+			Status<=Next_State;
+			case(Status)
+			inicio:
 			begin
-			 if(memoria1[2] == 8'd59)
-			 begin
-				memoria1[2]<=8'b0;
-				if(memoria1[3]==8'd23)
-				begin
-				  memoria1[4]<=memoria1[4]+1;
-				  memoria1[3]<=0;
-				end
+				contador <=4'b0;
+				Dato2<=memoriaout[ADD2];
+				Dato3<=memoriaout[ADD3];
+			end
+			whileReq:
+			begin
+				actready<=0;
+				contador <=4'b0;
+				memoriain[ADD1]<=DAT1;
+				Dato2<=memoriaout[ADD2];
+				Dato3<=memoriaout[ADD3];
+			end
+			escritura:
+			begin
+				if(w1)
+					memoriain[ADD1]<=DAT1;
 				else
-				begin
-				  memoria1[3]<=memoria1[3]+1;
-				end
-			 end
-			 else
-			 begin
-				memoria1[2]<=memoria1[2]+1;
-			 end
+					begin end
+				Dato2<=memoriaout[ADD2];
+				Dato3<=memoriaout[ADD3];
 			end
-			else
+			actualizacion:
 			begin
+				memoriaout[contador]<=memoriain[contador];
+				Dato2<=memoriain[ADD2];
+				Dato3<=memoriain[ADD3];
 			end
-			if(memoria1[1]==8'b0)
-			     registroSeg<=8'd30;
-			else if(memoria1[1]==8'd30)
-			     registroSeg<=8'b0;
-		end*/
+			cont10:
+			begin
+				contador<=contador+1;
+				memoriaout[contador]<=memoriain[contador];
+				Dato2<=memoriain[ADD2];
+				Dato3<=memoriain[ADD3];
+			end
+			estable:
+			begin
+				contador<=0;
+				actready <= 1'b1;
+			end
+			default: Next_State =inicio;
+		endcase
+		memoriaout[12]<={4'b0,puntero};
 		end
+	end
 endmodule
