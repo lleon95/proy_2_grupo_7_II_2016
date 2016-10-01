@@ -85,7 +85,7 @@ begin
 			  next_state = out;
   end
   cont10:begin
-         if (contador == 4'd10)
+         if (contador == 4'd9)
 			  next_state = finalizar;
 			 else
 			  next_state = suma;
@@ -167,10 +167,9 @@ begin
 			 4'd4:dir_out <= 8'd36;
 			 4'd5:dir_out <= 8'd37;
 			 4'd6:dir_out <= 8'd38;
-			 4'd7:dir_out <= 8'd39;
-			 4'd8:dir_out <= 8'h41;
-			 4'd9:dir_out <= 8'h42;
-			 4'd10:dir_out <= 8'h43;
+			 4'd7:dir_out <= 8'h41;
+			 4'd8:dir_out <= 8'h42;
+			 4'd9:dir_out <= 8'h43;
 			 default:dir_out <= 0;
 			endcase
 			
@@ -227,10 +226,9 @@ begin
 			 4'd4:dir_out <= 8'd36;
 			 4'd5:dir_out <= 8'd37;
 			 4'd6:dir_out <= 8'd38;
-			 4'd7:dir_out <= 8'd39;
-			 4'd8:dir_out <= 8'h41;
-			 4'd9:dir_out <= 8'h42;
-			 4'd10:dir_out <= 8'h43;
+			 4'd7:dir_out <= 8'h41;
+			 4'd8:dir_out <= 8'h42;
+			 4'd9:dir_out <= 8'h43;
 			 default:dir_out <= 0;
 			endcase  
   end

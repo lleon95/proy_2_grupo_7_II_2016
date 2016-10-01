@@ -100,7 +100,7 @@ module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,Cro
 					whileT<=0;
 					timeract<=0;
 				end
-				controlusuario:
+				timer:
 				begin
 					CrontUs<=1;
 					iniciar<=0;
