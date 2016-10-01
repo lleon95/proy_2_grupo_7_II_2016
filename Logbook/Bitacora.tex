@@ -577,5 +577,45 @@ Esta nueva implementación optimizó de 89MHz que se tenía como reloj máximo a 111
 \\
 Dentro del cambio principal en este sistema de punteros es que se aprovechan los campos de memoria ROM de interfaz para poder identificar los inicios de los punteros para calcular la sustitución de la salida VGA, haciendo selección de memoria.
 
+% Nueva entrada
+\begin{flushright}
+	\begin{large}
+		\textbf{Fecha: 28 de Septiembre}\\[5ex]
+	\end{large}
+\end{flushright}
+
+\noindent \textbf{Integrantes:} todos \\[1ex]
+\textbf{Hora:} 10:00-12:00 am \\[1ex]
+\textbf{Actividad:} \\[2ex]
+Se logro leer los segundos de la RTC, pero los demas datos no se leen. Ademas el bloque de control de usuario no ha funcionado, ya que cuando se activa su respectivo switch de activacion, la lectura de segundos se detiene permanentemente.
+\\
+
+% Nueva entrada
+\begin{flushright}
+	\begin{large}
+		\textbf{Fecha: 29 de Septiembre}\\[5ex]
+	\end{large}
+\end{flushright}
+
+\noindent \textbf{Integrantes:} todos \\[1ex]
+\textbf{Hora:} 7:00 am-4:30 pm \\[1ex]
+\textbf{Actividad:} \\[2ex]
+Se rediseñó el control de usuario, debido a las fallas del anterior, ahora se conforma de una maquina de estados de punteros de memoria, dos registros para incrementar y disminuir los valores del clk , y una maquinas de estados de escritura.
+\\
+
+% Nueva entrada
+\begin{flushright}
+	\begin{large}
+		\textbf{Fecha: 29 de Septiembre}\\[5ex]
+	\end{large}
+\end{flushright}
+
+\noindent \textbf{Integrantes:} todos \\[1ex]
+\textbf{Hora:} 6:00 -10:30 pm \\[1ex]
+\textbf{Actividad:} \\[2ex]
+La escritura y la lectura funcionan, no obstante la programacion del timer no se ha podido realizar. Ademas la pantalla muestra pequeños glitches.
+\\
+
+
 
 \end{document}
