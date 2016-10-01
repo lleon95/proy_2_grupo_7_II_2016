@@ -1,5 +1,6 @@
-module ControlRTC(reset,clk,RD,CS,AD,WR,DatAdd,ADDreadreg,datamemoria/*,writedata*/,Up,Down,Left, interruptores/*,State*/,int2);
+module ControlRTC(reset,clk,RD,CS,AD,WR,DatAdd,ADDreadreg,datamemoria/*,writedata*/,Up,Down,Left, interruptores/*,State*/,int2,irq);
 //	output [1:0] State;
+	input irq;
 	input reset,clk;
 	input [3:0] ADDreadreg;
 	input Up,Down,Left;
@@ -89,6 +90,6 @@ module ControlRTC(reset,clk,RD,CS,AD,WR,DatAdd,ADDreadreg,datamemoria/*,writedat
 	escritura write(.reset(reset),.clk(clk),.dir(ADDinesc),.dato(DATinesc),.iniciar(activainesc),.fin(finout),.data_out(DATinout),.dir_out(ADDoutesc),.escribe(signalesc),.final(finesc),.activa(activaoutesc));
 	lectura read(.reset(reset),.clk(clk),.dir(ADDwt),.dir_reg(ADDregwt),.esc_reg(regesc),.iniciar(activawtlec),.fin(finout),.final(finlec),.activa(activaoutlec),.w(escriturareg),.reg_out(ADDreglect),.dir_out(ADDoutlec));
 	control_salida Cront_out(.reset(reset),.direccion(ADDinout),.dato(DATinout),.clk(clk),.iniciar(activainout),.escribe(signalesc),.data_out(readdata),.CS(CS),.AD(AD),.RD(RD),.WR(WR),.final(finout),.esc(escriturareg),.escreg(escreg));
-	memoria_DMULC memoria(.ADD1(ADDreglect),.ADD2(ADDreadreg),.ADD3(ADDregurs),.DAT1(writedata),.Dato2(datamemoria),.Dato3(DATmen),.clk(clk),.reset(reset),.w1(escreg),.puntero(puntero),.whileT(inwt),.actready(actready));
+	memoria_DMULC memoria(.ADD1(ADDreglect),.ADD2(ADDreadreg),.ADD3(ADDregurs),.DAT1(writedata),.Dato2(datamemoria),.Dato3(DATmen),.clk(clk),.reset(reset),.w1(escreg),.puntero(puntero),.whileT(inwt),.actready(actready),.irq(irq));
 
 endmodule

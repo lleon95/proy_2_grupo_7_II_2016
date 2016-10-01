@@ -29,7 +29,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,Dato2,Dato3,clk,reset,w1,puntero,whileT,actready);
+module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,Dato2,Dato3,clk,reset,w1,puntero,whileT,actready,irq);
 	input[3:0] puntero;
 	input clk,reset,w1;
 	input[3:0] ADD1;
@@ -177,6 +177,8 @@ module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,Dato2,Dato3,clk,reset,w1,puntero,whileT
 			end
 			default: Status <=inicio;
 		endcase
+		memoriaout[10]<={7'b0,~irq};
+		memoriaout[11]<={7'b0,irq};
 		memoriaout[12]<={4'b0,puntero};
 		end
 	end
