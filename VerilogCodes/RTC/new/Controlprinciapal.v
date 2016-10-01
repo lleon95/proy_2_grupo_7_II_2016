@@ -1,7 +1,7 @@
-module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,CrontUs/*,State*/,actready);
+module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,CrontUs/*,State*/,actready,timeract);
 	input reset,CLK,finint,finwt,finct,usuario,actready;
-	output iniciar,whileT,CrontUs/*,State*/;
-	reg iniciar,whileT,CrontUs;
+	output iniciar,whileT,CrontUs/*,State*/,timeract;
+	reg iniciar,whileT,CrontUs,timeract;
 	reg [2:0] State;
 	reg [2:0] NextState;
 	//estados
@@ -12,6 +12,7 @@ module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,Cro
 	parameter [2:0] estable = 3'b011;
 	parameter [2:0] solicitud = 3'b100;
 	parameter [2:0] controlusuario = 3'b101;
+	parameter [2:0] timer = 3'b110;
 	
 	always@ (finint or finwt or finct or usuario or State or actready)
 	begin
@@ -31,10 +32,13 @@ module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,Cro
 		else NextState=estable;
 	solicitud:
 		if(usuario)NextState=controlusuario;
-		else NextState=Whiletrue;
+		else NextState=timer;
 	controlusuario:
-		if(finct)NextState=Whiletrue;
+		if(finct)NextState=timer;
 		else NextState=controlusuario;
+	timer:
+		if(finct)NextState=Whiletrue;
+		else NextState=timer;
 	default:
 		NextState=inicializar;
 	endcase
@@ -47,6 +51,7 @@ module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,Cro
 			iniciar<=0;
 			whileT<=0;
 			CrontUs<=0;
+			timeract<=0;
 			State <= inicializar;
 		end
 		else
@@ -58,36 +63,49 @@ module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,Cro
 					iniciar<=1;
 					whileT<=0;
 					CrontUs<=0;
+					timeract<=0;
 				end
 				ceros:
 				begin
 					CrontUs<=1;
 					iniciar<=0;
 					whileT<=0;
+					timeract<=0;
 				end
 				Whiletrue:
 					begin
 						CrontUs<=0;
 						iniciar<=0;
 						whileT<=1;
+						timeract<=0;
 					end
 				estable:
 					begin
 						CrontUs<=0;
 						iniciar<=0;
 						whileT<=0;
+						timeract<=0;
 					end
 				solicitud:
 					begin
 						CrontUs<=0;
 						iniciar<=0;
 						whileT<=0;
+						timeract<=0;
 					end
 				controlusuario:
 				begin
 					CrontUs<=1;
 					iniciar<=0;
 					whileT<=0;
+					timeract<=0;
+				end
+				controlusuario:
+				begin
+					CrontUs<=1;
+					iniciar<=0;
+					whileT<=0;
+					timeract<=1;
 				end
 				default:
 				begin

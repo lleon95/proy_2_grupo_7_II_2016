@@ -18,8 +18,9 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module maquina_usuario(erase,iniciar,fin,reset,clk,dato,dato_up,dato_down,addr,addr_up,final,addr_down,dato_out,escribe,dir_out);
+module maquina_usuario(erase,iniciar,fin,reset,clk,dato,dato_up,dato_down,addr,addr_up,final,addr_down,dato_out,escribe,dir_out,int2,timer);
 output erase;
+input int2,timer;
 input reset;
 input clk;
 input fin;
@@ -49,20 +50,30 @@ reg [2:0] state;
 reg [2:0] next_state;
 
 parameter [2:0] inicio = 3'b000;
-parameter [2:0] suma = 3'b001;
-parameter [2:0] out = 3'b010;
-parameter [2:0] cont10 = 3'b011;
-parameter [2:0] finalizar = 3'b100;
+parameter [2:0] timerclock = 3'b001;
+parameter [2:0] suma = 3'b010;
+parameter [2:0] out = 3'b011;
+parameter [2:0] cont10 = 3'b100;
+parameter [2:0] timerrun = 3'b101;
+parameter [2:0] timeroff = 3'b110;
+parameter [2:0] finalizar = 3'b111;
 
-always @(state or iniciar or contador or fin)
+always @(state or iniciar or contador or fin or timer)
 begin
  next_state = 0;
  case(state)
   inicio:begin
          if (iniciar == 1'b1)
-			  next_state = suma;
+			  next_state = timerclock;
 			 else
 			  next_state = inicio;
+  end
+  timerclock:
+  begin
+			if (timer == 1'b1)
+			  next_state = timerrun;
+			 else
+			  next_state = suma;
   end
   suma:begin
 			  next_state = out;
@@ -78,6 +89,21 @@ begin
 			  next_state = finalizar;
 			 else
 			  next_state = suma;
+  end
+  timerrun:  
+  begin
+			if (fin == 1'b1)
+			  next_state = timeroff;
+			 else
+			  next_state = timerrun;
+  end
+
+  timeroff:  
+  begin
+			if (fin == 1'b1)
+			  next_state = finalizar;
+			 else
+			  next_state = timeroff;
   end
   finalizar:begin
           next_state = inicio;
@@ -109,6 +135,15 @@ begin
   state<=next_state;
   case(state)
   inicio:begin
+         addr <= 0;
+         addr_up <=0;
+         addr_down <= 0;
+         dato_out <= 0;
+         escribe <= 0;
+         dir_out <= 0;
+         final <= 0;			
+  end
+  timerclock:begin
          addr <= 0;
          addr_up <=0;
          addr_down <= 0;
@@ -208,6 +243,40 @@ begin
          dato_out <= 0;
          escribe <= 0;
          dir_out <= 0;
+  end
+  timerrun:begin
+			if(int2 == 1'b1)
+			begin
+         dir_out <= 8'h0;
+         dato_out <= 8'b00001000;
+			end
+			else
+			begin
+			dir_out <= 8'h0;
+         dato_out <= 8'b0;
+			end
+         addr <= 0;
+         addr_up <=0;
+         addr_down <= 0;
+         escribe <= 1;
+         final <= 0;			
+  end
+  timeroff:begin
+			if(int2 == 1'b1)
+			begin
+         dir_out <= 8'h0;
+         dato_out <= 8'b00001000;
+			end
+			else
+			begin
+			dir_out <= 8'h0;
+         dato_out <= 8'b0;
+			end
+         addr <= 0;
+         addr_up <=0;
+         addr_down <= 0;
+         escribe <= 1;
+         final <= 0;			
   end
   finalizar:begin
             addr <= 0;
