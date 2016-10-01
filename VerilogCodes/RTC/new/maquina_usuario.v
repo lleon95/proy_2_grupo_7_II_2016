@@ -18,9 +18,9 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module maquina_usuario(erase,iniciar,fin,reset,clk,dato,dato_up,dato_down,addr,addr_up,final,addr_down,dato_out,escribe,dir_out,int2,timer);
+module maquina_usuario(erase,iniciar,fin,reset,clk,dato,dato_up,dato_down,addr,addr_up,final,addr_down,dato_out,escribe,dir_out,int2);
 output erase;
-input int2,timer;
+input int2;
 input reset;
 input clk;
 input fin;
@@ -58,7 +58,7 @@ parameter [2:0] timerrun = 3'b101;
 parameter [2:0] timeroff = 3'b110;
 parameter [2:0] finalizar = 3'b111;
 
-always @(state or iniciar or contador or fin or timer)
+always @(state or iniciar or contador or fin or int2)
 begin
  next_state = 0;
  case(state)
@@ -70,10 +70,10 @@ begin
   end
   timerclock:
   begin
-			if (timer == 1'b1)
+			if (int2 == 1'b1)
 			  next_state = timerrun;
 			 else
-			  next_state = suma;
+			  next_state = timeroff;
   end
   suma:begin
 			  next_state = out;
@@ -93,7 +93,7 @@ begin
   timerrun:  
   begin
 			if (fin == 1'b1)
-			  next_state = timeroff;
+			  next_state = suma;
 			 else
 			  next_state = timerrun;
   end
@@ -101,7 +101,7 @@ begin
   timeroff:  
   begin
 			if (fin == 1'b1)
-			  next_state = finalizar;
+			  next_state = suma;
 			 else
 			  next_state = timeroff;
   end
@@ -243,16 +243,8 @@ begin
          dir_out <= 0;
   end
   timerrun:begin
-			if(int2 == 1'b1)
-			begin
          dir_out <= 8'h0;
          dato_out <= 8'b00001000;
-			end
-			else
-			begin
-			dir_out <= 8'h0;
-         dato_out <= 8'b0;
-			end
          addr <= 0;
          addr_up <=0;
          addr_down <= 0;
@@ -260,16 +252,8 @@ begin
          final <= 0;			
   end
   timeroff:begin
-			if(int2 == 1'b1)
-			begin
-         dir_out <= 8'h0;
-         dato_out <= 8'b00001000;
-			end
-			else
-			begin
 			dir_out <= 8'h0;
          dato_out <= 8'b0;
-			end
          addr <= 0;
          addr_up <=0;
          addr_down <= 0;
