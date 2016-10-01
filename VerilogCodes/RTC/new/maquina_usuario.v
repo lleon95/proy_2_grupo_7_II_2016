@@ -138,7 +138,7 @@ begin
   contadoraux <=0;
   final<= 0;
   state<=inicio;
-  tope <= 8'd0;
+  topCounter <= 8'd0;
  end 
  else
  begin
