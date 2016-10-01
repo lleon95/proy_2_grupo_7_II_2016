@@ -136,20 +136,6 @@ begin
 			contadoraux<=contador;
 	
          escribe <= 0;
-         /*case(contador)
-			 4'd1:dir_out <= 8'd33;
-			 4'd2:dir_out <= 8'd34;
-			 4'd3:dir_out <= 8'd35;
-			 4'd4:dir_out <= 8'd36;
-			 4'd5:dir_out <= 8'd37;
-			 4'd6:dir_out <= 8'd38;
-			 4'd7:dir_out <= 8'd39;
-			 4'd8:dir_out <= 8'h41;
-			 4'd9:dir_out <= 8'h42;
-			 4'd10:dir_out <= 8'h43;
-			 default:dir_out <= 0;
-			endcase*/
-			
 			// START LLEON
 			case(contador)
 			 4'd1:topCounter <= topSeconds;
@@ -220,7 +206,7 @@ begin
 					dato_out[3:0] <= dato[3:0];
 					dato_out[7:4] <= dato[7:4];
 				end
-			// END LLEON
+			
 			escribe <= 1;
          case(contador)
 			 4'd1:dir_out <= 8'd33;
@@ -235,6 +221,7 @@ begin
 			 4'd10:dir_out <= 8'h00;
 			 default:dir_out <= 0;
 			endcase  
+			// END LLEON
   end
   cont10:begin
 			contador <= contador + 1;
