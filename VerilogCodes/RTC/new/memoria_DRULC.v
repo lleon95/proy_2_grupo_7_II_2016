@@ -31,7 +31,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,Dato2,Dato3,clk,reset,w1,puntero,whileT,actready,irq);
 	input[3:0] puntero;
-	input clk,reset,w1;
+	input clk,reset,w1,irq;
 	input[3:0] ADD1;
 	input[3:0] ADD2;
 	input[3:0] ADD3;

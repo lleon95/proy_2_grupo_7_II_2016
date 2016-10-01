@@ -18,9 +18,9 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module maquina_usuario(erase,iniciar,fin,reset,clk,dato,dato_up,dato_down,addr,addr_up,final,addr_down,dato_out,escribe,dir_out,int2);
+module maquina_usuario(erase,iniciar,fin,reset,clk,dato,dato_up,dato_down,addr,addr_up,final,addr_down,dato_out,escribe,dir_out,int1,int2,irq);
 output erase;
-input int2;
+input int1,int2,irq;
 input reset;
 input clk;
 input fin;
@@ -55,17 +55,20 @@ reg escribe;
 reg [7:0] dir_out;
 reg [3:0] contador;
 reg [3:0] contadoraux;
-reg [2:0] state;
-reg [2:0] next_state;
+reg [3:0] state;
+reg [3:0] next_state;
 
-parameter [2:0] inicio = 3'b000;
-parameter [2:0] timerclock = 3'b001;
-parameter [2:0] suma = 3'b010;
-parameter [2:0] out = 3'b011;
-parameter [2:0] cont10 = 3'b100;
-parameter [2:0] timerrun = 3'b101;
-parameter [2:0] timeroff = 3'b110;
-parameter [2:0] finalizar = 3'b111;
+parameter [4:0] inicio = 3'b0000;
+parameter [4:0] irqres = 4'b0001;
+parameter [4:0] timerclock = 4'b0010;
+parameter [4:0] suma = 4'b0011;
+parameter [4:0] out = 4'b0100;
+parameter [4:0] cont10 = 4'b0101;
+parameter [4:0] timerrun = 4'b0110;
+parameter [4:0] timeroff = 4'b0111;
+parameter [4:0] finalizar = 4'b1000;
+parameter [4:0] irqoff = 4'b1001;
+parameter [4:0] apagairq = 4'b1010;
 
 always @(state or iniciar or contador or fin or int2)
 begin
@@ -73,9 +76,16 @@ begin
  case(state)
   inicio:begin
          if (iniciar == 1'b1)
-			  next_state = timerclock;
+			  next_state = irqres;
 			 else
 			  next_state = inicio;
+  end
+  irqres:
+  begin
+			if (irq == 1'b1)
+			  next_state = timerclock;
+			 else
+			  next_state = irqoff;
   end
   timerclock:
   begin
@@ -85,7 +95,10 @@ begin
 			  next_state = timeroff;
   end
   suma:begin
+			if(int1 == 1'b1)
 			  next_state = out;
+			else
+			  next_state = finalizar;
   end
   out:begin
          if (fin == 1'b1)
@@ -117,6 +130,20 @@ begin
   finalizar:begin
           next_state = inicio;
   end
+  irqoff:  
+  begin
+			if (int2 == 1'b0)
+			  next_state = suma;
+			 else
+			  next_state = irqoff;
+  end
+  apagairq:  
+  begin
+			if (fin == 1'b1)
+			  next_state = suma;
+			 else
+			  next_state = irqoff;
+  end
   default:begin
           next_state = inicio;
   end
@@ -145,6 +172,15 @@ begin
   state<=next_state;
   case(state)
   inicio:begin
+         addr <= 0;
+         addr_up <=0;
+         addr_down <= 0;
+         dato_out <= 0;
+         escribe <= 0;
+         dir_out <= 0;
+         final <= 0;			
+  end
+  irqres:begin
          addr <= 0;
          addr_up <=0;
          addr_down <= 0;
@@ -292,6 +328,26 @@ begin
 			contador<=1;
 			contadoraux<=0;
 			final <= 1;
+  end
+  irqoff:  
+  begin
+			dir_out <= 8'h0;
+         dato_out <= 8'b0;
+         addr <= 0;
+         addr_up <=0;
+         addr_down <= 0;
+         escribe <= 1;
+         final <= 0;		
+  end
+  apagairq:  
+  begin
+			dir_out <= 8'h1;
+         dato_out <= 8'b00000100;
+         addr <= 0;
+         addr_up <=0;
+         addr_down <= 0;
+         escribe <= 1;
+         final <= 0;		
   end
   default:begin
           state <= inicio;
