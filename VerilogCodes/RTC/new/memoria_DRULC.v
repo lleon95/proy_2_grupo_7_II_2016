@@ -175,7 +175,7 @@ module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,Dato2,Dato3,clk,reset,w1,puntero,whileT
 				contador<=0;
 				actready <= 1'b1;
 			end
-			default: Next_State =inicio;
+			default: Status <=inicio;
 		endcase
 		memoriaout[12]<={4'b0,puntero};
 		end
