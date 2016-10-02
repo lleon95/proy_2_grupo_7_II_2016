@@ -135,7 +135,7 @@ begin
            final <= 1'b1;
  	 end
 	 default:begin
-	        state <= inicio;
+	        state = inicio;
 	  end
 	 endcase
  end
