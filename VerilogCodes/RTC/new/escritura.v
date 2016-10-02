@@ -40,18 +40,17 @@ reg final;
 
 //inicio variables y parametros internos
 
-reg [2:0] state;
-reg [2:0] next_state;
+reg [1:0] state;
+reg [1:0] next_state;
 
-parameter [2:0] inicio = 3'b000;
-parameter [2:0] write = 3'b001;
-parameter [2:0] transferorclock = 3'b010;
-parameter [2:0] clk_transfer = 3'b011;
-parameter [2:0] finalizar = 3'b100;
+parameter [1:0] inicio = 2'b00;
+parameter [1:0] write = 2'b01;
+parameter [1:0] clk_transfer = 2'b10;
+parameter [1:0] finalizar = 2'b11;
 
 //logica de estado siguiente
 
-always @(iniciar or fin or state or dir)
+always @(iniciar or fin or state)
 begin
  next_state = 0;
  case (state)
@@ -63,15 +62,9 @@ begin
    end
   write:begin
           if (fin == 1'b1)
-			  next_state = transferorclock;
-			 else
-			  next_state = write;
-   end
-	transferorclock:begin
-          if (dir == 8'd33 || dir == 8'd34 || dir == 8'd35 || dir == 8'd36 || dir == 8'd37 || dir == 8'd38|| dir == 8'h41 || dir == 8'h42 || dir == 8'h43)
 			  next_state = clk_transfer;
 			 else
-			  next_state = finalizar;
+			  next_state = write;
    end
   clk_transfer:begin
           if (fin == 1'b1)
