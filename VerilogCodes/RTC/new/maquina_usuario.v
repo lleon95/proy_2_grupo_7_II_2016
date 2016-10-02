@@ -18,9 +18,9 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module maquina_usuario(erase,iniciar,fin,reset,clk,dato,dato_up,dato_down,addr,addr_up,final,addr_down,dato_out,escribe,dir_out,int1,int2,irq);
+module maquina_usuario(erase,iniciar,fin,reset,clk,dato,dato_up,dato_down,addr,addr_up,final,addr_down,dato_out,escribe,dir_out,int1,int2,irq,inceros);
 output erase;
-input int1,int2,irq;
+input int1,int2,irq,inceros;
 input reset;
 input clk;
 input fin;
@@ -58,36 +58,46 @@ reg [3:0] contadoraux;
 reg [3:0] state;
 reg [3:0] next_state;
 
-parameter [4:0] inicio = 3'b0000;
-parameter [4:0] irqres = 4'b0001;
-parameter [4:0] timerclock = 4'b0010;
-parameter [4:0] suma = 4'b0011;
-parameter [4:0] out = 4'b0100;
-parameter [4:0] cont10 = 4'b0101;
-parameter [4:0] timerrun = 4'b0110;
-parameter [4:0] timeroff = 4'b0111;
-parameter [4:0] finalizar = 4'b1000;
-parameter [4:0] irqoff = 4'b1001;
-parameter [4:0] apagairq = 4'b1010;
+parameter [4:0] inicio = 4'b0000;
+parameter [4:0] clockres= 4'b0001;
+parameter [4:0] irqres = 4'b0010;
+parameter [4:0] timerres = 4'b0011;
+parameter [4:0] suma = 4'b0100;
+parameter [4:0] out = 4'b0101;
+parameter [4:0] cont10 = 4'b0110;
+parameter [4:0] timerrun = 4'b0111;
+parameter [4:0] timeroff = 4'b1000;
+parameter [4:0] finalizar = 4'b1001;
+parameter [4:0] irqoff = 4'b1010;
+parameter [4:0] apagairq = 4'b1011;
+parameter [4:0] apagadoirq = 4'b1100;
 
-always @(state or iniciar or contador or fin or int2)
+
+always @(state or iniciar or contador or fin or int1 or int2 or inceros)
 begin
  next_state = 0;
  case(state)
   inicio:begin
          if (iniciar == 1'b1)
-			  next_state = irqres;
+			  next_state = clockres;
 			 else
 			  next_state = inicio;
+  end
+  clockres:
+  begin
+			if (int1 == 1'b1 || inceros == 1'b1)
+			  next_state = suma;
+			 else
+			  next_state = timerres;
   end
   irqres:
   begin
 			if (irq == 1'b1)
-			  next_state = timerclock;
+			  next_state = finalizar;
 			 else
 			  next_state = irqoff;
   end
-  timerclock:
+  timerres:
   begin
 			if (int2 == 1'b1)
 			  next_state = timerrun;
@@ -98,7 +108,7 @@ begin
 			if(int1 == 1'b1)
 			  next_state = out;
 			else
-			  next_state = finalizar;
+			  next_state = timerres;
   end
   out:begin
          if (fin == 1'b1)
@@ -115,7 +125,7 @@ begin
   timerrun:  
   begin
 			if (fin == 1'b1)
-			  next_state = suma;
+			  next_state = irqres;
 			 else
 			  next_state = timerrun;
   end
@@ -123,7 +133,7 @@ begin
   timeroff:  
   begin
 			if (fin == 1'b1)
-			  next_state = suma;
+			  next_state = irqres;
 			 else
 			  next_state = timeroff;
   end
@@ -132,17 +142,24 @@ begin
   end
   irqoff:  
   begin
-			if (int2 == 1'b0)
-			  next_state = suma;
+			if (fin == 1'b1)
+			  next_state = apagairq;
 			 else
 			  next_state = irqoff;
   end
   apagairq:  
   begin
-			if (fin == 1'b1)
-			  next_state = suma;
+			if (int2 == 1'b0)
+			  next_state = apagadoirq;
 			 else
-			  next_state = irqoff;
+			  next_state = finalizar;
+  end
+  apagadoirq:  
+  begin
+			if (fin == 1'b1)
+			  next_state = finalizar;
+			 else
+			  next_state = apagadoirq;
   end
   default:begin
           next_state = inicio;
@@ -180,6 +197,15 @@ begin
          dir_out <= 0;
          final <= 0;			
   end
+  clockres:begin
+         addr <= 0;
+         addr_up <=0;
+         addr_down <= 0;
+         dato_out <= 0;
+         escribe <= 0;
+         dir_out <= 0;
+         final <= 0;			
+  end
   irqres:begin
          addr <= 0;
          addr_up <=0;
@@ -189,7 +215,7 @@ begin
          dir_out <= 0;
          final <= 0;			
   end
-  timerclock:begin
+  timerres:begin
          addr <= 0;
          addr_up <=0;
          addr_down <= 0;
@@ -339,7 +365,16 @@ begin
          escribe <= 1;
          final <= 0;		
   end
-  apagairq:  
+  apagairq:begin
+         addr <= 0;
+         addr_up <=0;
+         addr_down <= 0;
+         dato_out <= 0;
+         escribe <= 0;
+         dir_out <= 0;
+         final <= 0;			
+  end
+  apagadoirq:  
   begin
 			dir_out <= 8'h1;
          dato_out <= 8'b00000100;
