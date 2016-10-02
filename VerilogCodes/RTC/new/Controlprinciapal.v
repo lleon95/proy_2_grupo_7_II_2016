@@ -1,7 +1,7 @@
-module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,CrontUs/*,State*/,actready,inceros);
+module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,CrontUs/*,State*/,actready);
 	input reset,CLK,finint,finwt,finct,usuario,actready;
-	output iniciar,whileT,CrontUs/*,State*/,inceros;
-	reg iniciar,whileT,CrontUs,inceros;
+	output iniciar,whileT,CrontUs/*,State*/;
+	reg iniciar,whileT,CrontUs;
 	reg [2:0] State;
 	reg [2:0] NextState;
 	//estados
@@ -47,7 +47,6 @@ module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,Cro
 			iniciar<=0;
 			whileT<=0;
 			CrontUs<=0;
-			inceros<=0;
 			State <= inicializar;
 		end
 		else
@@ -56,42 +55,36 @@ module controlprinciapal(reset,CLK,finint,finwt,finct,usuario,iniciar,whileT,Cro
 			case(State)
 				inicializar:
 				begin
-					inceros<=0;
 					iniciar<=1;
 					whileT<=0;
 					CrontUs<=0;
 				end
 				ceros:
 				begin
-					inceros<=1;
 					CrontUs<=1;
 					iniciar<=0;
 					whileT<=0;
 				end
 				Whiletrue:
 					begin
-						inceros<=0;
 						CrontUs<=0;
 						iniciar<=0;
 						whileT<=1;
 					end
 				estable:
 					begin
-						inceros<=0;
 						CrontUs<=0;
 						iniciar<=0;
 						whileT<=0;
 					end
 				solicitud:
 					begin
-						inceros<=0;
 						CrontUs<=0;
 						iniciar<=0;
 						whileT<=0;
 					end
 				controlusuario:
 				begin
-					inceros<=0;
 					CrontUs<=1;
 					iniciar<=0;
 					whileT<=0;
