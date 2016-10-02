@@ -18,9 +18,9 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module maquina_usuario(erase,iniciar,fin,reset,clk,dato,dato_up,dato_down,addr,addr_up,final,addr_down,dato_out,escribe,dir_out,int1,int2,int3,irq,inceros);
+module maquina_usuario(erase,iniciar,fin,reset,clk,dato,dato_up,dato_down,addr,addr_up,final,addr_down,dato_out,escribe,dir_out,int1,int2,irq,inceros);
 output erase;
-input int1,int2,int3,irq,inceros;
+input int1,int2,irq,inceros;
 input reset;
 input clk;
 input fin;
@@ -149,7 +149,7 @@ begin
   end
   apagairq:  
   begin
-			if (int3 == 1'b1)
+			if (int2 == 1'b0)
 			  next_state = apagadoirq;
 			 else
 			  next_state = finalizar;
