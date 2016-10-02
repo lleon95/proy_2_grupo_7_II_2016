@@ -38,9 +38,9 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module controldeususario(CLK,reset,Up,Down,Left,interruptores,fin,Maquina_in,ADD,ADD2,Dato_in,Dato_out,escritura,final,punteroOut,int1,int2,irq);
+module controldeususario(CLK,reset,Up,Down,Left,interruptores,fin,Maquina_in,ADD,ADD2,Dato_in,Dato_out,escritura,final,punteroOut,int1,int2,irq,inceros);
 	input irq;
-	input CLK,reset,interruptores,fin,int1,int2;
+	input CLK,reset,interruptores,fin,int1,int2,inceros;
 	input Up,Down,Left;
 	input Maquina_in;
 	output [7:0]ADD2;
@@ -57,7 +57,7 @@ module controldeususario(CLK,reset,Up,Down,Left,interruptores,fin,Maquina_in,ADD
 	punteros punt(.interr(interruptores),.derecha(Left),.clk(CLK),.reset(reset),.dir2(dirmemo),.punteroOut(punteroOut));
 	memoria_up memup(.addr(dirmemo),.up(Up),.addrm(dircontrolup),.erase(erase),.reset(reset),.clk(CLK),.dato_up(datoup));
 	memoria_down memdown(.addr(dirmemo),.addrm(dircontroldown),.down(Down),.erase(erase),.reset(reset),.clk(CLK),.dato_down(datodown));
-	maquina_usuario StateUs(.erase(erase),.iniciar(Maquina_in),.fin(fin),.reset(reset),.clk(CLK),.dato(Dato_in),.dato_up(datoup),.dato_down(datodown),.addr(ADD),.addr_up(dircontrolup),.final(final),.addr_down(dircontroldown),.dato_out(Dato_out),.escribe(escritura),.dir_out(ADD2),.int1(int1),.int2(int2),.irq(irq));
+	maquina_usuario StateUs(.erase(erase),.iniciar(Maquina_in),.fin(fin),.reset(reset),.clk(CLK),.dato(Dato_in),.dato_up(datoup),.dato_down(datodown),.addr(ADD),.addr_up(dircontrolup),.final(final),.addr_down(dircontroldown),.dato_out(Dato_out),.escribe(escritura),.dir_out(ADD2),.int1(int1),.int2(int2),.irq(irq),.inceros(inceros));
 
 
 endmodule
