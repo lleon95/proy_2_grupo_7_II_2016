@@ -139,6 +139,8 @@ module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,Dato2,Dato3,clk,reset,w1,puntero,whileT
 				contador <=4'b0;
 				Dato2<=memoriaout[ADD2];
 				Dato3<=memoriaout[ADD3];
+				memoriaout[10]<={7'b0,~irq};
+				memoriaout[11]<={7'b0,irq};
 			end
 			whileReq:
 			begin
@@ -147,6 +149,9 @@ module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,Dato2,Dato3,clk,reset,w1,puntero,whileT
 				memoriain[ADD1]<=DAT1;
 				Dato2<=memoriaout[ADD2];
 				Dato3<=memoriaout[ADD3];
+				memoriaout[10]<={7'b0,~irq};
+				memoriaout[11]<={7'b0,irq};
+
 			end
 			escritura:
 			begin
@@ -156,12 +161,18 @@ module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,Dato2,Dato3,clk,reset,w1,puntero,whileT
 					begin end
 				Dato2<=memoriaout[ADD2];
 				Dato3<=memoriaout[ADD3];
+				memoriaout[10]<={7'b0,~irq};
+				memoriaout[11]<={7'b0,irq};
+
 			end
 			actualizacion:
 			begin
 				memoriaout[contador]<=memoriain[contador];
 				Dato2<=memoriain[ADD2];
 				Dato3<=memoriain[ADD3];
+				memoriain[10]<={7'b0,~irq};
+				memoriain[11]<={7'b0,irq};
+
 			end
 			cont10:
 			begin
@@ -169,6 +180,9 @@ module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,Dato2,Dato3,clk,reset,w1,puntero,whileT
 				memoriaout[contador]<=memoriain[contador];
 				Dato2<=memoriain[ADD2];
 				Dato3<=memoriain[ADD3];
+				memoriain[10]<={7'b0,~irq};
+				memoriain[11]<={7'b0,irq};
+
 			end
 			estable:
 			begin
@@ -177,8 +191,6 @@ module memoria_DMULC(ADD1,ADD2,ADD3,DAT1,Dato2,Dato3,clk,reset,w1,puntero,whileT
 			end
 			default: Status <=inicio;
 		endcase
-		memoriaout[10]<={7'b0,~irq};
-		memoriaout[11]<={7'b0,irq};
 		memoriaout[12]<={4'b0,puntero};
 		end
 	end
