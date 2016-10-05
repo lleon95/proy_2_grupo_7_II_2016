@@ -104,23 +104,26 @@
 				\caption{Diagrama de primer nivel VGA}
 				\label{fig:vgaTercerNivel}
 			\end{figure}
+			\begin{figure}[hbtp]
+				\centering
+				\includegraphics[width=13cm]{img/VGAInterfaz.png}
+				\caption{Diagrama de primer nivel VGA}
+				\label{fig:vgaInterfaz}
+			\end{figure}
 		
 		Por otro lado, se encuentran los contadores y generadores de sincronía, que están compuestos por dos contadores y un bloque combinacional. El primer contador gobierna el conteo horizontal (CntX) y, a su vez, regula la velocidad de conteo descartando los 2 primeros bits menos significativos, por lo cual, el contador es de 12 bits para abarcar las 800 líneas horizontales. Este contador envía una señal de conteo al contador vertical, quien gobierna la posición vertical (CntY). El bloque combinacional permite generar las señales VSync y HSync dependiendo de la magnitud del conteo CntX y CntY, así como, la señal de Blank, donde no debe existir señal de color por encima de 0V.\\[2ex]
 		El Control de salida permite, a como se explicó en el apartado anterior, expandir los bits de color para poder generar una señal de 12 bits de color. Asimismo, es gobernado por el Blank que pone en ceros todos los bits de color en tiempos de zona prohibida. \\[2ex]
-		Para finalizar, las memorias tienen un dimensionamiento de 307200 espacios de memoria para albergar la interfaz de usuario (640X480) (figura \ref{fig:vgaInterfaz}) y de 24000 espacios para albergar las imágenes de los números (figura \ref{fig:vgaNumeros}). Los datos de estas memorias serán generadas por un script de Matlab y se cargarán mediante un archivo de texto con 6 bits.
+		Para finalizar, las memorias tienen un dimensionamiento de 307200 espacios de memoria para albergar la interfaz de usuario (640X480) (figura \ref{fig:vgaInterfaz}) y de 24000 espacios para albergar las imágenes de los números (figura \ref{fig:vgaNumeros}). Los datos de estas memorias serán generadas por un script de Matlab y se cargarán mediante un archivo de texto con 6 bits. \\[2ex]
 		
-		\begin{figure}[hbtp]
-			\centering
-			\includegraphics[width=14cm]{img/VGAInterfaz.png}
-			\caption{Diagrama de primer nivel VGA}
-			\label{fig:vgaInterfaz}
-		\end{figure}
+		
 		\begin{figure}[hbtp]
 			\centering
 			\includegraphics[width=1cm]{img/VGANumeros.png}
 			\caption{Diagrama de primer nivel VGA}
 			\label{fig:vgaNumeros}
 		\end{figure}
+		
+		Cabe destacar que, la interfaz tiene espacios azules para indicarle al sistema de punteros cuando debe hacer cambio de imagen por un número. Esto se hizo con la finalidad de ahorrar espacio en la Nexys y optimizar el código, ya que existieron problemas debido al rendimiento en tiempo de todo el bloque VGA.\\[2ex]
 		
 		\subsection{Control de usuario}
 		Para poder controlar el acceso del usuario, que se comunica por medio de 7 botones, 3 interruptores que indican que se quiere cambiar, el reloj, el timer o la alarma, y para moverse entre los registros de datos y aumentar o disminuir sus valores.\\ 
