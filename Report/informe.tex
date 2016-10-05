@@ -34,9 +34,9 @@
 	\begin{document}
 		\AddToShipoutPicture{\BackgroundStructure}
 		
-		\section*{\textit{resumen}}
+		\section*{\textit{Resumen}}
 		
-		Se debe realizar un controlador para realizar la lectura y escritura del módulo RTC V3023. Los datos del sistema deben poder ser desplegados en un monitor LCD mediante el protocolo VGA. Ante ello, se debe realizar un controlador para el RTC y para la VGA. Asimismo, se deben poder ajustar la hora, activar la alarma y el cronómetro de forma descendente mediante botones e interruptores dispuestos en la FPGA Nexys3.\\
+		Se debe realizar un controlador para realizar la lectura y escritura del módulo RTC V3023. Los datos del sistema deben poder ser desplegados en un monitor LCD mediante el protocolo VGA. Ante ello, se debe realizar un controlador para el RTC y para la VGA. Asimismo, se deben poder ajustar la hora, activar la alarma y el cronómetro de forma descendente mediante botones e interruptores dispuestos en la FPGA Nexys 4.\\
 		
 		\section*{\textit{Introduccion}} 
 		Este proyecto consiste en realizar un controlador de módulos RTC (Real Time Controller), específicamente para el módulo V3023. Este controlador será capaz de escribir y leer dicho módulo para obtener parámetros de reloj, cronómetro y alarma. \\
@@ -45,7 +45,7 @@
 		
 		\section{Objetivos}
 		\begin{itemize}
-			\item Diseñar un controlador de RTC que permita leerlo y programarlo mediante una interfaz de usuario consistente en botones incorporados dentro de la FPGA (Nexys3) y un monitor comunicado a través del protocolo VGA.
+			\item Diseñar un controlador de RTC que permita leerlo y programarlo mediante una interfaz de usuario consistente en botones incorporados dentro de la FPGA (Nexys 4) y un monitor comunicado a través del protocolo VGA.
 			\item Investigar el funcionamiento del módulo RTC y el protocolo de comunicación del mismo.
 			\item Diseñar un controlador para el módulo RTC, cuyo bus de datos y direcciones estén multiplexados.
 			\item Cumplir con las reglas de temporizado del sistema, en especial, con el protocolo de comunicación del módulo RTC.
@@ -54,7 +54,7 @@
 		\end{itemize}
 		
 		\section{Descripción del sistema}
-		El sistema se puede dividir en cuatro subsistemas, para facilitar el diseño dividimos el sistema en 4 grandes partes, el controlador de la pantalla, el controlador para el RTC, el control de usuario y  una memoria principal. Éstos subsistemas, pueden ser desarrollados de manera separada siempre que se tenga el cuidado necesario con los datos que comparten entre los bloques, para este efecto se desarrollo una memoria con 2 registros que se actualizan entre ellos al activar banderas. En la Fig. \ref{fig:sistema} se puede observar la composición general del sistema.
+		El sistema se puede dividir en cuatro subsistemas, para facilitar el diseño dividimos el sistema en 4 grandes partes, el controlador de la pantalla, el controlador para el RTC, el control de usuario y  una memoria principal. Éstos subsistemas, pueden ser desarrollados de manera separada siempre que se tenga el cuidado necesario con los datos que comparten entre los bloques, para este efecto se desarrollo una memoria con 2 registros que se actualizan entre ellos al activar banderas. En la Fig. \ref{fig:sistema} se puede observar la composición general del sistema. \\[2ex]
 		
 		\begin{figure}[hbtp]
 			\centering
@@ -64,10 +64,33 @@
 		\end{figure}
 		
 		\subsection{Controlador de la pantalla}
+		Para el periférico de despliegue de datos se ha solicitado emplear un monitor LCD controlado mediante el protocolo VGA (Video Graphics Array), con la finalidad de aprovechar el desarrollo del proyecto anterior y adaptando algunas cosas para poder incorporar datos dentro de la imagen que se desplegará en el monitor.
 		\subsubsection{Diagrama de primer nivel}  \label{sec:VGA_pn}
+		Para efectos del circuito, este debe tener acceso a los datos procedentes del buffer de memoria que contendrá la información que emite el RTC. Para ello, se ha puesto un banco de 16 registros (11 aprovechados) direccionados mediante un bus de direcciones de 4 bits y 8 bits de datos. Asimismo, se deben colocar las entradas y salidas pertinentes del protocolo, que son las salidas de sincronía y las salidas de color. \\[2ex]
 		
+		\begin{figure}[hbtp]
+			\centering
+			\includegraphics[width=15cm]{img/VGAPrimerNivel.png}
+			\caption{Diagrama de primer nivel VGA}
+			\label{fig:vgaPrimerNivel}
+		\end{figure}
+		
+		A como es posible observar en la figura \ref{fig:vgaPrimerNivel}, existen dos buses que permiten obtener la información que será desplegada en la pantalla. El bus "AdrMem" permite direccionar el registro de la memoria de datos al registro que va a ser refrescado y el bus "DataMem" recopila la información del registro direccionado mediante "AdrMem". Esta comunicación es de solo lectura y solo será efectuada durante la sincronía vertical, que no contiene imagen para evitar glitches y cambios en el registro inesperados que vayan a afectar la nitidez de la imagen. \\[2ex]
+		Para concluir este apartado, la interfaz se definirá mediante imágenes para cargar una interfaz agradable al usuario, esto aprovechando la capacidad de síntesis de memoria ROM en el entorno de Xilinx. \\[2ex]
 		
 		\subsubsection{Diagrama de segundo nivel} \label{sec:VGA_sn}
+		Adentrando en el diseño, se pueden identificar tres grandes bloques que componen el control de pantalla, donde es posible generar los datos, generar las señales de posición y sincronía y las señales de los colores.
+		
+		\begin{figure}[hbtp]
+			\centering
+			\includegraphics[width=18cm]{img/VGASegundoNivel.png}
+			\caption{Diagrama de primer nivel VGA}
+			\label{fig:vgaSegundoNivel}
+		\end{figure}
+		
+		Como es posible apreciar en la figura \ref{fig:vgaSegundoNivel}, el primer bloque es el de "Contadores y generadores sincronía", que permite generar las señales de sincronización del monitor LCD y, además, generar la posición de la pantalla en la que se ubica el cursor. Esto último es clave para la etapa de "Generador de datos", que decidirá los datos que serán pintados y las memorias que serán consultadas. \\[2ex]
+		El bloque "Generador de datos" permitirá producir las señales de color primitivo (2 bits por color) de la imagen que será pintada en la pantalla con base a los datos que se registren mediante los buses "AdrMem" y "DataMem", cuyos datos se almacenarán en un buffer de memoria de video. Basado en los datos de este buffer, se determinará el dato que se ilustrará (número) mediante un posicionamiento en memoria. Los datos que saldrán en la dirección serán generados por un contador de 12 dígitos y su proceso de incremento estará condicionado por el VSync para poder actualizar el buffer en momentos de sincronía, donde se no pintan pixeles. Por otro lado, las posiciones de memoria serán determinantes para consultar la memoria ROM que contendrá la interfaz y los números. \\[2ex]
+		Por otro lado, el "Control de salida" permite decodificar el color en 2 bits en 4 bits mediante el duplicado. Asimismo, apaga los bits de salida en caso de entrar en etapa de sincronía, indicado mediante la entrada de "Blank". Esto evitará enviar datos en caso de ubicarse en un proceso de tiempo prohibido en la pantalla. \\[2ex]
 		
 		
 		\subsubsection{Diagrama de tercer nivel}
