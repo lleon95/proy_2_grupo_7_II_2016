@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.8.9)  6 OCT 2016 11:15
+=======
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.8.27)  5 OCT 2016 08:13
+>>>>>>> origin/master
 entering extended mode
 **./informe.tex
 (informe.tex
@@ -355,92 +359,131 @@ File: img/VGASegundoNivel.png Graphic file (type png)
 Package pdftex.def Info: img/VGASegundoNivel.png used on input line 86.
 (pdftex.def)             Requested size: 512.1496pt x 232.54764pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 91--94
+Underfull \hbox (badness 10000) in paragraph at lines 91--92
 
  []
 
 [3 <./img/VGAPrimerNivel.png> <./img/VGASegundoNivel.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 100--101
+Underfull \hbox (badness 10000) in paragraph at lines 93--95
 
  []
 
-<img/nivel1_contusr.jpg, id=18, 922.94812pt x 366.61969pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--100
+
+ []
+
+<img/VGATercerNivel.png, id=18, 843.90282pt x 502.87875pt>
+File: img/VGATercerNivel.png Graphic file (type png)
+
+<use img/VGATercerNivel.png>
+Package pdftex.def Info: img/VGATercerNivel.png used on input line 103.
+(pdftex.def)             Requested size: 512.1496pt x 305.19023pt.
+ <img/VGAInterfaz.png, id=19, 513.92pt x 385.44pt>
+File: img/VGAInterfaz.png Graphic file (type png)
+
+<use img/VGAInterfaz.png>
+Package pdftex.def Info: img/VGAInterfaz.png used on input line 109.
+(pdftex.def)             Requested size: 369.88582pt x 277.4166pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--117
+
+ []
+
+[4] [5 <./img/VGATercerNivel.png> <./img/VGAInterfaz.png>]
+<img/VGANumeros.png, id=28, 32.12pt x 481.8pt>
+File: img/VGANumeros.png Graphic file (type png)
+ <use img/VGANumeros.png>
+Package pdftex.def Info: img/VGANumeros.png used on input line 121.
+(pdftex.def)             Requested size: 28.45274pt x 426.801pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
+
+ []
+
+[6 <./img/VGANumeros.png>]
+<img/nivel1_contusr.jpg, id=33, 922.94812pt x 366.61969pt>
 File: img/nivel1_contusr.jpg Graphic file (type jpg)
 
 <use img/nivel1_contusr.jpg>
-Package pdftex.def Info: img/nivel1_contusr.jpg used on input line 107.
+Package pdftex.def Info: img/nivel1_contusr.jpg used on input line 136.
 (pdftex.def)             Requested size: 284.51958pt x 85.35567pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--114
+Underfull \hbox (badness 10000) in paragraph at lines 142--143
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 115--116
+Underfull \hbox (badness 10000) in paragraph at lines 144--145
 
  []
 
-[4 <./img/nivel1_contusr.jpg>]
-<img/nivel2_contusr.jpg, id=22, 635.37375pt x 291.33844pt>
+<img/nivel2_contusr.jpg, id=34, 635.37375pt x 291.33844pt>
 File: img/nivel2_contusr.jpg Graphic file (type jpg)
 
 <use img/nivel2_contusr.jpg>
-Package pdftex.def Info: img/nivel2_contusr.jpg used on input line 120.
+Package pdftex.def Info: img/nivel2_contusr.jpg used on input line 149.
 (pdftex.def)             Requested size: 455.25829pt x 199.17442pt.
 
-<img/JerarquiaRTC.jpg, id=23, 673.76718pt x 549.55313pt>
+<img/JerarquiaRTC.jpg, id=35, 673.76718pt x 549.55313pt>
 File: img/JerarquiaRTC.jpg Graphic file (type jpg)
 
 <use img/JerarquiaRTC.jpg>
-Package pdftex.def Info: img/JerarquiaRTC.jpg used on input line 131.
+Package pdftex.def Info: img/JerarquiaRTC.jpg used on input line 160.
 (pdftex.def)             Requested size: 455.24614pt x 256.07623pt.
 
-<img/diagramatiempoescritura.jpg, id=24, 703.87968pt x 261.22594pt>
+<img/diagramatiempoescritura.jpg, id=36, 703.87968pt x 261.22594pt>
 File: img/diagramatiempoescritura.jpg Graphic file (type jpg)
 
 <use img/diagramatiempoescritura.jpg>
-Package pdftex.def Info: img/diagramatiempoescritura.jpg used on input line 137
+Package pdftex.def Info: img/diagramatiempoescritura.jpg used on input line 166
 .
 (pdftex.def)             Requested size: 455.23943pt x 256.07938pt.
 
-<img/diagramatiempolectura.jpg, id=25, 706.13812pt x 279.29344pt>
+<img/diagramatiempolectura.jpg, id=37, 706.13812pt x 279.29344pt>
 File: img/diagramatiempolectura.jpg Graphic file (type jpg)
 
 <use img/diagramatiempolectura.jpg>
-Package pdftex.def Info: img/diagramatiempolectura.jpg used on input line 143.
+Package pdftex.def Info: img/diagramatiempolectura.jpg used on input line 172.
 (pdftex.def)             Requested size: 455.24548pt x 256.0837pt.
 
-<img/cuadrotiemposalida.jpg, id=26, 584.1825pt x 261.97874pt>
+<img/cuadrotiemposalida.jpg, id=38, 584.1825pt x 261.97874pt>
 File: img/cuadrotiemposalida.jpg Graphic file (type jpg)
 
 <use img/cuadrotiemposalida.jpg>
-Package pdftex.def Info: img/cuadrotiemposalida.jpg used on input line 149.
+Package pdftex.def Info: img/cuadrotiemposalida.jpg used on input line 178.
 (pdftex.def)             Requested size: 455.25938pt x 256.08183pt.
-
-<img/nivel1_RTC.jpg, id=27, 515.67656pt x 279.29344pt>
+ [7 <./img/nivel1_contusr.jpg> <./img/nivel2_contusr.jpg>] <img/nivel1_RTC.jpg,
+ id=43, 515.67656pt x 279.29344pt>
 File: img/nivel1_RTC.jpg Graphic file (type jpg)
 
 <use img/nivel1_RTC.jpg>
-Package pdftex.def Info: img/nivel1_RTC.jpg used on input line 157.
+Package pdftex.def Info: img/nivel1_RTC.jpg used on input line 186.
 (pdftex.def)             Requested size: 455.26033pt x 256.0837pt.
- <img/FlujoInit.jpg, id=28, 738.50906pt x 394.47375pt>
+ <img/FlujoInit.jpg, id=44, 738.50906pt x 394.47375pt>
 File: img/FlujoInit.jpg Graphic file (type jpg)
 
 <use img/FlujoInit.jpg>
-Package pdftex.def Info: img/FlujoInit.jpg used on input line 169.
+Package pdftex.def Info: img/FlujoInit.jpg used on input line 198.
 (pdftex.def)             Requested size: 455.24527pt x 256.07384pt.
- <img/FlujoLec.jpg, id=29, 362.85562pt x 342.5297pt>
+ <img/FlujoLec.jpg, id=45, 362.85562pt x 342.5297pt>
 File: img/FlujoLec.jpg Graphic file (type jpg)
 
 <use img/FlujoLec.jpg>
-Package pdftex.def Info: img/FlujoLec.jpg used on input line 175.
+Package pdftex.def Info: img/FlujoLec.jpg used on input line 204.
 (pdftex.def)             Requested size: 455.25711pt x 256.09174pt.
- <img/FlujoEsc.jpg, id=30, 572.1375pt x 345.54094pt>
+ <img/FlujoEsc.jpg, id=46, 572.1375pt x 345.54094pt>
 File: img/FlujoEsc.jpg Graphic file (type jpg)
 
 <use img/FlujoEsc.jpg>
-Package pdftex.def Info: img/FlujoEsc.jpg used on input line 181.
+Package pdftex.def Info: img/FlujoEsc.jpg used on input line 210.
 (pdftex.def)             Requested size: 455.24872pt x 256.08118pt.
+<<<<<<< HEAD
  [5 <./img/nivel2_contusr.jpg>] [6 <./img/JerarquiaRTC.jpg> <./img/diagramatiem
 poescritura.jpg>] [7 <./img/diagramatiempolectura.jpg> <./img/cuadrotiemposalid
 a.jpg>] [8 <./img/nivel1_RTC.jpg>] [9 <./img/FlujoInit.jpg> <./img/FlujoLec.jpg
@@ -448,14 +491,29 @@ a.jpg>] [8 <./img/nivel1_RTC.jpg>] [9 <./img/FlujoInit.jpg> <./img/FlujoLec.jpg
 
 AED: lastpage setting LastPage
 [11] (informe.aux
+=======
+ [8 <./img/JerarquiaRTC.jpg>] [9 <./img/diagramatiempoescritura.jpg> <./img/dia
+gramatiempolectura.jpg>] [10 <./img/cuadrotiemposalida.jpg> <./img/nivel1_RTC.j
+pg>] 
+AED: lastpage setting LastPage
+[11 <./img/FlujoInit.jpg>] [12 <./img/FlujoLec.jpg> <./img/FlujoEsc.jpg>]
+[13] (informe.aux
+>>>>>>> origin/master
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
+<<<<<<< HEAD
  3942 strings out of 493335
  55346 string characters out of 3136663
  144957 words of memory out of 3000000
  7392 multiletter control sequences out of 15000+200000
+=======
+ 3962 strings out of 493334
+ 55761 string characters out of 3136672
+ 145020 words of memory out of 3000000
+ 7410 multiletter control sequences out of 15000+200000
+>>>>>>> origin/master
  8253 words of font info for 29 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,18n,48p,818b,384s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -463,9 +521,15 @@ Here is how much of TeX's memory you used:
 ><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb
 ><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb>
+<<<<<<< HEAD
 Output written on informe.pdf (11 pages, 694997 bytes).
 PDF statistics:
  67 PDF objects out of 1000 (max. 8388607)
+=======
+Output written on informe.pdf (13 pages, 748750 bytes).
+PDF statistics:
+ 80 PDF objects out of 1000 (max. 8388607)
+>>>>>>> origin/master
  0 named destinations out of 1000 (max. 500000)
- 66 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
