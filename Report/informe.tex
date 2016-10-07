@@ -23,11 +23,11 @@
 
 %-------------------------ENCABEZADO---------------
 \fancyhead[L]{\begin{tabular}{l r | l r}	
-		\textbf{Proyecto} & 1 & \textbf{P·gina} & \thepage/\pageref{LastPage} \\
+		\textbf{Proyecto} & 1 & \textbf{P√°gina} & \thepage/\pageref{LastPage} \\
 		\textbf{Trabajo} & Desarrollo de un controlador & \textbf{Actualizado en:} & 27/08/2016 \\
 		\textbf{} &  VGA & \textbf{Revisado en:} & 30/08/2016 \\
-		\textbf{Grupo} & 1 & \textbf{DiseÒadores} & Keylor Mena Venegas \\
-		\textbf{Revisado por:} & Alfonso ChacÛn RodrÌguez & \textbf{ } & Luis Leon Vega \\
+		\textbf{Grupo} & 1 & \textbf{Dise√±adores} & Keylor Mena Venegas \\
+		\textbf{Revisado por:} & Alfonso Chac√≥n Rodr√≠guez & \textbf{ } & Luis Leon Vega \\
 		\textbf{} & & \textbf{ } & Luis Merayo Gatica
 	\end{tabular}}
 	
@@ -36,25 +36,25 @@
 		
 		\section*{\textit{Resumen}}
 		
-		Se debe realizar un controlador para realizar la lectura y escritura del mÛdulo RTC V3023. Los datos del sistema deben poder ser desplegados en un monitor LCD mediante el protocolo VGA. Ante ello, se debe realizar un controlador para el RTC y para la VGA. Asimismo, se deben poder ajustar la hora, activar la alarma y el cronÛmetro de forma descendente mediante botones e interruptores dispuestos en la FPGA Nexys 4.\\
+		Se debe realizar un controlador para realizar la lectura y escritura del m√≥dulo RTC V3023. Los datos del sistema deben poder ser desplegados en un monitor LCD mediante el protocolo VGA. Ante ello, se debe realizar un controlador para el RTC y para la VGA. Asimismo, se deben poder ajustar la hora, activar la alarma y el cron√≥metro de forma descendente mediante botones e interruptores dispuestos en la FPGA Nexys 4.\\
 		
 		\section*{\textit{Introduccion}} 
-		Este proyecto consiste en realizar un controlador de mÛdulos RTC (Real Time Controller), especÌficamente para el mÛdulo V3023. Este controlador ser· capaz de escribir y leer dicho mÛdulo para obtener par·metros de reloj, cronÛmetro y alarma. \\
-		Asimismo, para poder desplegar la informaciÛn relevante de los par·metros anteriores, se conectar· un monitor LCD mediante el protocolo VGA. Por otro lado, para poder programar y dar instrucciones al circuito, se deber·n usar los botones seÒalados en el instructivo y algunos interruptores. \\
-		Finalmente, el conjunto es un circuito que permita controlar el mÛdulo y comunicar al usuario mediante los botones y el monitor LCD, donde Èl podr· recibir la informaciÛn relevante y poder modificar dicha informaciÛn.\\
+		Este proyecto consiste en realizar un controlador de m√≥dulos RTC (Real Time Controller), espec√≠ficamente para el m√≥dulo V3023. Este controlador ser√° capaz de escribir y leer dicho m√≥dulo para obtener par√°metros de reloj, cron√≥metro y alarma. \\
+		Asimismo, para poder desplegar la informaci√≥n relevante de los par√°metros anteriores, se conectar√° un monitor LCD mediante el protocolo VGA. Por otro lado, para poder programar y dar instrucciones al circuito, se deber√°n usar los botones se√±alados en el instructivo y algunos interruptores. \\
+		Finalmente, el conjunto es un circuito que permita controlar el m√≥dulo y comunicar al usuario mediante los botones y el monitor LCD, donde √©l podr√° recibir la informaci√≥n relevante y poder modificar dicha informaci√≥n.\\
 		
 		\section{Objetivos}
 		\begin{itemize}
-			\item DiseÒar un controlador de RTC que permita leerlo y programarlo mediante una interfaz de usuario consistente en botones incorporados dentro de la FPGA (Nexys 4) y un monitor comunicado a travÈs del protocolo VGA.
-			\item Investigar el funcionamiento del mÛdulo RTC y el protocolo de comunicaciÛn del mismo.
-			\item DiseÒar un controlador para el mÛdulo RTC, cuyo bus de datos y direcciones estÈn multiplexados.
-			\item Cumplir con las reglas de temporizado del sistema, en especial, con el protocolo de comunicaciÛn del mÛdulo RTC.
-			\item Combinar el controlador de RTC con un controlador VGA para poder desplegar la informaciÛn del mÛdulo al usuario. Este mÛdulo VGA ser· adaptado del proyecto anterior.
-			\item Desarrollar un banco de pruebas (testbench) para poder emular el comportamiento del mÛdulo RTC con la finalidad de comprobar el funcionamiento del circuito controlador.
+			\item Dise√±ar un controlador de RTC que permita leerlo y programarlo mediante una interfaz de usuario consistente en botones incorporados dentro de la FPGA (Nexys 4) y un monitor comunicado a trav√©s del protocolo VGA.
+			\item Investigar el funcionamiento del m√≥dulo RTC y el protocolo de comunicaci√≥n del mismo.
+			\item Dise√±ar un controlador para el m√≥dulo RTC, cuyo bus de datos y direcciones est√©n multiplexados.
+			\item Cumplir con las reglas de temporizado del sistema, en especial, con el protocolo de comunicaci√≥n del m√≥dulo RTC.
+			\item Combinar el controlador de RTC con un controlador VGA para poder desplegar la informaci√≥n del m√≥dulo al usuario. Este m√≥dulo VGA ser√° adaptado del proyecto anterior.
+			\item Desarrollar un banco de pruebas (testbench) para poder emular el comportamiento del m√≥dulo RTC con la finalidad de comprobar el funcionamiento del circuito controlador.
 		\end{itemize}
 		
-		\section{DescripciÛn del sistema}
-		El sistema se puede dividir en cuatro subsistemas, para facilitar el diseÒo dividimos el sistema en 4 grandes partes, el controlador de la pantalla, el controlador para el RTC, el control de usuario y  una memoria principal. …stos subsistemas, pueden ser desarrollados de manera separada siempre que se tenga el cuidado necesario con los datos que comparten entre los bloques, para este efecto se desarrollo una memoria con 2 registros que se actualizan entre ellos al activar banderas. En la Fig. \ref{fig:sistema} se puede observar la composiciÛn general del sistema. \\[2ex]
+		\section{Descripci√≥n del sistema}
+		El sistema se puede dividir en cuatro subsistemas, para facilitar el dise√±o dividimos el sistema en 4 grandes partes, el controlador de la pantalla, el controlador para el RTC, el control de usuario y  una memoria principal. √âstos subsistemas, pueden ser desarrollados de manera separada siempre que se tenga el cuidado necesario con los datos que comparten entre los bloques, para este efecto se desarrollo una memoria con 2 registros que se actualizan entre ellos al activar banderas. En la Fig. \ref{fig:sistema} se puede observar la composici√≥n general del sistema. \\[2ex]
 		
 		\begin{figure}[hbtp]
 			\centering
@@ -64,9 +64,9 @@
 		\end{figure}
 		
 		\subsection{Controlador de la pantalla}
-		Para el perifÈrico de despliegue de datos se ha solicitado emplear un monitor LCD controlado mediante el protocolo VGA (Video Graphics Array), con la finalidad de aprovechar el desarrollo del proyecto anterior y adaptando algunas cosas para poder incorporar datos dentro de la imagen que se desplegar· en el monitor.
+		Para el perif√©rico de despliegue de datos se ha solicitado emplear un monitor LCD controlado mediante el protocolo VGA (Video Graphics Array), con la finalidad de aprovechar el desarrollo del proyecto anterior y adaptando algunas cosas para poder incorporar datos dentro de la imagen que se desplegar√° en el monitor.
 		\subsubsection{Diagrama de primer nivel}  \label{sec:VGA_pn}
-		Para efectos del circuito, este debe tener acceso a los datos procedentes del buffer de memoria que contendr· la informaciÛn que emite el RTC. Para ello, se ha puesto un banco de 16 registros (11 aprovechados) direccionados mediante un bus de direcciones de 4 bits y 8 bits de datos. Asimismo, se deben colocar las entradas y salidas pertinentes del protocolo, que son las salidas de sincronÌa y las salidas de color. \\[2ex]
+		Para efectos del circuito, este debe tener acceso a los datos procedentes del buffer de memoria que contendr√° la informaci√≥n que emite el RTC. Para ello, se ha puesto un banco de 16 registros (11 aprovechados) direccionados mediante un bus de direcciones de 4 bits y 8 bits de datos. Asimismo, se deben colocar las entradas y salidas pertinentes del protocolo, que son las salidas de sincron√≠a y las salidas de color. \\[2ex]
 		
 		\begin{figure}[hbtp]
 			\centering
@@ -75,11 +75,11 @@
 			\label{fig:vgaPrimerNivel}
 		\end{figure}
 		
-		A como es posible observar en la figura \ref{fig:vgaPrimerNivel}, existen dos buses que permiten obtener la informaciÛn que ser· desplegada en la pantalla. El bus "AdrMem" permite direccionar el registro de la memoria de datos al registro que va a ser refrescado y el bus "DataMem" recopila la informaciÛn del registro direccionado mediante "AdrMem". Esta comunicaciÛn es de solo lectura y solo ser· efectuada durante la sincronÌa vertical, que no contiene imagen para evitar glitches y cambios en el registro inesperados que vayan a afectar la nitidez de la imagen. \\[2ex]
-		Para concluir este apartado, la interfaz se definir· mediante im·genes para cargar una interfaz agradable al usuario, esto aprovechando la capacidad de sÌntesis de memoria ROM en el entorno de Xilinx. \\[2ex]
+		A como es posible observar en la figura \ref{fig:vgaPrimerNivel}, existen dos buses que permiten obtener la informaci√≥n que ser√° desplegada en la pantalla. El bus "AdrMem" permite direccionar el registro de la memoria de datos al registro que va a ser refrescado y el bus "DataMem" recopila la informaci√≥n del registro direccionado mediante "AdrMem". Esta comunicaci√≥n es de solo lectura y solo ser√° efectuada durante la sincron√≠a vertical, que no contiene imagen para evitar glitches y cambios en el registro inesperados que vayan a afectar la nitidez de la imagen. \\[2ex]
+		Para concluir este apartado, la interfaz se definir√° mediante im√°genes para cargar una interfaz agradable al usuario, esto aprovechando la capacidad de s√≠ntesis de memoria ROM en el entorno de Xilinx. \\[2ex]
 		
 		\subsubsection{Diagrama de segundo nivel} \label{sec:VGA_sn}
-		Adentrando en el diseÒo, se pueden identificar tres grandes bloques que componen el control de pantalla, donde es posible generar los datos, generar las seÒales de posiciÛn y sincronÌa y las seÒales de los colores.
+		Adentrando en el dise√±o, se pueden identificar tres grandes bloques que componen el control de pantalla, donde es posible generar los datos, generar las se√±ales de posici√≥n y sincron√≠a y las se√±ales de los colores.
 		
 		\begin{figure}[hbtp]
 			\centering
@@ -88,15 +88,15 @@
 			\label{fig:vgaSegundoNivel}
 		\end{figure}
 		
-		Como es posible apreciar en la figura \ref{fig:vgaSegundoNivel}, el primer bloque es el de "Contadores y generadores sincronÌa", que permite generar las seÒales de sincronizaciÛn del monitor LCD y, adem·s, generar la posiciÛn de la pantalla en la que se ubica el cursor. Esto ˙ltimo es clave para la etapa de "Generador de datos", que decidir· los datos que ser·n pintados y las memorias que ser·n consultadas. \\[2ex]
+		Como es posible apreciar en la figura \ref{fig:vgaSegundoNivel}, el primer bloque es el de "Contadores y generadores sincron√≠a", que permite generar las se√±ales de sincronizaci√≥n del monitor LCD y, adem√°s, generar la posici√≥n de la pantalla en la que se ubica el cursor. Esto √∫ltimo es clave para la etapa de "Generador de datos", que decidir√° los datos que ser√°n pintados y las memorias que ser√°n consultadas. \\[2ex]
 		
-		El bloque "Generador de datos" permitir· producir las seÒales de color primitivo (2 bits por color) de la imagen que ser· pintada en la pantalla con base a los datos que se registren mediante los buses "AdrMem" y "DataMem", cuyos datos se almacenar·n en un buffer de memoria de video. Basado en los datos de este buffer, se determinar· el dato que se ilustrar· (n˙mero) mediante un posicionamiento en memoria. Los datos que saldr·n en la direcciÛn ser·n generados por un contador de 12 dÌgitos y su proceso de incremento estar· condicionado por el VSync para poder actualizar el buffer en momentos de sincronÌa, donde se no pintan pixeles. Por otro lado, las posiciones de memoria ser·n determinantes para consultar la memoria ROM que contendr· la interfaz y los n˙meros. \\[2ex]
-		Por otro lado, el "Control de salida" permite decodificar el color en 2 bits en 4 bits mediante el duplicado. Asimismo, apaga los bits de salida en caso de entrar en etapa de sincronÌa, indicado mediante la entrada de "Blank". Esto evitar· enviar datos en caso de ubicarse en un proceso de tiempo prohibido en la pantalla. \\[2ex]
+		El bloque "Generador de datos" permitir√° producir las se√±ales de color primitivo (2 bits por color) de la imagen que ser√° pintada en la pantalla con base a los datos que se registren mediante los buses "AdrMem" y "DataMem", cuyos datos se almacenar√°n en un buffer de memoria de video. Basado en los datos de este buffer, se determinar√° el dato que se ilustrar√° (n√∫mero) mediante un posicionamiento en memoria. Los datos que saldr√°n en la direcci√≥n ser√°n generados por un contador de 12 d√≠gitos y su proceso de incremento estar√° condicionado por el VSync para poder actualizar el buffer en momentos de sincron√≠a, donde se no pintan pixeles. Por otro lado, las posiciones de memoria ser√°n determinantes para consultar la memoria ROM que contendr√° la interfaz y los n√∫meros. \\[2ex]
+		Por otro lado, el "Control de salida" permite decodificar el color en 2 bits en 4 bits mediante el duplicado. Asimismo, apaga los bits de salida en caso de entrar en etapa de sincron√≠a, indicado mediante la entrada de "Blank". Esto evitar√° enviar datos en caso de ubicarse en un proceso de tiempo prohibido en la pantalla. \\[2ex]
 		
 		
 		\subsubsection{Diagrama de tercer nivel}
-		Profundizando a˙n m·s en el diseÒo, los bloques se pueden descomponer m·s haciendo evidente la presencia de una memoria ROM que contiene la informaciÛn de la interfaz gr·fica de usuario, que est· subdividida en la memoria ROM de interfaz y la memoria ROM de los n˙meros, ya que todo el entorno es visual (vÈase figura \ref{fig:vgaTercerNivel}).\\[2ex]
-		Asimismo, el generador de datos est· compuesto por un direccionador de memoria mediante punteros y un banco de registros que ayudan a tener los datos estables para su uso. Dependiendo de la posiciÛn del cursor en la pantalla (CntX) y (CntY) y los datos de los registros, es posible direccionar a un campo especÌfico de la memoria ROM de n˙meros y hacer el intercambio entre ROM de interfaz y ROM de n˙meros.\\[2ex]
+		Profundizando a√∫n m√°s en el dise√±o, los bloques se pueden descomponer m√°s haciendo evidente la presencia de una memoria ROM que contiene la informaci√≥n de la interfaz gr√°fica de usuario, que est√° subdividida en la memoria ROM de interfaz y la memoria ROM de los n√∫meros, ya que todo el entorno es visual (v√©ase figura \ref{fig:vgaTercerNivel}).\\[2ex]
+		Asimismo, el generador de datos est√° compuesto por un direccionador de memoria mediante punteros y un banco de registros que ayudan a tener los datos estables para su uso. Dependiendo de la posici√≥n del cursor en la pantalla (CntX) y (CntY) y los datos de los registros, es posible direccionar a un campo espec√≠fico de la memoria ROM de n√∫meros y hacer el intercambio entre ROM de interfaz y ROM de n√∫meros.\\[2ex]
 		
 			\begin{figure}[hbtp]
 				\centering
@@ -111,9 +111,9 @@
 				\label{fig:vgaInterfaz}
 			\end{figure}
 		
-		Por otro lado, se encuentran los contadores y generadores de sincronÌa, que est·n compuestos por dos contadores y un bloque combinacional. El primer contador gobierna el conteo horizontal (CntX) y, a su vez, regula la velocidad de conteo descartando los 2 primeros bits menos significativos, por lo cual, el contador es de 12 bits para abarcar las 800 lÌneas horizontales. Este contador envÌa una seÒal de conteo al contador vertical, quien gobierna la posiciÛn vertical (CntY). El bloque combinacional permite generar las seÒales VSync y HSync dependiendo de la magnitud del conteo CntX y CntY, asÌ como, la seÒal de Blank, donde no debe existir seÒal de color por encima de 0V.\\[2ex]
-		El Control de salida permite, a como se explicÛ en el apartado anterior, expandir los bits de color para poder generar una seÒal de 12 bits de color. Asimismo, es gobernado por el Blank que pone en ceros todos los bits de color en tiempos de zona prohibida. \\[2ex]
-		Para finalizar, las memorias tienen un dimensionamiento de 307200 espacios de memoria para albergar la interfaz de usuario (640X480) (figura \ref{fig:vgaInterfaz}) y de 24000 espacios para albergar las im·genes de los n˙meros (figura \ref{fig:vgaNumeros}). Los datos de estas memorias ser·n generadas por un script de Matlab y se cargar·n mediante un archivo de texto con 6 bits. \\[2ex]
+		Por otro lado, se encuentran los contadores y generadores de sincron√≠a, que est√°n compuestos por dos contadores y un bloque combinacional. El primer contador gobierna el conteo horizontal (CntX) y, a su vez, regula la velocidad de conteo descartando los 2 primeros bits menos significativos, por lo cual, el contador es de 12 bits para abarcar las 800 l√≠neas horizontales. Este contador env√≠a una se√±al de conteo al contador vertical, quien gobierna la posici√≥n vertical (CntY). El bloque combinacional permite generar las se√±ales VSync y HSync dependiendo de la magnitud del conteo CntX y CntY, as√≠ como, la se√±al de Blank, donde no debe existir se√±al de color por encima de 0V.\\[2ex]
+		El Control de salida permite, a como se explic√≥ en el apartado anterior, expandir los bits de color para poder generar una se√±al de 12 bits de color. Asimismo, es gobernado por el Blank que pone en ceros todos los bits de color en tiempos de zona prohibida. \\[2ex]
+		Para finalizar, las memorias tienen un dimensionamiento de 307200 espacios de memoria para albergar la interfaz de usuario (640X480) (figura \ref{fig:vgaInterfaz}) y de 24000 espacios para albergar las im√°genes de los n√∫meros (figura \ref{fig:vgaNumeros}). Los datos de estas memorias ser√°n generadas por un script de Matlab y se cargar√°n mediante un archivo de texto con 6 bits. \\[2ex]
 		
 		
 		\begin{figure}[hbtp]
@@ -123,7 +123,7 @@
 			\label{fig:vgaNumeros}
 		\end{figure}
 		
-		Cabe destacar que, la interfaz tiene espacios azules para indicarle al sistema de punteros cuando debe hacer cambio de imagen por un n˙mero. Esto se hizo con la finalidad de ahorrar espacio en la Nexys y optimizar el cÛdigo, ya que existieron problemas debido al rendimiento en tiempo de todo el bloque VGA.\\[2ex]
+		Cabe destacar que, la interfaz tiene espacios azules para indicarle al sistema de punteros cuando debe hacer cambio de imagen por un n√∫mero. Esto se hizo con la finalidad de ahorrar espacio en la Nexys y optimizar el c√≥digo, ya que existieron problemas debido al rendimiento en tiempo de todo el bloque VGA.\\[2ex]
 		
 		\subsection{Control de usuario}
 		Para poder controlar el acceso del usuario, que se comunica por medio de 3 botones que indican que se quiere cambiar, el reloj, el timer o la alarma, y para moverse entre los registros de datos y aumentar o disminuir sus valores y 3 interruptores que [ermiten realizar estos cambios.\\ 
@@ -152,13 +152,13 @@
 		\end{figure}
 		
 		\subsection{Controlador del RTC}
-		Para la implementaciÛn de esta interfaz que va a permitir la comunicaciÛn entre la FPGA y el RTC, se desarrollÛ 7 bloques principales divididos en una jerarquÌa de 3 niveles, se puede ver en la figura \ref{fig:Jrtc}. Existen 3 bloques principales uno de inicializacion, un while true, que permite la lectura continua de los datos de la rtc, y una de programaciÛn que permite actualizar los cambios del control de usuario, este consta del punto visto anteriormente del control de usurio.\\ [2ex]
+		Para la implementaci√≥n de esta interfaz que va a permitir la comunicaci√≥n entre la FPGA y el RTC, se desarroll√≥ 7 bloques principales divididos en una jerarqu√≠a de 3 niveles, se puede ver en la figura \ref{fig:Jrtc}. Existen 3 bloques principales uno de inicializacion, un while true, que permite la lectura continua de los datos de la rtc, y una de programaci√≥n que permite actualizar los cambios del control de usuario, este consta del punto visto anteriormente del control de usurio.\\ [2ex]
 		Ademas existen 2 bloques que permiten un bloque que permite leer y escribir datos, esta activa un control que esta basado en los tiempos de la figura \ref{fig:DTE} y la figura \ref{fig:DTL}, como se puede notar existen muchas similitudes entre ambos ciclos, para esto llamaremos a esta diferencia "ciclo" de esta manera podemos armar el cuadro de figura \ref{fig:CTS}\\[2ex]
-		Este diagrama muestra los cambios que deben ocurrir seg˙n los tiempos del timer dentro del modulo, al llegar el tiempo final saca una bandera indicando el final.\\ [2ex]
+		Este diagrama muestra los cambios que deben ocurrir seg√∫n los tiempos del timer dentro del modulo, al llegar el tiempo final saca una bandera indicando el final.\\ [2ex]
 		\begin{figure}[htbp]
 			\centering
 			\includegraphics[height=9cm, width=16cm]{img/JerarquiaRTC.jpg}
-			\caption[3erNivel]{jerarquÌa de la RTC.}
+			\caption[3erNivel]{jerarqu√≠a de la RTC.}
 			\label{fig:Jrtc}
 		\end{figure}
 		\begin{figure}[htbp]
@@ -188,11 +188,11 @@
 			\label{fig:nivel1RTC}
 		\end{figure}
 		\subsubsection{nivel 2 RTC}
-		Como se menciono antes existen 6 maquina de estados agrupados en 3 jerarquÌas.\\[2ex]
- 		La primera maquina de estados es la de inicializacion, esta tiene un bit de entrada para su inicializacion. Ademas posee salidas de datos y direcciÛn  y bits W y R, que siempre est·n en cero y se conectan a las maquinas de lectura y escritura respectivamente, esto responde al flujo de la figura \ref{fig:FMEI}.\\[2ex]
-		La maquina encargada del proceso while true responde al flujo de la figura, esta tiene un bit para la iniciaciÛn de la maquina y un bit que indica que finalizo el proceso, de igual manera un bit que indica que la maquina de estados siguiente termino su proceso para que esta salte entre estados y igual que la maquina pasada tiene las seÒales W y R y la salida de datos y direcciÛn.\\[2ex]
-		Siguiendo la jerarquÌa, existen 2 maquinas, escritura y lectura, estas respetan los flujos de la figura \ref{fig:FML} y \ref{fig:FME}, estas tienen las entradas de datos y direcciÛn y la seÒal r y w respectivamente y tiene solo una salida de datos y r y w de esta manera las maquina controla que dato sale, si la direccion y o el dato, ademas tiene el bit de ciclo que determina si esta en el ciclo de escritura o lectura, como se nota en los flujos, el bit de ciclo no depende de la maquina, sino de la parte del programa donde esta se encuentre.\\[2ex]
-		Por ultimo el control de salida responde al cuadro de la figura \ref{fig:CTS} a este le entra, el bit de activaciÛn que sale de la maquina de escritura o lectura, y entran los datos del ciclo y dato que salen dependiendo del tiempo; internamente este tiene un timer, con el fin de llevar el tiempo desde la activaciÛn, y dependiendo del tiempo que transcurre genera los cambios de la figura \ref{fig:CTS}. \\[2ex]
+		Como se menciono antes existen 6 maquina de estados agrupados en 3 jerarqu√≠as.\\[2ex]
+ 		La primera maquina de estados es la de inicializacion, esta tiene un bit de entrada para su inicializacion. Ademas posee salidas de datos y direcci√≥n  y bits W y R, que siempre est√°n en cero y se conectan a las maquinas de lectura y escritura respectivamente, esto responde al flujo de la figura \ref{fig:FMEI}.\\[2ex]
+		La maquina encargada del proceso while true responde al flujo de la figura, esta tiene un bit para la iniciaci√≥n de la maquina y un bit que indica que finalizo el proceso, de igual manera un bit que indica que la maquina de estados siguiente termino su proceso para que esta salte entre estados y igual que la maquina pasada tiene las se√±ales W y R y la salida de datos y direcci√≥n.\\[2ex]
+		Siguiendo la jerarqu√≠a, existen 2 maquinas, escritura y lectura, estas respetan los flujos de la figura \ref{fig:FML} y \ref{fig:FME}, estas tienen las entradas de datos y direcci√≥n y la se√±al r y w respectivamente y tiene solo una salida de datos y r y w de esta manera las maquina controla que dato sale, si la direccion y o el dato, ademas tiene el bit de ciclo que determina si esta en el ciclo de escritura o lectura, como se nota en los flujos, el bit de ciclo no depende de la maquina, sino de la parte del programa donde esta se encuentre.\\[2ex]
+		Por ultimo el control de salida responde al cuadro de la figura \ref{fig:CTS} a este le entra, el bit de activaci√≥n que sale de la maquina de escritura o lectura, y entran los datos del ciclo y dato que salen dependiendo del tiempo; internamente este tiene un timer, con el fin de llevar el tiempo desde la activaci√≥n, y dependiendo del tiempo que transcurre genera los cambios de la figura \ref{fig:CTS}. \\[2ex]
 		\begin{figure}[htbp]
 			\centering
 			\includegraphics[height=9cm, width=16cm]{img/FlujoInit.jpg}
@@ -213,7 +213,7 @@
 		\end{figure}
 		\subsection{Control general de la RTC}
 		
-		Debido a que existen muchas maquinas con diferentes jerarquia se ocupa diseÒar una maquina de estado genral que controle y vigile el funcionamiento entre la maquinas de estados.
+		Debido a que existen muchas maquinas con diferentes jerarquia se ocupa dise√±ar una maquina de estado genral que controle y vigile el funcionamiento entre la maquinas de estados.
 		Esta maquina posee 5 niveles la inicializacion de la RTC, la inicializacion de la RTC en cero, el inico de lectura continua, la solicutud de escritura y la escritura de los cambios en la memoria.
 		
 		\subsubsection{inicializacion}
@@ -231,11 +231,20 @@
 		 Este bloque es el que lee los valores que se encuentra cambiando en la RTC, este es el modulo que actualiza constantemente los valores de la RTC en la memoria dentro de la FPGA.
 		 Este estado genera una pausa mientras la memoria se estabiliza para mea estados. 
 		
+		\subsubsection{solicitud de control de usuario}
+		
+		Para controlar la escritura en el control de usuario no se escribir√° dentro de la RTC todo el tiempo, solo cuando termine el ciclo de lectura continua y el usurario este realizando cambios, este es un estado transitorio, en este estado puede pasar al estado de lectura continua o a la escritura de cambios
+		
+		\subsubsection{escritura de cambios}
+		
+		Esta etapa activa el control de usuario para poder alterar los valores de la RTC con los valores que el usuario desea alterar. Esta estap solo se accede cuando el usurio desea realizar cambios en la RTC.
+		
+		
 		\section{Datos y resultados}
 		\subsection{Simulaciones}
 		
 		
-		\section{An·lisis de datos y resultados}
+		\section{An√°lisis de datos y resultados}
 		
 		
 		\section{Hoja de datos de unidades desarrolladas}
