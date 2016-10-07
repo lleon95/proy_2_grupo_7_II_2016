@@ -89,12 +89,41 @@
 		\end{figure}
 		
 		Como es posible apreciar en la figura \ref{fig:vgaSegundoNivel}, el primer bloque es el de "Contadores y generadores sincronía", que permite generar las señales de sincronización del monitor LCD y, además, generar la posición de la pantalla en la que se ubica el cursor. Esto último es clave para la etapa de "Generador de datos", que decidirá los datos que serán pintados y las memorias que serán consultadas. \\[2ex]
+		
 		El bloque "Generador de datos" permitirá producir las señales de color primitivo (2 bits por color) de la imagen que será pintada en la pantalla con base a los datos que se registren mediante los buses "AdrMem" y "DataMem", cuyos datos se almacenarán en un buffer de memoria de video. Basado en los datos de este buffer, se determinará el dato que se ilustrará (número) mediante un posicionamiento en memoria. Los datos que saldrán en la dirección serán generados por un contador de 12 dígitos y su proceso de incremento estará condicionado por el VSync para poder actualizar el buffer en momentos de sincronía, donde se no pintan pixeles. Por otro lado, las posiciones de memoria serán determinantes para consultar la memoria ROM que contendrá la interfaz y los números. \\[2ex]
 		Por otro lado, el "Control de salida" permite decodificar el color en 2 bits en 4 bits mediante el duplicado. Asimismo, apaga los bits de salida en caso de entrar en etapa de sincronía, indicado mediante la entrada de "Blank". Esto evitará enviar datos en caso de ubicarse en un proceso de tiempo prohibido en la pantalla. \\[2ex]
 		
 		
 		\subsubsection{Diagrama de tercer nivel}
+		Profundizando aún más en el diseño, los bloques se pueden descomponer más haciendo evidente la presencia de una memoria ROM que contiene la información de la interfaz gráfica de usuario, que está subdividida en la memoria ROM de interfaz y la memoria ROM de los números, ya que todo el entorno es visual (véase figura \ref{fig:vgaTercerNivel}).\\[2ex]
+		Asimismo, el generador de datos está compuesto por un direccionador de memoria mediante punteros y un banco de registros que ayudan a tener los datos estables para su uso. Dependiendo de la posición del cursor en la pantalla (CntX) y (CntY) y los datos de los registros, es posible direccionar a un campo específico de la memoria ROM de números y hacer el intercambio entre ROM de interfaz y ROM de números.\\[2ex]
 		
+			\begin{figure}[hbtp]
+				\centering
+				\includegraphics[width=18cm]{img/VGATercerNivel.png}
+				\caption{Diagrama de primer nivel VGA}
+				\label{fig:vgaTercerNivel}
+			\end{figure}
+			\begin{figure}[hbtp]
+				\centering
+				\includegraphics[width=13cm]{img/VGAInterfaz.png}
+				\caption{Diagrama de primer nivel VGA}
+				\label{fig:vgaInterfaz}
+			\end{figure}
+		
+		Por otro lado, se encuentran los contadores y generadores de sincronía, que están compuestos por dos contadores y un bloque combinacional. El primer contador gobierna el conteo horizontal (CntX) y, a su vez, regula la velocidad de conteo descartando los 2 primeros bits menos significativos, por lo cual, el contador es de 12 bits para abarcar las 800 líneas horizontales. Este contador envía una señal de conteo al contador vertical, quien gobierna la posición vertical (CntY). El bloque combinacional permite generar las señales VSync y HSync dependiendo de la magnitud del conteo CntX y CntY, así como, la señal de Blank, donde no debe existir señal de color por encima de 0V.\\[2ex]
+		El Control de salida permite, a como se explicó en el apartado anterior, expandir los bits de color para poder generar una señal de 12 bits de color. Asimismo, es gobernado por el Blank que pone en ceros todos los bits de color en tiempos de zona prohibida. \\[2ex]
+		Para finalizar, las memorias tienen un dimensionamiento de 307200 espacios de memoria para albergar la interfaz de usuario (640X480) (figura \ref{fig:vgaInterfaz}) y de 24000 espacios para albergar las imágenes de los números (figura \ref{fig:vgaNumeros}). Los datos de estas memorias serán generadas por un script de Matlab y se cargarán mediante un archivo de texto con 6 bits. \\[2ex]
+		
+		
+		\begin{figure}[hbtp]
+			\centering
+			\includegraphics[width=1cm]{img/VGANumeros.png}
+			\caption{Diagrama de primer nivel VGA}
+			\label{fig:vgaNumeros}
+		\end{figure}
+		
+		Cabe destacar que, la interfaz tiene espacios azules para indicarle al sistema de punteros cuando debe hacer cambio de imagen por un número. Esto se hizo con la finalidad de ahorrar espacio en la Nexys y optimizar el código, ya que existieron problemas debido al rendimiento en tiempo de todo el bloque VGA.\\[2ex]
 		
 		\subsection{Control de usuario}
 		Para poder controlar el acceso del usuario, que se comunica por medio de 3 botones que indican que se quiere cambiar, el reloj, el timer o la alarma, y para moverse entre los registros de datos y aumentar o disminuir sus valores y 3 interruptores que [ermiten realizar estos cambios.\\ 
