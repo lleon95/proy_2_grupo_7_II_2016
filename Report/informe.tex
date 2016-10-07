@@ -97,10 +97,10 @@
 		
 		
 		\subsection{Control de usuario}
-		Para poder controlar el acceso del usuario, que se comunica por medio de 7 botones, 3 interruptores que indican que se quiere cambiar, el reloj, el timer o la alarma, y para moverse entre los registros de datos y aumentar o disminuir sus valores.\\ 
+		Para poder controlar el acceso del usuario, que se comunica por medio de 3 botones que indican que se quiere cambiar, el reloj, el timer o la alarma, y para moverse entre los registros de datos y aumentar o disminuir sus valores y 3 interruptores que [ermiten realizar estos cambios.\\ 
 		
 		\subsubsection{Diagrama de primer nivel}
-		el control de usuario posee 3 interruptores y 4 botones para que el usuario elija los datos y que desea cambiar. Ademas posee entradas y salidas de memoria para poder alterar los registros y escribirlos en la rtc. Se puede notar esto en la figura \ref{fig:PrimerNivelcontrolusr}.
+		el control de usuario posee 3 interruptores y 3 botones para que el usuario elija los datos y que desea cambiar. Ademas posee entradas y salidas de memoria para poder alterar los registros y escribirlos en la rtc. Se puede notar esto en la figura \ref{fig:PrimerNivelcontrolusr}.
 		
 		\begin{figure}[htbp]
 			\centering
@@ -112,7 +112,7 @@
 		\subsubsection{Diagrama de segundo nivel}
 		En este diagrama mostrado en la Fig. \ref{fig:SegundoNivelControlusr} se muestra como se pretende realizar el control de usuario, el cual consiste en tan solo dos bloques.\\[2ex]
 		
-		Consiste un un control de acceso que controla el cambio de los valores de los registros y el control de sus direcciones en el registro. El registro estará en la memoria de coneccion esta memoria controla la actualización de los registros por medio de señales de control, esta es la señal de control, con esta se controla la salida memoria in y memoria out. \\[2ex]
+		Consiste un un control de acceso que controla el cambio de los valores de los registros y el control de sus direcciones en el registro. El registro almacenara los cambios que se desean realizar en la memoria y una etapa de salida que controla los momentos donde se escribe en la rtc los cambios que se desean en la rtc.\\[2ex]
 		
 		
 		\begin{figure}[htbp]
@@ -123,7 +123,7 @@
 		\end{figure}
 		
 		\subsection{Controlador del RTC}
-		Para la implementación de esta interfaz que va a permitir la comunicación entre la FPGA y el RTC, se desarrolló 7 bloques principales divididos en una jerarquía de 3 niveles, se puede ver en la figura \ref{fig:Jrtc}. Existen 3 bloques principales uno de inicializacion, un while true, que permite la lectura continua de los datos de la rtc, y una de programación que permite actualizar los cambios del control de usuario.\\ [2ex]
+		Para la implementación de esta interfaz que va a permitir la comunicación entre la FPGA y el RTC, se desarrolló 7 bloques principales divididos en una jerarquía de 3 niveles, se puede ver en la figura \ref{fig:Jrtc}. Existen 3 bloques principales uno de inicializacion, un while true, que permite la lectura continua de los datos de la rtc, y una de programación que permite actualizar los cambios del control de usuario, este consta del punto visto anteriormente del control de usurio.\\ [2ex]
 		Ademas existen 2 bloques que permiten un bloque que permite leer y escribir datos, esta activa un control que esta basado en los tiempos de la figura \ref{fig:DTE} y la figura \ref{fig:DTL}, como se puede notar existen muchas similitudes entre ambos ciclos, para esto llamaremos a esta diferencia "ciclo" de esta manera podemos armar el cuadro de figura \ref{fig:CTS}\\[2ex]
 		Este diagrama muestra los cambios que deben ocurrir según los tiempos del timer dentro del modulo, al llegar el tiempo final saca una bandera indicando el final.\\ [2ex]
 		\begin{figure}[htbp]
@@ -182,8 +182,25 @@
 			\caption[3erNivel]{flujo de datos de la maquina de Escritura}
 			\label{fig:FME}
 		\end{figure}
-		\subsection{ROM de Instrucciones}
+		\subsection{Control general de la RTC}
 		
+		Debido a que existen muchas maquinas con diferentes jerarquia se ocupa diseñar una maquina de estado genral que controle y vigile el funcionamiento entre la maquinas de estados.
+		Esta maquina posee 5 niveles la inicializacion de la RTC, la inicializacion de la RTC en cero, el inico de lectura continua, la solicutud de escritura y la escritura de los cambios en la memoria.
+		
+		\subsubsection{inicializacion}
+		
+		Este consta del primer estado del control de la RTC, este estado consta de los parametros de e instrucciones que deban introducirse en la RTC para que esta comience a correr el tiempo, ademas de la escriura de la mascaras en los estados 0 y 1 de la RTC, que nos permiten poner las banderas del timer y iniciar con el cronometro detenido.
+		Aparte de ser el estado inicial de toda la RTC, este es el estodo donde este vuelve cada vez que es reinicia.
+		
+		\subsubsection{inicializacion de la memoria en cero}
+		
+		El objetivo de este estado es que todos los datos de la memoria inicie en valores conocidos cada vez que se reinicia o inicia la RTC. Para este efecto se aprovechara el efecto de escritura en la rtc que tiene el control de usuario. 
+		Como el control de usuario escribe lo que este en la memoria, mas un cambio en la RTC, en la RTC. Si no existe cambios en la memoria en la RTC se escribiran los valore iniciales de la memoria, como esta inicia en cero, la RTC iniciara a contar desde cero.
+		
+		\subsubsection{lectura continua}
+		
+		 Este bloque es el que lee los valores que se encuentra cambiando en la RTC, este es el modulo que actualiza constantemente los valores de la RTC en la memoria dentro de la FPGA.
+		 Este estado genera una pausa mientras la memoria se estabiliza para mea estados. 
 		
 		\section{Datos y resultados}
 		\subsection{Simulaciones}

@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.8.27)  4 OCT 2016 20:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.8.9)  6 OCT 2016 11:15
 entering extended mode
 **./informe.tex
 (informe.tex
-LaTeX2e <2016/03/31> patch level 3
+LaTeX2e <2016/03/31> patch level 1
 Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
@@ -62,7 +62,7 @@ Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
-Package: graphics 2016/07/10 v1.0t Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2016/06/02 v1.0s Standard LaTeX Graphics (DPC,SPQR)
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
@@ -72,8 +72,8 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
-File: pdftex.def 2016/07/10 v0.06j Graphics/color for pdfTeX
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2016/06/17 v0.06h Graphics/color for pdfTeX
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
@@ -443,18 +443,19 @@ Package pdftex.def Info: img/FlujoEsc.jpg used on input line 181.
 (pdftex.def)             Requested size: 455.24872pt x 256.08118pt.
  [5 <./img/nivel2_contusr.jpg>] [6 <./img/JerarquiaRTC.jpg> <./img/diagramatiem
 poescritura.jpg>] [7 <./img/diagramatiempolectura.jpg> <./img/cuadrotiemposalid
-a.jpg>] 
+a.jpg>] [8 <./img/nivel1_RTC.jpg>] [9 <./img/FlujoInit.jpg> <./img/FlujoLec.jpg
+>] [10 <./img/FlujoEsc.jpg>]
+
 AED: lastpage setting LastPage
-[8 <./img/nivel1_RTC.jpg>] [9 <./img/FlujoInit.jpg> <./img/FlujoLec.jpg>]
-[10 <./img/FlujoEsc.jpg>] (informe.aux
+[11] (informe.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 3944 strings out of 493334
- 55368 string characters out of 3136672
- 144989 words of memory out of 3000000
- 7395 multiletter control sequences out of 15000+200000
+ 3942 strings out of 493335
+ 55346 string characters out of 3136663
+ 144957 words of memory out of 3000000
+ 7392 multiletter control sequences out of 15000+200000
  8253 words of font info for 29 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,18n,48p,818b,384s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -462,9 +463,9 @@ Here is how much of TeX's memory you used:
 ><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb
 ><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb>
-Output written on informe.pdf (10 pages, 692874 bytes).
+Output written on informe.pdf (11 pages, 694997 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
+ 67 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  66 words of extra memory for PDF output out of 10000 (max. 10000000)
 
