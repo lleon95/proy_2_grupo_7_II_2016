@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.8.9)  30 SEP 2016 12:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.8.9)  7 OCT 2016 13:55
 entering extended mode
 **./Bitacora.tex
 (Bitacora.tex
@@ -693,26 +693,99 @@ Underfull \hbox (badness 10000) in paragraph at lines 613--618
 
  []
 
+<img/analizador1.jpeg, id=115, 1043.9pt x 586.19pt>
+File: img/analizador1.jpeg Graphic file (type jpg)
+ <use img/analizador1.jpeg>
+Package pdftex.def Info: img/analizador1.jpeg used on input line 634.
+(pdftex.def)             Requested size: 455.23969pt x 256.07288pt.
+
+Overfull \hbox (28.44833pt too wide) in paragraph at lines 634--635
+ [][] 
+ []
+
+<img/analizador2.jpeg, id=116, 1043.9pt x 586.19pt>
+File: img/analizador2.jpeg Graphic file (type jpg)
+ <use img/analizador2.jpeg>
+Package pdftex.def Info: img/analizador2.jpeg used on input line 640.
+(pdftex.def)             Requested size: 455.23969pt x 256.07288pt.
+
+Overfull \hbox (28.44833pt too wide) in paragraph at lines 640--641
+ [][] 
+ []
+
+<img/analizador3.jpeg, id=117, 1043.9pt x 586.19pt>
+File: img/analizador3.jpeg Graphic file (type jpg)
+ <use img/analizador3.jpeg>
+Package pdftex.def Info: img/analizador3.jpeg used on input line 646.
+(pdftex.def)             Requested size: 455.23969pt x 256.07288pt.
+
+Overfull \hbox (28.44833pt too wide) in paragraph at lines 646--647
+ [][] 
+ []
+
+<img/analizador4.jpeg, id=118, 1043.9pt x 586.19pt>
+File: img/analizador4.jpeg Graphic file (type jpg)
+ <use img/analizador4.jpeg>
+Package pdftex.def Info: img/analizador4.jpeg used on input line 652.
+(pdftex.def)             Requested size: 455.23969pt x 256.07288pt.
+
+Overfull \hbox (28.44833pt too wide) in paragraph at lines 652--653
+ [][] 
+ []
+
+<img/analizador5.jpeg, id=119, 1043.9pt x 586.19pt>
+File: img/analizador5.jpeg Graphic file (type jpg)
+ <use img/analizador5.jpeg>
+Package pdftex.def Info: img/analizador5.jpeg used on input line 658.
+(pdftex.def)             Requested size: 455.23969pt x 256.07288pt.
+
+Overfull \hbox (28.44833pt too wide) in paragraph at lines 658--659
+ [][] 
+ []
+
+<img/analizador6.jpeg, id=120, 1043.9pt x 586.19pt>
+File: img/analizador6.jpeg Graphic file (type jpg)
+ <use img/analizador6.jpeg>
+Package pdftex.def Info: img/analizador6.jpeg used on input line 664.
+(pdftex.def)             Requested size: 455.23969pt x 256.07288pt.
+
+Overfull \hbox (28.44833pt too wide) in paragraph at lines 664--665
+ [][] 
+ []
+
+<img/analizador7.jpeg, id=121, 439.6425pt x 782.925pt>
+File: img/analizador7.jpeg Graphic file (type jpg)
+
+<use img/analizador7.jpeg>
+Package pdftex.def Info: img/analizador7.jpeg used on input line 670.
+(pdftex.def)             Requested size: 455.25856pt x 256.07233pt.
+
+Overfull \hbox (28.46721pt too wide) in paragraph at lines 670--671
+ [][] 
+ []
+
 
 AED: lastpage setting LastPage
-[27] (Bitacora.aux
+[27] [28 <./img/analizador1.jpeg> <./img/analizador2.jpeg>] [29 <./img/analizad
+or3.jpeg> <./img/analizador4.jpeg>] [30 <./img/analizador5.jpeg> <./img/analiza
+dor6.jpeg>] [31 <./img/analizador7.jpeg>] (Bitacora.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 3141 strings out of 493335
- 45024 string characters out of 3136663
- 120283 words of memory out of 3000000
- 6613 multiletter control sequences out of 15000+200000
+ 3184 strings out of 493335
+ 45889 string characters out of 3136663
+ 120353 words of memory out of 3000000
+ 6648 multiletter control sequences out of 15000+200000
  8605 words of font info for 30 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,11n,43p,781b,384s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb
 ><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on Bitacora.pdf (28 pages, 5530147 bytes).
+Output written on Bitacora.pdf (32 pages, 6080186 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
+ 149 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 111 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 146 words of extra memory for PDF output out of 10000 (max. 10000000)
 

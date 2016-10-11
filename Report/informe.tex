@@ -230,22 +230,248 @@
 		
 		 Este bloque es el que lee los valores que se encuentra cambiando en la RTC, este es el modulo que actualiza constantemente los valores de la RTC en la memoria dentro de la FPGA.
 		 Este estado genera una pausa mientras la memoria se estabiliza para mea estados. 
+		\subsubsection{solicitud de control de usuario}
+		
+		Para controlar la escritura en el control de usuario no se escribirá dentro de la RTC todo el tiempo, solo cuando termine el ciclo de lectura continua y el usurario este realizando cambios, este es un estado transitorio, en este estado puede pasar al estado de lectura continua o a la escritura de cambios
+		
+		\subsubsection{escritura de cambios}
+		
+		Esta etapa activa el control de usuario para poder alterar los valores de la RTC con los valores que el usuario desea alterar. Esta estap solo se accede cuando el usurio desea realizar cambios en la RTC.
+		
 		
 		\section{Datos y resultados}
 		\subsection{Simulaciones}
+		 Se realizó la simulacion post-síntesis de todos los módulos del proyecto, de manera que se pueda realizar una verificacion de su funcionamiento, y del cumplimiento de los tiempos de escritura y lectura en la RTC.
+		\subsubsection{Simulaciones VGA}
+		 	Para el diseño del controlador VGA, se tenía que verificar el funcionamiento de la misma con respecto a los datos consultados a la memoria de registros de la RTC. Para ello, se ha realizado una simulación para verificar la funcionalidad del controlador VGA. Para este caso, la simulación de comprobación consta de dos partes importantes: la simulación en ISim y la traducción de los datos brindados para graficarlos en un script de Matlab.\\[2ex]
+		 	Previo a simular, se tomará el punto de decenas en el día, que se encuentra en el punto en Y 130, de acuerdo con la imagen  \ref{fig:punteros}. Seguidamente, se verificará el cambio en el script de Matlab en comparativa con los datos que ingresaron e la figura \ref{fig:matlab}. \\[2ex]
+		 	
+		 	\begin{figure}[htbp]
+		 		\centering
+		 		\includegraphics[height=12cm]{img/Punteros.png}
+		 		\caption[3erNivel]{Punteros de memoria}
+		 		\label{fig:PunterosVGA}
+		 	\end{figure}
+		 	
+		 	\begin{figure}[htbp]
+		 		\centering
+		 		\includegraphics[width=16cm]{img/SimVGA1.PNG}
+		 		\caption[3erNivel]{Transiciones de datos.}
+		 		\label{fig:SimVGA1}
+		 	\end{figure}
+		 	
+		 	\begin{figure}[htbp]
+		 		\centering
+		 		\includegraphics[width=16cm]{img/SimVGA2.PNG}
+		 		\caption[3erNivel]{Tiempo de pulso HSync - Se cumple}
+		 		\label{fig:SimVGA2}
+		 	\end{figure}
+		 	
+		 	\begin{figure}[htbp]
+		 		\centering
+		 		\includegraphics[width=16cm]{img/SimVGA3.PNG}
+		 		\caption[3erNivel]{Tiempos en HSync - Porches}
+		 		\label{fig:SimVGA3}
+		 	\end{figure}
+		 	
+		 	\begin{figure}[htbp]
+		 		\centering
+		 		\includegraphics[width=16cm]{img/SimVGA4.PNG}
+		 		\caption[3erNivel]{Tiempos en HSync en general}
+		 		\label{fig:SimVGA4}
+		 	\end{figure}
+		 	
+		 	\begin{figure}[htbp]
+		 		\centering
+		 		\includegraphics[width=16cm]{img/SimVGA5.PNG}
+		 		\caption[3erNivel]{Tiempos en VSync}
+		 		\label{fig:SimVGA5}
+		 	\end{figure}
+		 	
+		 	\begin{figure}[htbp]
+		 		\centering
+		 		\includegraphics[width=16cm]{img/matlab.png}
+		 		\caption[3erNivel]{Tiempos en HSync en general}
+		 		\label{fig:matlab}
+		 	\end{figure}
+		\subsubsection{Simulaciones RTC}
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[height=9cm, width=16cm]{img/tiemposSynt.jpeg}
+			\caption[3erNivel]{Captura de simulación post-síntesis}
+			\label{fig:SPS}
+		\end{figure}
+		\subsection{Tiempos RTC simulacion post-síntesis}
 		
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[height=9cm, width=16cm]{img/tiempospost.jpeg}
+			\caption[3erNivel]{Tiempos de la simulación post-síntesis}
+			\label{fig:TPS}
+		\end{figure}
+		\subsection{Mediciones}
+		 Es importante considerar el consumo de potencia de la implementación del diseño en la FPGA y el área ocupada dentro del Artix7, chip de FPGA que trae integrada la FPGA Nexys 4. En la Tabla \ref{tab:consumo} es posible observar algunos parámetros de consumo de potencia (obtenidos por medio del XPower Analizer) y los recursos brindados por la conclusión de la síntesis: \\[2ex]
+		 
+		 \begin{table}[htb]
+		 	\centering
+		 	\caption{Consumo de recursos de la FPGA}
+		 	\begin{tabular}{c|c}
+		 		Recurso & Consumo \\
+		 		\hline
+		 		\hline
+		 		Potencia & 89mW \\
+		 		Slices ocupadas & 1\% \\
+		 		Registros & < 1\% \\
+		 		MUX & 3\% \\
+		 		IO & 14\% \\
+		 		LUTs lógicos & 1\% \\
+		 		LUT FF & 1419\\ 
+		 		DSP48E1 & 1\% \\
+		 		Reloj Máximo & 111.592MHz \\
+		 	\end{tabular}
+		 	\label{tab:consumo}
+		 \end{table}
+		\subsection{Mediciones en analizador lógico}
+		 \begin{figure}[htbp]
+		 	\centering
+		 	\includegraphics[height=9cm, width=16cm]{img/analizador1.jpeg}
+		 	\caption[3erNivel]{Captura 1 del analizador lógico}
+		 	\label{fig:CA1}
+		 \end{figure}
+		 \begin{figure}[htbp]
+		 	\centering
+		 	\includegraphics[height=9cm, width=16cm]{img/analizador2.jpeg}
+		 	\caption[3erNivel]{Captura 2 del analizador lógico}
+		 	\label{fig:CA2}
+		 \end{figure}
+		 \begin{figure}[htbp]
+		 	\centering
+		 	\includegraphics[height=9cm, width=16cm]{img/analizador3.jpeg}
+		 	\caption[3erNivel]{Captura 3 del analizador lógico}
+		 	\label{fig:CA3}
+		 \end{figure} 
+		 \begin{figure}[htbp]
+		 	\centering
+		 	\includegraphics[height=9cm, width=16cm]{img/analizador4.jpeg}
+		 	\caption[3erNivel]{Captura 4 del analizador lógico}
+		 	\label{fig:CA4}
+		 \end{figure}
+		 \begin{figure}[htbp]
+		 	\centering
+		 	\includegraphics[height=9cm, width=16cm]{img/analizador5.jpeg}
+		 	\caption[3erNivel]{Captura 5 del analizador lógico}
+		 	\label{fig:CA5}
+		 \end{figure}
+		 \begin{figure}[htbp]
+		 	\centering
+		 	\includegraphics[height=9cm, width=16cm]{img/analizador6.jpeg}
+		 	\caption[3erNivel]{Captura 6 del analizador lógico}
+		 	\label{fig:CA6}
+		 \end{figure}
+		 \begin{figure}[htbp]
+		 	\centering
+		 	\includegraphics[height=9cm, width=16cm]{img/analizador7.jpeg}
+		 	\caption[3erNivel]{Captura 7 del analizador lógico}
+		 	\label{fig:CA7}
+		 \end{figure}
 		
 		\section{Análisis de datos y resultados}
-		
+		\subsection{Análisis de la RTC}
+		 La comunicación de la RTC con el circuito, como se mencionó anteriormente, se realizó por medio de maquinas de estado, y directamente con la de control de salida, cuya funcion es activar las señales, como CS, AD, RD, y WR las cuales permiten leer y escribir del dispositivo. Según las hoja de datos del V3023[1], estas cuatro señales deben respetar tiempos mínimos de acción para validar cualquier procedimiento, de no ser asi podria interpretarse un dato no válido.\\
+		 
+		 De la simulación post-síntesis, figura \ref{fig:SPS} , se obtuvieron los tiempos que dura cada una de las señales en el proceso de lectura y escritura, ambos procesos, figura \ref{fig:TPS}, tienen una duración de 300ns en total, y todas las señales respetan lo mínimo segun el datasheet, cabe destacar que la duración resultó ser un poco mas extensa en el momento de programarlo en la FPGA, sin embargo eso no causó problemas, ya que mientras sean mayores a los valores minimos es aceptable.\\ 
+		 
+		 En la figura \ref{fig:SPS}, además se verificó que la señal AD se activara y desativara un tiempo mínimo de 5ns y 10ns antes y despues, respectivamente, de las demás señales, con el fin de establecer si se va a escribir o leer una dirección o un dato.\\
+		 
+		 El control de usuario, el cual contenía además el control de programacion de la RTC, al ser un módulo que combinaba muchos procesos, tenia muchos errores, lo cual no permitía la correcta escritura en la RTC, por lo cual se decidió separarlos.\\ 
+		 
+		 A partir de lo anterior el control de la RTC, en general, se realizó de una manera estructurada, con ayudada el método de la factorización de máquinas de estado, lo cual permite una búsqueda de errores más rapida, y la modificacion de aspectos del diseño sin afectarlo en su totalidad.
+		 
+		\subsection{Análisis del consumo de recursos}
+		 Como se aprecia en el Cuadro 1, el reloj máximo al cual puede correr el programa es de 111,592 MHz, lo cual es lo suficientemente eficiente  y optimizado, para correr a la frecuencia que se utilizo de 100 MHz. Anterior a este rendimiento se encontro el problema de que la frecuencia maxima era de aproximadamente 89 MHz, la causa fue el diseño del controlador de VGA, el cual disponia de muchas operaciones lógicas, las cuales por lo general generan retrasos considerables en las señales y rutas de datos muy extensas en tiempo, por lo cual, para corregir el error, se rediseñaron ciertas secciones del código de VGA.\\
+		 
+	     La potencia consumida por el circuito es de 89mW, por lo que si se considera la cantidad de Flip Flops utilizados, así como el método que se utilizó para crear la parte visual de la VGA,es decir cargar imagenes a la FPGA para dibujar los numeros, y la cantidad de maquina de estado, el consumo de es relativamente alto.\\
+	     
+	     \subsection{Análisis de la VGA}
+	     Para el controlador de VGA, los gráficos se desplegaron de acuerdo con las simulaciones anteriores. Asimismo, no existieron problemas de sincronía con excepción de inestabilidad en algunos registros, sin embargo, esto se debe a intercalamiento de datos en la RTC, donde se leen datos erróneos. \\
+	     Con algunas observaciones, estos datos erróneos eran las direcciones de consulta de la RTC, por lo cual, es un problema con el módulo de control de la RTC. \\
+	     Por otro lado, existieron problemas con el reloj máximo tolerado por la implementación, que dieron como resultados 89MHz aproximadamente en comparación de los 100MHz con los que se iba a alimentar el reloj del circuito. Sin embargo, se optimizó la lógica de los punteros de memoria y se logró incrementar a 111MHz \\
+		 
+		 \subsection{Análisis de las mediciones con analizador lógico}
+		  En las figuras \ref{fig:CA1},\ref{fig:CA2},\ref{fig:CA3},\ref{fig:CA4},\ref{fig:CA5},\ref{fig:CA6},\ref{fig:CA7} se puede notar los tiempos de las señales CS, AD, RD, y WR de la RTC, además del canal bidireccional de datos, en donde se aprecia el cambio entre dirección y dato. En este se puede bservar que existe una sobreposición de datos y direcciones, esto se debe al corto periodo de tiempo que tiene la RTC para responder a este cambio. Est causa inestabiidad en los datos, los cuales se visulaizan en la pantalla VGA. 
+		 
+		  
+		 
+		    
+		 
+		    
 		
 		\section{Hoja de datos de unidades desarrolladas}
+		\subsection{Distribución de pines en la Nexys 4}
+		\begin{center}
 		
+		NET "R[0]" LOC = A3;\\
+		NET "R[1]" LOC = B4;\\
+		NET "R[2]" LOC = C5;\\
+		NET "R[3]" LOC = A4;\\
+		NET "G[0]" LOC = C6;\\
+		NET "G[1]" LOC = A5;\\
+		NET "G[2]" LOC = B6;\\
+		NET "G[3]" LOC = A6;\\
+		NET "B[0]" LOC = B7;\\
+		NET "B[1]" LOC = C7;\\
+		NET "B[2]" LOC = D7;\\
+		NET "B[3]" LOC = D8;\\
+		NET "clk" LOC = E3;\\
+		NET "HSync" LOC = B11;\\
+		NET "VSync" LOC = B12;\\
+		NET "DatAdd[0]" LOC = B13;\\
+		NET "DatAdd[1]" LOC = F14;\\
+		NET "DatAdd[2]" LOC = D17;\\
+		NET "DatAdd[3]" LOC = E17;\\
+		NET "DatAdd[4]" LOC = G13;\\
+		NET "DatAdd[5]" LOC = C17;\\
+		NET "DatAdd[6]" LOC = D18;\\
+		NET "DatAdd[7]" LOC = E18;\\
+		NET "AD" LOC = G14;\\
+		NET "CS" LOC = P15;\\
+		NET "RD" LOC = V11;\\
+		NET "WR" LOC = V15;\\
+		NET "int1" LOC = P4;\\
+		NET "int2" LOC = P3;\\
+		NET "int3" LOC = R3;\\
+		NET "Down" LOC = V10;\\
+		NET "Left" LOC = T16;\\
+		NET "reset" LOC = E16;\\
+		NET "Rig" LOC = R10;\\
+		NET "Up" LOC = F15;\\
+		\end{center}
+		Todos los pines tienen un IOSTANDARD de LVCMOS33.
 		
 		\section{Conclusiones y recomendaciones}
 		\subsection{Conclusiones}
+		\begin{itemize}
+			
 		
-		
+		 \item En circuitos con una gran cantidad de procesos de control, la factorización de maquinas de estado permite una estructuración eficiente.
+		 \item  El conocimiento de los tiempos en el diseño dentro de una FPGA, permite dar una idea de la eficiencia de un diseño.
+		 \item  Respetar los tiempos mínimos de escritura y lectura en una RTC asegura al diseñador que se realizan ambos procesos de manera correcta, sin generar metaestabilidad.
+		 \item  Es posible mejorar la interfaz del usuario para hacerla más amigable precargando un archivo de imagen convertida en binario en una ROM.
+		 \item El coste que tiene incorporar imágenes al diseño compromete recursos de la FPGA por lo que se debe optimizar y/o usar una GPU.
+		 \item Es posible visualizar mediante un testbench y un software para procesar imágenes en resultado que se podrá ver en la pantalla.
+		 
+		 
+		 
+	\end{itemize}
 		\subsection{Recomendaciones}
-		
-		
+		\begin{itemize}
+		 \item Usar una lógica optimizada para poder reducir el consumo de recursos en punteros de memoria.
+		 \item Usar una GPU externa para procesar las imágenes y no comprometer recursos de la FPGA.
+		\item Segmentar el control de la RTC por medio de la factorización de máquinas de estado.
+		\item Seguir paso por paso los procesos de inicialización de la RTC según se muestra en el datasheet.
+		\item Para mejorar la visualiación de los datos en la pantalla VGA se debe aumentar el tiempo de la transición entre direcciones y datos. 
+	\end{itemize}
+	    \section{Bibliografía}
+	     [1] EM Microelectronic, \textit{ Very Low Power 8-Bit 32 kHz RTC Module with Digital Trimming, User RAM and High Level Integration}, Swatch Group Electronic systems, 2015.\\[2ex]
+	     [2] Digilent, \textit{Nexys 4 FPGA Board Reference Manual}, Digilent, 2013.
 	\end{document}

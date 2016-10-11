@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.8.9)  6 OCT 2016 11:15
-=======
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.8.27)  5 OCT 2016 08:13
->>>>>>> origin/master
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.8.9)  7 OCT 2016 12:45
 entering extended mode
 **./informe.tex
 (informe.tex
@@ -483,53 +479,185 @@ File: img/FlujoEsc.jpg Graphic file (type jpg)
 <use img/FlujoEsc.jpg>
 Package pdftex.def Info: img/FlujoEsc.jpg used on input line 210.
 (pdftex.def)             Requested size: 455.24872pt x 256.08118pt.
-<<<<<<< HEAD
- [5 <./img/nivel2_contusr.jpg>] [6 <./img/JerarquiaRTC.jpg> <./img/diagramatiem
-poescritura.jpg>] [7 <./img/diagramatiempolectura.jpg> <./img/cuadrotiemposalid
-a.jpg>] [8 <./img/nivel1_RTC.jpg>] [9 <./img/FlujoInit.jpg> <./img/FlujoLec.jpg
->] [10 <./img/FlujoEsc.jpg>]
-
-AED: lastpage setting LastPage
-[11] (informe.aux
-=======
  [8 <./img/JerarquiaRTC.jpg>] [9 <./img/diagramatiempoescritura.jpg> <./img/dia
 gramatiempolectura.jpg>] [10 <./img/cuadrotiemposalida.jpg> <./img/nivel1_RTC.j
-pg>] 
+pg>] [11 <./img/FlujoInit.jpg>] [12 <./img/FlujoLec.jpg> <./img/FlujoEsc.jpg>]
+
+LaTeX Warning: Reference `fig:punteros' on page 13 undefined on input line 247.
+
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 246--248
+
+ []
+
+[13] <img/Punteros.png, id=66, 197.98969pt x 402.75468pt>
+File: img/Punteros.png Graphic file (type png)
+
+<use img/Punteros.png>
+Package pdftex.def Info: img/Punteros.png used on input line 251.
+(pdftex.def)             Requested size: 167.8449pt x 341.43306pt.
+ <img/SimVGA1.PNG, id=67, 733.23938pt x 239.39438pt>
+File: img/SimVGA1.PNG Graphic file (type png)
+
+<use img/SimVGA1.PNG>
+Package pdftex.def Info: img/SimVGA1.PNG used on input line 258.
+(pdftex.def)             Requested size: 455.24408pt x 148.63484pt.
+ <img/SimVGA2.PNG, id=68, 642.14906pt x 595.47469pt>
+File: img/SimVGA2.PNG Graphic file (type png)
+
+<use img/SimVGA2.PNG>
+Package pdftex.def Info: img/SimVGA2.PNG used on input line 265.
+(pdftex.def)             Requested size: 455.24408pt x 422.16302pt.
+ <img/SimVGA3.PNG, id=69, 858.20625pt x 587.94656pt>
+File: img/SimVGA3.PNG Graphic file (type png)
+
+<use img/SimVGA3.PNG>
+Package pdftex.def Info: img/SimVGA3.PNG used on input line 272.
+(pdftex.def)             Requested size: 455.24408pt x 311.87933pt.
+ <img/SimVGA4.PNG, id=70, 675.27281pt x 594.72188pt>
+File: img/SimVGA4.PNG Graphic file (type png)
+
+<use img/SimVGA4.PNG>
+Package pdftex.def Info: img/SimVGA4.PNG used on input line 279.
+(pdftex.def)             Requested size: 455.24408pt x 400.94806pt.
+ <img/SimVGA5.PNG, id=71, 931.98187pt x 593.21625pt>
+File: img/SimVGA5.PNG Graphic file (type png)
+
+<use img/SimVGA5.PNG>
+Package pdftex.def Info: img/SimVGA5.PNG used on input line 286.
+(pdftex.def)             Requested size: 455.24408pt x 289.76428pt.
+ <img/matlab.png, id=72, 862.72313pt x 502.87875pt>
+File: img/matlab.png Graphic file (type png)
+
+<use img/matlab.png>
+Package pdftex.def Info: img/matlab.png used on input line 293.
+(pdftex.def)             Requested size: 455.24408pt x 265.35812pt.
+ <img/tiemposSynt.jpeg, id=73, 1371.1225pt x 770.88pt>
+File: img/tiemposSynt.jpeg Graphic file (type jpg)
+
+<use img/tiemposSynt.jpeg>
+Package pdftex.def Info: img/tiemposSynt.jpeg used on input line 300.
+(pdftex.def)             Requested size: 455.23347pt x 256.07324pt.
+
+<img/tiempospost.jpeg, id=74, 887.315pt x 593.21625pt>
+File: img/tiempospost.jpeg Graphic file (type jpg)
+
+<use img/tiempospost.jpeg>
+Package pdftex.def Info: img/tiempospost.jpeg used on input line 308.
+(pdftex.def)             Requested size: 455.23253pt x 256.08275pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 313--314
+
+ []
+
+[14 <./img/Punteros.png>] [15 <./img/SimVGA1.PNG> <./img/SimVGA2.PNG>]
+<img/analizador1.jpeg, id=84, 1043.9pt x 586.19pt>
+File: img/analizador1.jpeg Graphic file (type jpg)
+ <use img/analizador1.jpeg>
+Package pdftex.def Info: img/analizador1.jpeg used on input line 337.
+(pdftex.def)             Requested size: 455.23969pt x 256.07288pt.
+
+<img/analizador2.jpeg, id=85, 1043.9pt x 586.19pt>
+File: img/analizador2.jpeg Graphic file (type jpg)
+ <use img/analizador2.jpeg>
+Package pdftex.def Info: img/analizador2.jpeg used on input line 343.
+(pdftex.def)             Requested size: 455.23969pt x 256.07288pt.
+
+<img/analizador3.jpeg, id=86, 1043.9pt x 586.19pt>
+File: img/analizador3.jpeg Graphic file (type jpg)
+ <use img/analizador3.jpeg>
+Package pdftex.def Info: img/analizador3.jpeg used on input line 349.
+(pdftex.def)             Requested size: 455.23969pt x 256.07288pt.
+
+<img/analizador4.jpeg, id=87, 1043.9pt x 586.19pt>
+File: img/analizador4.jpeg Graphic file (type jpg)
+ <use img/analizador4.jpeg>
+Package pdftex.def Info: img/analizador4.jpeg used on input line 355.
+(pdftex.def)             Requested size: 455.23969pt x 256.07288pt.
+
+<img/analizador5.jpeg, id=88, 1043.9pt x 586.19pt>
+File: img/analizador5.jpeg Graphic file (type jpg)
+ <use img/analizador5.jpeg>
+Package pdftex.def Info: img/analizador5.jpeg used on input line 361.
+(pdftex.def)             Requested size: 455.23969pt x 256.07288pt.
+
+<img/analizador6.jpeg, id=89, 1043.9pt x 586.19pt>
+File: img/analizador6.jpeg Graphic file (type jpg)
+ <use img/analizador6.jpeg>
+Package pdftex.def Info: img/analizador6.jpeg used on input line 367.
+(pdftex.def)             Requested size: 455.23969pt x 256.07288pt.
+
+<img/analizador7.jpeg, id=90, 439.6425pt x 782.925pt>
+File: img/analizador7.jpeg Graphic file (type jpg)
+
+<use img/analizador7.jpeg>
+Package pdftex.def Info: img/analizador7.jpeg used on input line 373.
+(pdftex.def)             Requested size: 455.25856pt x 256.07233pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 380--381
+
+ []
+
+[16 <./img/SimVGA3.PNG>] [17 <./img/SimVGA4.PNG>] [18 <./img/SimVGA5.PNG> <./im
+g/matlab.png>] [19 <./img/tiemposSynt.jpeg> <./img/tiempospost.jpeg>] [20 <./im
+g/analizador1.jpeg> <./img/analizador2.jpeg>] [21 <./img/analizador3.jpeg> <./i
+mg/analizador4.jpeg>] [22 <./img/analizador5.jpeg> <./img/analizador6.jpeg>]
+Underfull \hbox (badness 10000) in paragraph at lines 382--383
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 384--385
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 386--387
+
+ []
+
+[23 <./img/analizador7.jpeg>]
+Underfull \hbox (badness 10000) in paragraph at lines 391--392
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 393--394
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 396--399
+
+ []
+
+[24] [25] 
 AED: lastpage setting LastPage
-[11 <./img/FlujoInit.jpg>] [12 <./img/FlujoLec.jpg> <./img/FlujoEsc.jpg>]
-[13] (informe.aux
->>>>>>> origin/master
+[26] (informe.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
-) ) 
+)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
-<<<<<<< HEAD
- 3942 strings out of 493335
- 55346 string characters out of 3136663
- 144957 words of memory out of 3000000
- 7392 multiletter control sequences out of 15000+200000
-=======
- 3962 strings out of 493334
- 55761 string characters out of 3136672
- 145020 words of memory out of 3000000
- 7410 multiletter control sequences out of 15000+200000
->>>>>>> origin/master
- 8253 words of font info for 29 fonts, out of 3000000 for 9000
+ 4070 strings out of 493335
+ 57738 string characters out of 3136663
+ 145157 words of memory out of 3000000
+ 7498 multiletter control sequences out of 15000+200000
+ 8600 words of font info for 30 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,18n,48p,818b,384s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb
-><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C
-:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb>
-<<<<<<< HEAD
-Output written on informe.pdf (11 pages, 694997 bytes).
+ 40i,19n,48p,818b,385s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:
+/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Pro
+gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on informe.pdf (26 pages, 2085763 bytes).
 PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
-=======
-Output written on informe.pdf (13 pages, 748750 bytes).
-PDF statistics:
- 80 PDF objects out of 1000 (max. 8388607)
->>>>>>> origin/master
+ 148 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 161 words of extra memory for PDF output out of 10000 (max. 10000000)
 
